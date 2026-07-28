@@ -558,6 +558,445 @@ body.theme-royal {
   border-color: var(--cyan);
   color: var(--text);
 }
+
+/* ── CODING PLAYGROUND ── */
+.pg-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  animation: fi .15s ease;
+  height: 100%;
+}
+.pg-header-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11.5px;
+  color: var(--text2);
+}
+.pg-editor-wrap {
+  position: relative;
+  border: 1px solid var(--border);
+  border-radius: var(--r8);
+  background: var(--bg3);
+  overflow: hidden;
+}
+.pg-editor {
+  width: 100%;
+  height: 230px;
+  background: transparent;
+  border: none;
+  color: #e2e8f0;
+  font-family: var(--fm);
+  font-size: 12.5px;
+  line-height: 1.6;
+  padding: 12px;
+  resize: vertical;
+  outline: none;
+}
+.pg-console-panel {
+  border: 1px solid var(--border2);
+  border-radius: var(--r8);
+  background: #04060a;
+  display: flex;
+  flex-direction: column;
+}
+.pg-console-header {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+  font-family: var(--fm);
+  font-size: 9.5px;
+  color: var(--text3);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.pg-console-logs {
+  padding: 10px 12px;
+  font-family: var(--fm);
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--text2);
+  max-height: 140px;
+  overflow-y: auto;
+  min-height: 48px;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+.pg-log-line {
+  margin-bottom: 4px;
+}
+.pg-log-error {
+  color: var(--red);
+}
+.pg-log-info {
+  color: var(--cyan);
+}
+.pg-run-btn {
+  padding: 6px 14px;
+  border-radius: var(--r6);
+  border: 1px solid var(--cyan);
+  background: var(--cyan-dim);
+  color: var(--cyan);
+  font-size: 11.5px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.15s;
+  font-family: var(--fb);
+}
+.pg-run-btn:hover {
+  background: var(--cyan);
+  color: var(--bg);
+  box-shadow: 0 0 12px var(--cyan-glow);
+}
+.pg-reset-btn {
+  padding: 4px 10px;
+  border-radius: var(--r6);
+  border: 1px solid var(--border2);
+  background: transparent;
+  color: var(--text2);
+  font-size: 10px;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: var(--fb);
+}
+.pg-reset-btn:hover {
+  color: var(--text);
+  background: var(--card);
+}
+
+/* ── STUDY NOTES CENTRAL HUB ── */
+.nh-action-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 14px 18px;
+  border-radius: var(--r10);
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+.nh-search-wrap {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex: 1;
+  max-width: 400px;
+}
+.nh-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.nh-subject-section {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r10);
+  padding: 18px;
+}
+.nh-subject-header {
+  font-family: var(--fh);
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--cyan);
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border2);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.nh-notes-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 12px;
+}
+.nh-note-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--r8);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.nh-note-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+}
+.nh-topic-link {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+  cursor: pointer;
+}
+.nh-topic-link:hover {
+  color: var(--cyan);
+  text-decoration: underline;
+}
+.nh-textarea {
+  width: 100%;
+  height: 120px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r6);
+  color: var(--text);
+  font-family: var(--fb);
+  font-size: 12px;
+  line-height: 1.5;
+  padding: 8px;
+  resize: vertical;
+  outline: none;
+  transition: border-color 0.15s;
+}
+.nh-textarea:focus {
+  border-color: var(--cyan);
+}
+
+/* ── MOCK INTERVIEW SIMULATOR ── */
+.mi-layout {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 18px;
+  height: calc(100vh - 120px);
+  min-height: 500px;
+}
+.mi-main-panel {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r10);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.mi-setup-panel {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 16px;
+  text-align: center;
+  max-width: 500px;
+  margin: 0 auto;
+}
+.mi-chat-area {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.mi-msg {
+  display: flex;
+  gap: 10px;
+  max-width: 85%;
+  animation: fi 0.2s ease;
+}
+.mi-msg.bot {
+  align-self: flex-start;
+}
+.mi-msg.user {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+}
+.mi-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--cyan-dim);
+  border: 1px solid var(--cyan);
+  color: var(--cyan);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--fm);
+  font-weight: bold;
+  font-size: 12px;
+  flex-shrink: 0;
+}
+.mi-msg.user .mi-avatar {
+  background: var(--purple-dim);
+  border-color: var(--purple);
+  color: var(--purple);
+}
+.mi-bubble {
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.mi-msg.bot .mi-bubble {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-top-left-radius: 2px;
+}
+.mi-msg.user .mi-bubble {
+  background: var(--cyan-dim);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  color: #fff;
+  border-top-right-radius: 2px;
+}
+.mi-input-bar {
+  padding: 14px 20px;
+  border-top: 1px solid var(--border);
+  background: var(--bg2);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.mi-input-textarea {
+  width: 100%;
+  height: 70px;
+  background: var(--card);
+  border: 1px solid var(--border2);
+  border-radius: var(--r8);
+  color: var(--text);
+  font-family: var(--fb);
+  font-size: 13px;
+  padding: 10px;
+  outline: none;
+  resize: none;
+  transition: border-color 0.15s;
+}
+.mi-input-textarea:focus {
+  border-color: var(--cyan);
+}
+.mi-btn-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.mi-feedback-panel {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r10);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  overflow-y: auto;
+}
+.mi-grade-box {
+  background: var(--bg2);
+  border: 1px solid var(--border2);
+  border-radius: var(--r8);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+}
+.mi-score {
+  font-family: var(--fh);
+  font-size: 38px;
+  font-weight: 800;
+  color: var(--cyan);
+  line-height: 1;
+  text-shadow: 0 0 10px var(--cyan-glow);
+}
+.mi-kws {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.kw-pill {
+  font-size: 10px;
+  font-family: var(--fm);
+  padding: 3px 8px;
+  border-radius: 4px;
+  border: 1px solid var(--border2);
+  background: var(--bg3);
+  color: var(--text2);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.kw-pill.matched {
+  background: var(--green-dim);
+  border-color: var(--green);
+  color: var(--green);
+}
+.kw-pill.missed {
+  opacity: 0.65;
+}
+
+/* ── PRINT MEDIA QUERY ── */
+@media print {
+  body {
+    background: #fff !important;
+    color: #000 !important;
+    height: auto !important;
+    overflow: visible !important;
+    font-size: 12pt !important;
+  }
+  header, aside, .dp, .overlay, .nh-action-bar, .open-btn, .theme-select-container, button, select {
+    display: none !important;
+  }
+  .layout, main {
+    display: block !important;
+    position: static !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: visible !important;
+    height: auto !important;
+  }
+  .nh-grid {
+    gap: 20px !important;
+  }
+  .nh-subject-section {
+    background: #fff !important;
+    border: none !important;
+    border-bottom: 2px solid #000 !important;
+    padding: 0 !important;
+    margin-bottom: 20px !important;
+    page-break-inside: avoid;
+  }
+  .nh-subject-header {
+    color: #000 !important;
+    border-bottom: 2px solid #000 !important;
+    font-size: 16pt !important;
+  }
+  .nh-notes-list {
+    display: block !important;
+  }
+  .nh-note-card {
+    background: #fff !important;
+    border: 1px solid #ddd !important;
+    margin-bottom: 12px !important;
+    padding: 10px !important;
+    page-break-inside: avoid;
+  }
+  .nh-topic-link {
+    color: #000 !important;
+    font-size: 12pt !important;
+    font-weight: bold !important;
+  }
+  .nh-textarea {
+    border: none !important;
+    background: #fff !important;
+    color: #333 !important;
+    font-size: 11pt !important;
+    height: auto !important;
+    min-height: 0 !important;
+    resize: none !important;
+    padding: 0 !important;
+  }
+}
 </style>
 </head>
 <body>
@@ -1168,6 +1607,47 @@ const DATA = [
           {name:'NVIDIA Triton Tutorial',type:'Tutorial',url:'https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/index.html',ico:'📄'},
         ]},
      ]},
+    {id:'devops',ico:'☁',lbl:'DevOps',title:'DevOps & Cloud Engineering',
+     desc:'Deploy, scale, and manage containerized systems in cloud environments. Essential for high-availability systems at scale.',
+     hrs:40,
+     topics:[
+       {id:'t_aws',name:'AWS Cloud Foundations',diff:'medium',hrs:10,
+        tags:['VPC','EC2','S3','IAM','RDS'],
+        about:'AWS is the absolute standard for cloud deployments. Master core networking, computed resources, storage tier lifecycles, databases, and permissions structure.',
+        concepts:['VPC subnets (Public vs Private), Route Tables, and NAT Gateways','EC2 instances, security groups, key pairs, and auto-scaling groups','S3 object storage, buckets, lifecycle policies, and IAM access controls','IAM users, groups, roles, and JSON policies (least-privilege model)','RDS databases, automated backups, multi-AZ deployment, and read replicas'],
+        questions:['What is the difference between an IAM user, group, and role?','Explain VPC subnetting. How does a private subnet access the internet?','What is the difference between RDS Multi-AZ and Read Replicas?','How do you secure an S3 bucket from public access?','Explain horizontal vs vertical scaling in AWS.'],
+        resources:[
+          {name:'AWS Certified Cloud Practitioner - freeCodeCamp',type:'YouTube',url:'https://www.youtube.com/watch?v=3hLmDS156k4',ico:'▶'},
+          {name:'AWS Docs - Getting Started',type:'Docs',url:'https://docs.aws.amazon.com/',ico:'📄'},
+        ]},
+       {id:'t_k8s',name:'Containerization & Kubernetes',diff:'hard',hrs:12,
+        tags:['Docker','Kubernetes','Pods','Deployments'],
+        about:'Containers standardize software execution environments. Kubernetes automates container routing, health-checking, scaling, and load-balancing.',
+        concepts:['Dockerfiles, multi-stage builds, images, tags, and container runtimes','Kubernetes architecture: Control Plane vs Worker Nodes','K8s objects: Pods, ReplicaSets, Deployments, Services, and Ingress','Secrets and ConfigMaps management for environmental variables','Liveness and readiness probes for automated container recovery'],
+        questions:['What is the difference between a Docker image and a Docker container?','What is the role of a Kubernetes Service? Difference between ClusterIP, NodePort, and LoadBalancer?','Explain Kubernetes deployments and rolling updates.','What are liveness and readiness probes in Kubernetes?','How does Docker multi-stage build optimize image sizes?'],
+        resources:[
+          {name:'Kubernetes Tutorial for Beginners - TechWorld with Nana',type:'YouTube',url:'https://www.youtube.com/watch?v=X48VuDVv0do',ico:'▶'},
+          {name:'Docker Docs',type:'Docs',url:'https://docs.docker.com/',ico:'📄'},
+        ]},
+       {id:'t_iac',name:'Infrastructure as Code (IaC) — Terraform',diff:'hard',hrs:10,
+        tags:['Terraform','HCL','State File','Modules'],
+        about:'Infrastructure as Code allows defining infrastructure in code, ensuring repeatable, automated deployments. Terraform is the industry leader.',
+        concepts:['Declarative syntax using HashiCorp Configuration Language (HCL)','Terraform lifecycle commands: init, plan, apply, destroy','Terraform state file (.tfstate) - tracking, locking, and remote backends','Variables, locals, outputs, and reusable Terraform Modules','State locking and collaboration in team environments (e.g. S3 + DynamoDB)'],
+        questions:['What is the Terraform State file? Why is remote state locking necessary?','Explain declarative vs imperative infrastructure provisioning.','What happens when you run terraform plan vs terraform apply?','How do you use variables and outputs in Terraform configuration?','What is a Terraform Module and when should you create one?'],
+        resources:[
+          {name:'Terraform Course for Beginners - freeCodeCamp',type:'YouTube',url:'https://www.youtube.com/watch?v=SLB_c_ayRMo',ico:'▶'},
+          {name:'Terraform Registry & Docs',type:'Docs',url:'https://registry.terraform.io/',ico:'📄'},
+        ]},
+       {id:'t_cicd',name:'CI/CD Pipelines (GitHub Actions)',diff:'medium',hrs:8,
+        tags:['CI/CD','GitHub Actions','Workflows','Runners'],
+        about:'Continuous Integration and Continuous Delivery automate code testing, building, and deployments, reducing human error and improving velocity.',
+        concepts:['Workflows, triggers (push, pull_request), jobs, and steps in YAML','GitHub Runners (hosted vs self-hosted) and action steps','Secrets management for API keys, AWS credentials, and container registry logins','Automatic docker image builds and pushing to registry (ECR, DockerHub)','Continuous Deployment pipelines (deploying to ECS, EKS, or Vercel)'],
+        questions:['What is the difference between Continuous Integration and Continuous Deployment?','How does GitHub Actions manage pipeline secrets securely?','Explain runners and how jobs can run in parallel vs sequentially.','Write a simple GitHub Action trigger syntax for push events on main branch.','How would you structure a pipeline to roll back if a production deploy fails?'],
+        resources:[
+          {name:'CI/CD Pipeline with GitHub Actions - Fireship',type:'YouTube',url:'https://www.youtube.com/watch?v=R8_veQiYtgo',ico:'▶'},
+          {name:'GitHub Actions Docs',type:'Docs',url:'https://docs.github.com/en/actions',ico:'📄'},
+        ]},
+     ]},
   ]},
   {cat:'LAYER 4 — PORTFOLIO & CAREER',color:'var(--green)',lc:'l4',subjects:[
     {id:'portfolio',ico:'◫',lbl:'Portfolio',title:'Portfolio & Career Prep',
@@ -1203,6 +1683,16 @@ const DATA = [
           {name:'Levels.fyi — India Salaries',type:'Tool',url:'https://www.levels.fyi/t/software-engineer/location/india',ico:'📄'},
           {name:'Patrick McKenzie Negotiation Blog',type:'Article',url:'https://www.kalzumeus.com/2012/01/23/salary-negotiation/',ico:'📄'},
           {name:'Ten Rules for Negotiating (free)',type:'Article',url:'https://haseebq.com/my-ten-rules-for-negotiating-a-job-offer/',ico:'📄'},
+        ]},
+       {id:'t_roles',name:'SDE Roles & Career Paths',diff:'easy',hrs:4,
+        tags:['SDE Levels','Key Duties','Frontend/Backend','DevOps/MLOps'],
+        about:'Understanding software engineering roles, standard progression rubrics, and the key responsibilities expected at 20 LPA+ levels helps you target the right companies and position your experience.',
+        concepts:['SDE-1 vs SDE-2 vs Staff expectations (execution vs design vs technical direction)','Frontend SDE: Web optimization, rendering models (SSR/static), client state, accessibility','Backend SDE: API design patterns, DB query planners/indexing, caching, system consistency','DevOps/SRE: Orchestrating containerized hosts, pipelines automation, IaC declarations','MLOps/AI SDE: Processing unstructured vectors, model dynamic batching, LLM agent graphs','Career roadmap: Planning transitions from feature execution to architectural design and leading teams'],
+        questions:['What is the core difference in expectations between SDE-1 and SDE-2?','What are the primary responsibilities of a DevOps engineer vs a Backend engineer?','What architectural metrics define a Staff Engineer compared to a Senior SDE-2?','Explain key duties of an MLOps engineer deploying models to production.'],
+        resources:[
+          {name:'Levels.fyi Standard Career Frameworks',type:'Tool',url:'https://www.levels.fyi/blog/system-design-interview-prep-guide.html',ico:'📄'},
+          {name:'StaffEng — Technical Leadership Strategy',type:'Article',url:'https://staffeng.com/guides/',ico:'📘'},
+          {name:'Roadmap.sh — Interactive SDE Roadmaps',type:'Tool',url:'https://roadmap.sh/',ico:'◈'},
         ]},
      ]},
   ]},
@@ -1476,6 +1966,8 @@ function renderSidebar(){
   const starCount = Object.keys(starred).filter(k => starred[k]).length;
   let h=`<div class="si ${activeId==='__home__'?'active':''}" onclick="go('__home__')"><span class="si-ico">⌂</span><span class="si-name">Overview</span></div>
   <div class="si ${activeId==='__starred__'?'active':''}" onclick="go('__starred__')"><span class="si-ico">★</span><span class="si-name">Starred Topics</span><span class="si-ct">${starCount}</span></div>
+  <div class="si ${activeId==='__notes_hub__'?'active':''}" onclick="go('__notes_hub__')"><span class="si-ico">📝</span><span class="si-name">My Study Notes</span></div>
+  <div class="si ${activeId==='__mock_interview__'?'active':''}" onclick="go('__mock_interview__')"><span class="si-ico">🎯</span><span class="si-name">Mock Interview</span></div>
   <div class="sdiv"></div>`;
   DATA.forEach(g=>{
     if(!g.subjects)return;
@@ -1906,6 +2398,7 @@ function openPanel(tid){
       <button class="dp-tab ${activeTab==='learn'?'active':''}" id="tab-btn-learn" onclick="switchTab('learn')">📖 Learn</button>
       <button class="dp-tab ${activeTab==='practice'?'active':''}" id="tab-btn-practice" onclick="switchTab('practice')">❓ Practice</button>
       <button class="dp-tab ${activeTab==='notes'?'active':''}" id="tab-btn-notes" onclick="switchTab('notes')">📝 My Notes</button>
+      <button class="dp-tab ${activeTab==='playground'?'active':''}" id="tab-btn-playground" onclick="switchTab('playground')">💻 Playground</button>
     </div>`;
 
   const conc=(t.concepts||[]).map(c=>`<div class="cv"><span class="cv-dot">›</span><span>${c}</span></div>`).join('');
@@ -1943,6 +2436,9 @@ function openPanel(tid){
     </div>
     <div id="tab-content-notes" class="tab-content" style="${activeTab==='notes'?'':'display:none'}">
       ${renderNotesTab(tid)}
+    </div>
+    <div id="tab-content-playground" class="tab-content" style="${activeTab==='playground'?'':'display:none'}">
+      ${renderPlaygroundTab(tid)}
     </div>
   `;
 
@@ -2092,6 +2588,444 @@ function renderNotesTab(tid) {
       </div>
     </div>
   `;
+}
+
+function renderPlaygroundTab(tid) {
+  const codePreset = getStarterCode(tid);
+  return `
+    <div class="pg-container">
+      <div class="pg-header-bar">
+        <span>Write and test your JavaScript code below</span>
+        <button class="pg-reset-btn" onclick="resetPlaygroundCode('${tid}')">Reset Starter Code</button>
+      </div>
+      <div class="pg-editor-wrap">
+        <textarea class="pg-editor" id="pg-editor-area" spellcheck="false" onkeydown="if(event.ctrlKey && event.key === 'Enter') runPlaygroundCode('${tid}')" placeholder="// Write JS code here...">${escapeHtml(codePreset)}</textarea>
+      </div>
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <button class="pg-run-btn" onclick="runPlaygroundCode('${tid}')">▶ Run Code</button>
+        <span style="font-size:10.5px; color:var(--text3); font-family:var(--fm)">Ctrl+Enter to run</span>
+      </div>
+      <div class="pg-console-panel">
+        <div class="pg-console-header">
+          <span>Console Output</span>
+          <button class="pg-reset-btn" style="padding: 2px 6px; font-size: 9px;" onclick="clearConsoleOutput()">Clear</button>
+        </div>
+        <div class="pg-console-logs" id="pg-console-logs-area"><span class="pg-log-info">// Press Run Code to execute.</span></div>
+      </div>
+    </div>
+  `;
+}
+
+function runPlaygroundCode(tid) {
+  const code = document.getElementById('pg-editor-area').value;
+  const logsArea = document.getElementById('pg-console-logs-area');
+  logsArea.innerHTML = '';
+  
+  const logMessages = [];
+  const originalLog = console.log;
+  const originalWarn = console.warn;
+  const originalError = console.error;
+  
+  console.log = function(...args) {
+    logMessages.push({ type: 'log', text: args.map(a => typeof a === 'object' ? JSON.stringify(a) : String(a)).join(' ') });
+    originalLog.apply(console, args);
+  };
+  console.warn = function(...args) {
+    logMessages.push({ type: 'warn', text: args.map(a => typeof a === 'object' ? JSON.stringify(a) : String(a)).join(' ') });
+    originalWarn.apply(console, args);
+  };
+  console.error = function(...args) {
+    logMessages.push({ type: 'error', text: args.map(a => typeof a === 'object' ? JSON.stringify(a) : String(a)).join(' ') });
+    originalError.apply(console, args);
+  };
+  
+  try {
+    const runFn = new Function(code);
+    runFn();
+    
+    if (logMessages.length === 0) {
+      logsArea.innerHTML = `<span class="pg-log-info">// Execution finished successfully with no console logs.</span>`;
+    } else {
+      logsArea.innerHTML = logMessages.map(msg => {
+        let cls = 'pg-log-line';
+        if (msg.type === 'error' || msg.type === 'warn') cls += ' pg-log-error';
+        return `<div class="${cls}">${escapeHtml(msg.text)}</div>`;
+      }).join('');
+    }
+  } catch (err) {
+    logsArea.innerHTML = `<div class="pg-log-line pg-log-error">❌ Execution Error:\n${escapeHtml(err.message)}</div>`;
+  } finally {
+    console.log = originalLog;
+    console.warn = originalWarn;
+    console.error = originalError;
+  }
+}
+
+function clearConsoleOutput() {
+  const logsArea = document.getElementById('pg-console-logs-area');
+  if (logsArea) {
+    logsArea.innerHTML = `<span class="pg-log-info">// Console cleared.</span>`;
+  }
+}
+
+function resetPlaygroundCode(tid) {
+  const editor = document.getElementById('pg-editor-area');
+  if (editor) {
+    editor.value = getStarterCode(tid);
+    clearConsoleOutput();
+  }
+}
+
+function getStarterCode(tid) {
+  const defaults = `// Welcome to the 20 LPA JavaScript Coding Playground!
+// Write custom code here and press Run.
+
+console.log("🚀 Playground is ready!");
+const candidate = "Top SDE";
+const salary = "22 LPA+";
+console.log(\`🎯 Goal: Secure \${candidate} with a \${salary} offer!\`);
+`;
+
+  if (tid === 't_arr') {
+    return `// JavaScript Playground: Two Sum
+// Given an array of integers nums and an integer target,
+// return indices of the two numbers such that they add up to target.
+
+function twoSum(nums, target) {
+  const map = new Map();
+  for (let i = 0; i < nums.length; i++) {
+    const complement = target - nums[i];
+    if (map.has(complement)) {
+      return [map.get(complement), i];
+    }
+    map.set(nums[i], i);
+  }
+  return [];
+}
+
+// Running Test Cases:
+console.log("Test Case 1 (Expected [0, 1]):", twoSum([2, 7, 11, 15], 9));
+console.log("Test Case 2 (Expected [1, 2]):", twoSum([3, 2, 4], 6));
+console.log("Test Case 3 (Expected [0, 2]):", twoSum([3, 3, 5], 8));
+`;
+  }
+  
+  if (tid === 't_ll') {
+    return `// JavaScript Playground: Reverse a Singly Linked List
+class ListNode {
+  constructor(val, next = null) {
+    this.val = val;
+    this.next = next;
+  }
+}
+
+function reverseList(head) {
+  let prev = null;
+  let curr = head;
+  while (curr !== null) {
+    let nextTemp = curr.next;
+    curr.next = prev;
+    prev = curr;
+    curr = nextTemp;
+  }
+  return prev;
+}
+
+function printList(head) {
+  const values = [];
+  let curr = head;
+  while (curr) {
+    values.push(curr.val);
+    curr = curr.next;
+  }
+  console.log(values.join(" -> "));
+}
+
+// Create: 1 -> 2 -> 3 -> 4
+const head = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4))));
+console.log("Original List:");
+printList(head);
+
+const reversed = reverseList(head);
+console.log("Reversed List:");
+printList(reversed);
+`;
+  }
+  
+  if (tid === 't_sq') {
+    return `// JavaScript Playground: Valid Parentheses Validator
+function isValid(s) {
+  const stack = [];
+  const map = {
+    ')': '(',
+    '}': '{',
+    ']': '['
+  };
+  
+  for (let char of s) {
+    if (char === '(' || char === '{' || char === '[') {
+      stack.push(char);
+    } else if (stack.length > 0 && stack[stack.length - 1] === map[char]) {
+      stack.pop();
+    } else {
+      return false;
+    }
+  }
+  return stack.length === 0;
+}
+
+console.log("Validate '()[]{}' (Expected true):", isValid("()[]{}"));
+console.log("Validate '([)]' (Expected false):", isValid("([)]"));
+console.log("Validate '{[]}' (Expected true):", isValid("{[]}"));
+`;
+  }
+  
+  if (tid === 't_tree') {
+    return `// JavaScript Playground: BST Inorder Traversal
+class TreeNode {
+  constructor(val) {
+    this.val = val;
+    this.left = null;
+    this.right = null;
+  }
+}
+
+function insertIntoBST(root, val) {
+  if (!root) return new TreeNode(val);
+  if (val < root.val) root.left = insertIntoBST(root.left, val);
+  else root.right = insertIntoBST(root.right, val);
+  return root;
+}
+
+function inorder(root, arr = []) {
+  if (!root) return arr;
+  inorder(root.left, arr);
+  arr.push(root.val);
+  inorder(root.right, arr);
+  return arr;
+}
+
+// Build BST: 4, 2, 7, 1, 3
+let bst = new TreeNode(4);
+insertIntoBST(bst, 2);
+insertIntoBST(bst, 7);
+insertIntoBST(bst, 1);
+insertIntoBST(bst, 3);
+
+console.log("BST Inorder Traversal (Sorted order expected):");
+console.log(inorder(bst));
+`;
+  }
+
+  if (tid === 't_graph') {
+    return `// JavaScript Playground: BFS Shortest Path Simulation
+// Find shortest distance in an unweighted graph starting from node A.
+
+function bfsShortestPath(graph, start, end) {
+  const queue = [[start, [start]]];
+  const visited = new Set([start]);
+  
+  while (queue.length > 0) {
+    const [curr, path] = queue.shift();
+    if (curr === end) return path;
+    
+    for (let neighbor of graph[curr] || []) {
+      if (!visited.has(neighbor)) {
+        visited.add(neighbor);
+        queue.push([neighbor, [...path, neighbor]]);
+      }
+    }
+  }
+  return null;
+}
+
+// Graph adjacency list
+const network = {
+  'A': ['B', 'C'],
+  'B': ['A', 'D', 'E'],
+  'C': ['A', 'F'],
+  'D': ['B'],
+  'E': ['B', 'F'],
+  'F': ['C', 'E']
+};
+
+console.log("Shortest Path from A to F:");
+console.log("Path Taken:", bfsShortestPath(network, 'A', 'F').join(" -> "));
+`;
+  }
+
+  if (tid === 't_dp') {
+    return `// JavaScript Playground: Climbing Stairs DP
+// You are climbing a staircase. It takes n steps to reach the top.
+// Each time you can either climb 1 or 2 steps. How many distinct ways can you climb to the top?
+
+function climbStairs(n) {
+  if (n <= 2) return n;
+  let first = 1;
+  let second = 2;
+  for (let i = 3; i <= n; i++) {
+    let third = first + second;
+    first = second;
+    second = third;
+  }
+  return second;
+}
+
+console.log("Ways to climb 3 steps (Expected 3):", climbStairs(3));
+console.log("Ways to climb 5 steps (Expected 8):", climbStairs(5));
+console.log("Ways to climb 10 steps (Expected 89):", climbStairs(10));
+`;
+  }
+
+  if (tid === 't_proc') {
+    return `// JavaScript Playground: OS Process Scheduler (Round Robin)
+// Simulates scheduling processes with a fixed time quantum.
+
+function roundRobin(processes, quantum) {
+  let time = 0;
+  let queue = [...processes];
+  console.log("⏱ Initiating Round Robin CPU Scheduler...");
+  
+  while (queue.length > 0) {
+    let p = queue.shift();
+    if (p.burst > quantum) {
+      time += quantum;
+      p.burst -= quantum;
+      console.log(\`[Time \${time}s] Process \${p.name} executed. Burst remaining: \${p.burst}s\`);
+      queue.push(p);
+    } else {
+      time += p.burst;
+      console.log(\`[Time \${time}s] Process \${p.name} completed! Total execution time: \${time}s\`);
+    }
+  }
+}
+
+const jobs = [
+  { name: "P1", burst: 8 },
+  { name: "P2", burst: 4 },
+  { name: "P3", burst: 5 }
+];
+roundRobin(jobs, 3);
+`;
+  }
+
+  if (tid === 't_mem') {
+    return `// JavaScript Playground: OS Virtual Memory Page Replacement (FIFO)
+// Calculates page faults during virtual page references.
+
+function countPageFaultsFIFO(pages, capacity) {
+  let faults = 0;
+  let s = new Set();
+  let indexes = [];
+  
+  for (let page of pages) {
+    if (!s.has(page)) {
+      faults++;
+      if (s.size === capacity) {
+        let val = indexes.shift();
+        s.delete(val);
+      }
+      s.add(page);
+      indexes.push(page);
+      console.log(\`Page Reference \${page}: ❌ Miss (Fault). Buffer: [\${Array.from(s).join(", ")}]\`);
+    } else {
+      console.log(\`Page Reference \${page}: Hit. Buffer: [\${Array.from(s).join(", ")}]\`);
+    }
+  }
+  return faults;
+}
+
+const pageReferences = [7, 0, 1, 2, 0, 3, 0, 4, 2, 3];
+const framesCount = 3;
+const totalFaults = countPageFaultsFIFO(pageReferences, framesCount);
+console.log(\`\\nFIFO Complete. Total Page Faults: \${totalFaults}\`);
+`;
+  }
+
+  if (tid === 't_sql') {
+    return `// JavaScript Playground: DBMS Hash Join Simulation
+// Mimics how RDBMS executes a Hash Join on two tables.
+
+function hashJoin(users, orders) {
+  console.log("🔨 Building hash table from Users...");
+  const hashTable = new Map();
+  users.forEach(u => hashTable.set(u.id, u.name));
+  
+  console.log("🔎 Probing orders index for matches...");
+  const joinedResults = [];
+  orders.forEach(o => {
+    if (hashTable.has(o.userId)) {
+      joinedResults.push({
+        orderId: o.orderId,
+        userName: hashTable.get(o.userId),
+        item: o.item
+      });
+    }
+  });
+  return joinedResults;
+}
+
+const users = [{id: 1, name: "Alice"}, {id: 2, name: "Bob"}, {id: 3, name: "Charlie"}];
+const orders = [{orderId: 101, userId: 2, item: "MacBook"}, {orderId: 102, userId: 1, item: "Keyboard"}, {orderId: 103, userId: 5, item: "Monitor"}];
+
+console.log("SQL Equivalent: SELECT orders.id, users.name, orders.item FROM orders JOIN users ON orders.userId = users.id;\\n");
+const results = hashJoin(users, orders);
+console.log("\\nJoined Results Table:");
+console.log(results);
+`;
+  }
+
+  if (tid === 't_aws') {
+    return `// JavaScript Playground: AWS Resource Cost Estimator
+// Simulates Cloud Architect sizing and cost estimates.
+
+function calculateEC2MonthlyCost(instanceType, hoursActive, count = 1) {
+  const pricing = {
+    't3.micro': 0.0104,
+    'm5.large': 0.096,
+    'c5.xlarge': 0.17,
+    'g4dn.xlarge': 0.526
+  };
+  
+  const rate = pricing[instanceType] || 0.05;
+  const cost = rate * hoursActive * count;
+  console.log(\`Calculating Cost for \${count}x \${instanceType} instance(s) running \${hoursActive}h/month:\`);
+  console.log(\`- Rate: \$\${rate}/hour\`);
+  console.log(\`- Total Monthly Cost: \$\${cost.toFixed(2)}\`);
+  return cost;
+}
+
+calculateEC2MonthlyCost('t3.micro', 720, 2);
+calculateEC2MonthlyCost('g4dn.xlarge', 200, 1);
+`;
+  }
+
+  if (tid === 't_k8s') {
+    return `// JavaScript Playground: Kubernetes Horizontal Pod Auto-Scaler (HPA) Simulation
+// Simulates scaling replicas dynamically based on target CPU thresholds.
+
+function simulateHPA(currentReplicas, currentCPU, minReplicas, maxReplicas, targetCPU = 50) {
+  console.log(\`🚦 HPA Scale Loop Triggered. Target CPU Threshold: \${targetCPU}%\`);
+  console.log(\`- Current Replicas: \${currentReplicas}\`);
+  console.log(\`- Current Average CPU: \${currentCPU}%\`);
+  
+  let desiredReplicas = Math.ceil(currentReplicas * (currentCPU / targetCPU));
+  desiredReplicas = Math.max(minReplicas, Math.min(maxReplicas, desiredReplicas));
+  
+  if (desiredReplicas !== currentReplicas) {
+    console.log(\`🚀 Scaling action taken: Replicas adjusted from \${currentReplicas} -> \${desiredReplicas}\`);
+  } else {
+    console.log("✅ Load is stable. No scaling action required.");
+  }
+  return desiredReplicas;
+}
+
+simulateHPA(3, 85, 2, 10);
+simulateHPA(6, 12, 2, 10);
+`;
+  }
+
+  return defaults;
 }
 
 function handleNotesInput(tid, val) {
@@ -2261,6 +3195,499 @@ function importData(event) {
 // ============================
 // NAV
 // ============================
+// ============================
+// MOCK INTERVIEW SIMULATOR
+// ============================
+let interviewSubject = 'random';
+let interviewQuestions = [];
+let interviewIndex = -1;
+let interviewHistory = [];
+let interviewActive = false;
+let interviewKeywords = [];
+let interviewModelAnswer = '';
+let interviewEvaluation = null;
+
+function renderMockInterview() {
+  const main = document.getElementById('main');
+  
+  if (!interviewActive) {
+    let subjectsOptions = `<option value="random">🌟 Random Mix (All Tracks)</option>`;
+    DATA.forEach(g => {
+      if (!g.subjects) return;
+      g.subjects.forEach(s => {
+        subjectsOptions += `<option value="${s.id}">${s.ico} ${s.title}</option>`;
+      });
+    });
+    
+    main.innerHTML = `
+      <div class="hero anim">
+        <div class="hero-eye">SDE Simulator</div>
+        <div class="hero-h">Interactive <span>Mock Interview</span> 🎯</div>
+        <div class="hero-p">Prepare under pressure. The simulator will ask you real questions, analyze your response, grade your vocabulary against required technical keywords, and provide instant coaching feedback.</div>
+      </div>
+      <div class="mi-setup-panel dc cc anim" style="margin-top: 30px; max-width: 480px; padding: 30px;">
+        <div class="dc-num" style="font-size: 40px; margin-bottom: 12px;">🎙</div>
+        <div class="dc-lbl" style="font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 8px;">Select Interview Track</div>
+        <select id="mi-track-select" class="sort-select" style="width: 100%; font-size: 13px; padding: 8px 12px; background: var(--bg2); border-radius: var(--r6);">
+          ${subjectsOptions}
+        </select>
+        <button class="pg-run-btn" style="margin-top: 16px; padding: 10px 24px; font-size: 13px;" onclick="startInterviewSession()">🚀 Start Mock Interview</button>
+      </div>`;
+    return;
+  }
+  
+  let chatHTML = '';
+  interviewHistory.forEach(msg => {
+    const isBot = msg.sender === 'bot';
+    chatHTML += `
+      <div class="mi-msg ${isBot ? 'bot' : 'user'}">
+        <div class="mi-avatar">${isBot ? 'INT' : 'YOU'}</div>
+        <div class="mi-bubble">${escapeHtml(msg.text)}</div>
+      </div>`;
+  });
+  
+  let feedbackHTML = `
+    <div class="mi-grade-box">
+      <div style="font-size: 12px; color: var(--text3); font-weight: 600; text-transform: uppercase;">Feedback Dashboard</div>
+      <div style="font-size: 13px; color: var(--text2); margin-top: 15px;">Waiting for your answer...</div>
+    </div>`;
+    
+  if (interviewEvaluation) {
+    const matchedCount = interviewEvaluation.matched.length;
+    const totalCount = interviewEvaluation.total;
+    const score = interviewEvaluation.score;
+    let badge = 'Needs Review';
+    let color = 'var(--red)';
+    if (score >= 80) { badge = 'Excellent'; color = 'var(--green)'; }
+    else if (score >= 50) { badge = 'Good'; color = 'var(--amber)'; }
+    
+    let kwPills = '';
+    interviewKeywords.forEach(kw => {
+      const match = interviewEvaluation.matched.includes(kw);
+      kwPills += `<span class="kw-pill ${match ? 'matched' : 'missed'}">${match ? '✓' : '✗'} ${kw}</span>`;
+    });
+    
+    feedbackHTML = `
+      <div class="mi-grade-box">
+        <div style="font-size: 9px; color: var(--text3); font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Interview Score</div>
+        <div class="mi-score" style="color: ${color}">${score} <span style="font-size: 14px; font-weight: normal; color: var(--text2)">/ 100</span></div>
+        <div style="font-size: 11.5px; font-weight: 600; color: ${color}">${badge}</div>
+      </div>
+      <div>
+        <div class="dps-lbl" style="margin-bottom: 8px;">Keywords Graded</div>
+        <div class="mi-kws">
+          ${kwPills}
+        </div>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:4px; margin-top: 10px;">
+        <div class="dps-lbl">Model Answer Guidance</div>
+        <div style="font-size: 12.5px; color: var(--text2); line-height: 1.65; white-space: pre-wrap;">${escapeHtml(interviewModelAnswer)}</div>
+      </div>`;
+  }
+  
+  main.innerHTML = `
+    <div class="mi-layout anim">
+      <div class="mi-main-panel">
+        <div class="mi-chat-area" id="mi-chat-container">
+          ${chatHTML}
+        </div>
+        <div class="mi-input-bar">
+          <textarea class="mi-input-textarea" id="mi-answer-input" placeholder="Type your detailed answer here... (Ctrl+Enter to submit)" onkeydown="if(event.ctrlKey && event.key === 'Enter') submitInterviewAnswer()"></textarea>
+          <div class="mi-btn-row">
+            <button class="pg-reset-btn" onclick="resetInterviewSession()">✕ Exit Session</button>
+            <div style="display:flex; gap: 8px;">
+              <button class="pg-reset-btn" onclick="nextInterviewQuestion()">Skip / Next Question ➜</button>
+              <button class="pg-run-btn" id="mi-submit-btn" onclick="submitInterviewAnswer()">🎙 Submit Response</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mi-feedback-panel" id="mi-feedback-container">
+        ${feedbackHTML}
+      </div>
+    </div>`;
+    
+  const chatContainer = document.getElementById('mi-chat-container');
+  if (chatContainer) {
+    chatContainer.scrollTop = chatContainer.scrollHeight;
+  }
+}
+
+function startInterviewSession() {
+  const selector = document.getElementById('mi-track-select');
+  if (!selector) return;
+  interviewSubject = selector.value;
+  
+  const allT = allTopics();
+  let selectedQuestions = [];
+  
+  if (interviewSubject === 'random') {
+    allT.forEach(t => {
+      (t.questions || []).forEach(q => selectedQuestions.push({ text: q, topicId: t.id }));
+    });
+  } else {
+    allT.forEach(t => {
+      const s = findSubj(interviewSubject);
+      if (s && s.topics && s.topics.find(x => x.id === t.id)) {
+        (t.questions || []).forEach(q => selectedQuestions.push({ text: q, topicId: t.id }));
+      }
+    });
+  }
+  
+  if (selectedQuestions.length === 0) {
+    alert("No questions found in this track!");
+    return;
+  }
+  
+  interviewQuestions = selectedQuestions.sort(() => 0.5 - Math.random());
+  interviewIndex = 0;
+  interviewActive = true;
+  interviewHistory = [];
+  interviewEvaluation = null;
+  
+  askInterviewQuestion();
+}
+
+function askInterviewQuestion() {
+  if (interviewIndex >= interviewQuestions.length) {
+    interviewQuestions = interviewQuestions.sort(() => 0.5 - Math.random());
+    interviewIndex = 0;
+  }
+  
+  const activeQObj = interviewQuestions[interviewIndex];
+  const qText = activeQObj.text;
+  
+  const evalData = getKeywordsAndModelAnswer(qText);
+  interviewKeywords = evalData.keywords;
+  interviewModelAnswer = evalData.modelAnswer;
+  interviewEvaluation = null;
+  
+  interviewHistory.push({
+    sender: 'bot',
+    text: `Hello! I'm your SDE technical interviewer today. Let's discuss a core concept in SDE interview preparation. Can you explain: "${qText}"?`
+  });
+  
+  renderMockInterview();
+  
+  const input = document.getElementById('mi-answer-input');
+  if (input) input.focus();
+}
+
+function submitInterviewAnswer() {
+  const input = document.getElementById('mi-answer-input');
+  if (!input) return;
+  const answer = input.value.trim();
+  if (!answer) return;
+  
+  if (interviewEvaluation) return;
+  
+  interviewHistory.push({
+    sender: 'user',
+    text: answer
+  });
+  
+  const lowerAnswer = answer.toLowerCase();
+  const matched = [];
+  const missed = [];
+  
+  interviewKeywords.forEach(kw => {
+    const cleanKw = kw.toLowerCase().replace(/[()]/g, '');
+    if (lowerAnswer.includes(cleanKw)) {
+      matched.push(kw);
+    } else {
+      missed.push(kw);
+    }
+  });
+  
+  const score = Math.round((matched.length / interviewKeywords.length) * 100);
+  interviewEvaluation = {
+    score: score,
+    matched: matched,
+    missed: missed,
+    total: interviewKeywords.length
+  };
+  
+  let responseMsg = '';
+  if (score >= 80) {
+    responseMsg = `Excellent answer! You hit almost all key concepts: [${matched.join(', ')}]. That demonstrates robust SDE architectural proficiency. Let's move on to the next question.`;
+  } else if (score >= 50) {
+    responseMsg = `Good attempt. You successfully mentioned [${matched.join(', ')}]. However, you missed some important terminology like [${missed.join(', ')}]. Check out the model guidance on the right to plug your knowledge gaps!`;
+  } else {
+    responseMsg = `Thanks for your response. To succeed in a 20 LPA round, you need to expand on details. You missed key structural elements like [${missed.join(', ')}]. Take a look at the model answer guidance on the right to review this topic.`;
+  }
+  
+  interviewHistory.push({
+    sender: 'bot',
+    text: responseMsg
+  });
+  
+  renderMockInterview();
+}
+
+function nextInterviewQuestion() {
+  interviewIndex++;
+  interviewEvaluation = null;
+  askInterviewQuestion();
+}
+
+function resetInterviewSession() {
+  if (confirm("Are you sure you want to end this interview session? Your current progress will be lost.")) {
+    interviewActive = false;
+    interviewHistory = [];
+    interviewEvaluation = null;
+    renderMockInterview();
+  }
+}
+
+function getKeywordsAndModelAnswer(qText) {
+  const q = qText.toLowerCase();
+  
+  let keywords = ["concept", "explanation", "complexity", "optimization"];
+  let modelAnswer = "SDE Tip: To answer this question successfully, describe the core system components, explain trade-offs (such as time/space complexity or read/write latency), and mention specific protocols or data structures involved. E.g., for system design, cover scalability, databases, and caching. For algorithms, explain the optimal time and space complexity first.";
+  
+  if (q.includes("two sum")) {
+    keywords = ["hashmap", "target", "complement", "o(n) time", "o(n) space"];
+    modelAnswer = "Optimal approach uses a HashMap. Iterate through the array; for each number, calculate its complement (target - current). If the complement is in the map, return their indices. Otherwise, store the current number and index. This takes O(N) time and O(N) space.";
+  }
+  else if (q.includes("linked list cycle") || q.includes("cycle ii")) {
+    keywords = ["floyd", "slow", "fast", "pointers", "entry point", "meet"];
+    modelAnswer = "Use Floyd's Cycle Detection. Run a fast pointer (2 steps) and a slow pointer (1 step). If they meet, there is a cycle. To find the entry point, reset slow to head and move both slow and fast 1 step at a time; their next meeting point is the cycle start.";
+  }
+  else if (q.includes("reverse linked list")) {
+    keywords = ["prev", "curr", "next", "iterative", "recursive", "pointers"];
+    modelAnswer = "Iterative method uses 3 pointers: prev (null), curr (head), and nextTemp. Loop through the list, store curr.next in nextTemp, set curr.next to prev, move prev to curr, and curr to nextTemp. Return prev.";
+  }
+  else if (q.includes("valid parentheses")) {
+    keywords = ["stack", "opening", "closing", "pop", "match", "empty"];
+    modelAnswer = "Push opening brackets onto a stack. When a closing bracket appears, pop the top of the stack and check if it matches. If not, or if the stack is empty, return false. The stack must be empty at the end.";
+  }
+  else if (q.includes("lru cache")) {
+    keywords = ["hashmap", "doubly linked list", "o(1)", "least recently used", "evict"];
+    modelAnswer = "Implement using a HashMap mapped to nodes of a Doubly Linked List. The HashMap provides O(1) lookups. The Doubly Linked List keeps track of access order, allowing O(1) insertion, update, and eviction of the least recently used node.";
+  }
+  else if (q.includes("islands")) {
+    keywords = ["dfs", "bfs", "connected components", "grid", "visited", "directions"];
+    modelAnswer = "Traverse the grid. When a '1' is found, increment the island count and run DFS/BFS to traverse and flip all adjacent connected land cells ('1's) to '0's (or mark them visited) to ensure they are not counted twice.";
+  }
+  else if (q.includes("course schedule")) {
+    keywords = ["topological sort", "cycle", "directed graph", "indegree", "kahn"];
+    modelAnswer = "Represent courses as a directed graph. Detect cycles using DFS (checking back-edges) or Kahn's BFS algorithm (checking if in-degrees don't reduce to 0). A cycle means the courses cannot be completed.";
+  }
+  else if (q.includes("deadlock")) {
+    keywords = ["mutual exclusion", "hold and wait", "no preemption", "circular wait", "banker", "prevention"];
+    modelAnswer = "Deadlock requires 4 conditions: Mutual Exclusion, Hold & Wait, No Preemption, and Circular Wait. Prevent deadlock by breaking any of these, or avoid it dynamically using the Banker's Algorithm.";
+  }
+  else if (q.includes("virtual memory") || q.includes("paging")) {
+    keywords = ["page table", "tlb", "physical address", "page fault", "mmu"];
+    modelAnswer = "Virtual Memory maps process logic to physical RAM via page tables. The CPU uses the translation lookaside buffer (TLB) for fast lookup. A page fault occurs when a requested page is not in physical RAM, forcing disk retrieval.";
+  }
+  else if (q.includes("acid")) {
+    keywords = ["atomicity", "consistency", "isolation", "durability", "transactions", "rollback", "wal"];
+    modelAnswer = "ACID defines transactions. Atomicity (all or nothing), Consistency (preserves integrity constraints), Isolation (concurrent runs don't interfere), and Durability (saved commits survive crashes). WAL is used for durability.";
+  }
+  else if (q.includes("index") || q.includes("b+ tree")) {
+    keywords = ["b+ tree", "leaf nodes", "range scan", "clustered", "non-clustered", "explain"];
+    modelAnswer = "Indexing speeds up query execution. B+ Trees are preferred because intermediate nodes only contain keys, and all data is in the leaf nodes, which are linked together for fast sequential range scans.";
+  }
+  else if (q.includes("scale") || q.includes("horizontal")) {
+    keywords = ["horizontal", "vertical", "load balancer", "sharding", "stateless"];
+    modelAnswer = "Scaling out (horizontal) adds more machines and requires a Load Balancer to distribute traffic, sharding databases, and making application servers stateless. Scaling up (vertical) increases CPU/RAM of a single host.";
+  }
+  else if (q.includes("url shortener")) {
+    keywords = ["base62", "hashing", "key generator", "redirect 301", "redirect 302", "database"];
+    modelAnswer = "For a URL shortener, encode an auto-incrementing ID or generated hash in Base62 to produce a 6-7 character key. Store in a fast NoSQL or SQL table. Use a 302 redirect for temporary tracking or 301 for SEO caching.";
+  }
+  else if (q.includes("whatsapp") || q.includes("chat")) {
+    keywords = ["websocket", "heartbeat", "cassandra", "presence", "signal", "push notification"];
+    modelAnswer = "Use WebSockets for full-duplex persistent connections. Use Redis for presence (heartbeats). Store message history in Cassandra (highly performant time-series writes). Use gateway push notifications for offline clients.";
+  }
+  else if (q.includes("uber") || q.includes("ride")) {
+    keywords = ["geospatial", "quadtree", "google s2", "matching", "websocket"];
+    modelAnswer = "Uber-style design uses QuadTrees or Google S2 cells to index driver coordinates. Drivers stream GPS updates via WebSockets. The system queries nearby cells, filters candidates, and locks driver-rider assignments.";
+  }
+  else if (q.includes("vpc") || q.includes("subnet")) {
+    keywords = ["private subnet", "public subnet", "nat gateway", "internet gateway", "route table"];
+    modelAnswer = "A VPC isolates cloud infrastructure. A public subnet has a route to an Internet Gateway. A private subnet does not; it accesses the outbound internet securely via a NAT Gateway located in a public subnet.";
+  }
+  else if (q.includes("k8s") || q.includes("kubernetes") || q.includes("service")) {
+    keywords = ["clusterip", "nodeport", "loadbalancer", "ingress", "pods"];
+    modelAnswer = "A K8s Service routes traffic to Pods. ClusterIP is internal-only. NodePort opens a static port on each worker node. LoadBalancer integrates with cloud providers. Ingress manages HTTP/S external entry routing.";
+  }
+  else if (q.includes("terraform") || q.includes("state")) {
+    keywords = ["state file", "locking", "plan", "apply", "remote backend", "hcl"];
+    modelAnswer = "The Terraform state file tracks resource configurations. State locking (via DynamoDB) prevents concurrent runs from corrupting states. Remote backends (like S3) store state securely for collaboration.";
+  }
+  else if (q.includes("ci/cd") || q.includes("github actions")) {
+    keywords = ["continuous integration", "continuous deployment", "secrets", "runners", "workflows"];
+    modelAnswer = "CI automates checking out, compiling, and testing code. CD automates building images and deploying them to staging/production. Workflows run on GitHub runners, pulling credentials from encrypted secrets stores.";
+  }
+  else if (q.includes("sde-1") || q.includes("sde-2") || q.includes("expectations") || q.includes("responsibilities") || q.includes("staff engineer")) {
+    keywords = ["autonomy", "execution", "design", "ownership", "mentoring", "tech direction"];
+    modelAnswer = "SDE-1 is responsible for task execution and clean code delivery. SDE-2 has system autonomy, taking end-to-end design ownership and mentoring peers. SDE-3/Staff Engineers provide technical direction, solve strategic system bottle-necks, and align engineering across teams.";
+  }
+  
+  return { keywords, modelAnswer };
+}
+
+let notesSearchQuery = '';
+
+function renderNotesHub() {
+  const allT = allTopics();
+  const notesCount = allT.filter(t => notes[t.id] && notes[t.id].trim()).length;
+  
+  let h = `<div class="hero anim">
+    <div class="hero-eye">Central Hub</div>
+    <div class="hero-h">My Study <span>Notes</span> 📝</div>
+    <div class="hero-p">Manage and review all your personal notes, summaries, and code snippets across all subjects in one central place. Click "Print Cheat Sheet" to export.</div>
+  </div>`;
+  
+  if (notesCount === 0) {
+    h += `
+    <div class="empty anim">
+      <p style="font-size: 15px; margin-bottom: 12px;">You haven't written any notes yet!</p>
+      <p style="font-size: 12px; color: var(--text2)">Go to any subject, open a topic, and click the <strong>📝 My Notes</strong> tab to start writing summary sheets.</p>
+    </div>`;
+    document.getElementById('main').innerHTML = h;
+    return;
+  }
+  
+  h += `
+  <div class="nh-action-bar anim">
+    <div class="nh-search-wrap">
+      <input type="text" class="search-input" style="padding: 7px 12px;" id="nh-search" placeholder="Search notes by keyword..." oninput="filterGlobalNotes(this.value)" value="${escapeHtml(notesSearchQuery)}">
+    </div>
+    <div style="display:flex; gap: 8px;">
+      <button class="open-btn" style="padding: 7px 14px; font-weight: 600; border-color: var(--cyan); color: var(--cyan);" onclick="window.print()">🖨 Print Cheat Sheet</button>
+      <button class="open-btn" style="padding: 7px 14px; font-weight: 600; border-color: var(--red); color: var(--red);" onclick="confirmDeleteAllNotes()">🗑 Delete All Notes</button>
+    </div>
+  </div>
+  <div class="nh-grid" id="nh-notes-grid">
+    ${renderNotesGridHTML()}
+  </div>`;
+  
+  document.getElementById('main').innerHTML = h;
+}
+
+function renderNotesGridHTML() {
+  let gridHTML = '';
+  let matchesCount = 0;
+  
+  DATA.forEach(g => {
+    if (!g.subjects) return;
+    
+    g.subjects.forEach(s => {
+      let subjectNotesHTML = '';
+      
+      (s.topics || []).forEach(t => {
+        const noteContent = notes[t.id] || '';
+        if (!noteContent.trim()) return;
+        
+        const cleanQuery = notesSearchQuery.trim().toLowerCase();
+        if (cleanQuery && !t.name.toLowerCase().includes(cleanQuery) && !noteContent.toLowerCase().includes(cleanQuery)) {
+          return;
+        }
+        
+        matchesCount++;
+        subjectNotesHTML += `
+          <div class="nh-note-card anim" id="nh-card-${t.id}">
+            <div class="nh-note-top">
+              <a class="nh-topic-link" onclick="openPanel('${t.id}')" title="View details panel">${t.name}</a>
+              <span style="font-size: 10px; color: var(--text3); font-family: var(--fm);">${s.lbl}</span>
+            </div>
+            <textarea class="nh-textarea" oninput="updateGlobalNote('${t.id}', this.value)" placeholder="Edit notes...">${escapeHtml(noteContent)}</textarea>
+            <div style="display:flex; justify-content:space-between; align-items:center; font-size:10.5px; color:var(--text3);">
+              <span id="nh-char-${t.id}">${noteContent.length} characters</span>
+              <button class="open-btn" style="padding: 2px 6px; font-size: 9px; border-color: var(--red); color: var(--red);" onclick="deleteGlobalNote('${t.id}')">Delete</button>
+            </div>
+          </div>`;
+      });
+      
+      if (subjectNotesHTML) {
+        gridHTML += `
+          <div class="nh-subject-section" id="nh-sect-${s.id}">
+            <div class="nh-subject-header">
+              <span>${s.ico}</span>
+              <span>${s.title}</span>
+            </div>
+            <div class="nh-notes-list">
+              ${subjectNotesHTML}
+            </div>
+          </div>`;
+      }
+    });
+  });
+  
+  if (matchesCount === 0) {
+    return `<div class="empty">No notes match the search keyword "${escapeHtml(notesSearchQuery)}".</div>`;
+  }
+  
+  return gridHTML;
+}
+
+function filterGlobalNotes(val) {
+  notesSearchQuery = val;
+  const grid = document.getElementById('nh-notes-grid');
+  if (grid) {
+    grid.innerHTML = renderNotesGridHTML();
+  }
+}
+
+function updateGlobalNote(tid, val) {
+  notes[tid] = val;
+  saveNotes();
+  const charSpan = document.getElementById(`nh-char-${tid}`);
+  if (charSpan) {
+    charSpan.textContent = val.length + ' characters';
+  }
+  
+  if (!val.trim()) {
+    deleteGlobalNoteCard(tid);
+  }
+}
+
+function deleteGlobalNote(tid) {
+  if (confirm('Are you sure you want to delete notes for this topic?')) {
+    notes[tid] = '';
+    saveNotes();
+    deleteGlobalNoteCard(tid);
+  }
+}
+
+function deleteGlobalNoteCard(tid) {
+  const card = document.getElementById(`nh-card-${tid}`);
+  if (card) {
+    card.remove();
+  }
+  
+  DATA.forEach(g => {
+    if (!g.subjects) return;
+    g.subjects.forEach(s => {
+      const sect = document.getElementById(`nh-sect-${s.id}`);
+      if (sect) {
+        const list = sect.querySelector('.nh-notes-list');
+        if (list && list.children.length === 0) {
+          sect.remove();
+        }
+      }
+    });
+  });
+  
+  const grid = document.getElementById('nh-notes-grid');
+  if (grid && grid.children.length === 0) {
+    notesSearchQuery = '';
+    renderNotesHub();
+  }
+}
+
+function confirmDeleteAllNotes() {
+  if (confirm('🚨 CRITICAL WARNING: Are you sure you want to permanently delete all study notes across ALL subjects? This action cannot be undone.')) {
+    notes = {};
+    saveNotes();
+    notesSearchQuery = '';
+    renderNotesHub();
+  }
+}
+
 function go(id){
   activeId=id;
   filterState='all';
@@ -2276,6 +3703,8 @@ function go(id){
   renderSidebar();
   if(id==='__home__')renderHome();
   else if(id==='__starred__')renderStarred();
+  else if(id==='__notes_hub__')renderNotesHub();
+  else if(id==='__mock_interview__')renderMockInterview();
   else if(id==='__search__')renderSearch(document.getElementById('search-input').value);
   else renderSubject(id);
   document.getElementById('main').scrollTop=0;
