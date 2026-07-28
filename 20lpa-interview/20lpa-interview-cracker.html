@@ -1,0 +1,2309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>20 LPA Interview Cracker</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#07090f;--bg2:#0d1117;--bg3:#161b26;--card:#111520;--card2:#171d2e;
+  --border:rgba(255,255,255,0.06);--border2:rgba(255,255,255,0.11);--border3:rgba(255,255,255,0.18);
+  --cyan:#00d4ff;--cyan-dim:rgba(0,212,255,0.1);--cyan-glow:rgba(0,212,255,0.2);
+  --purple:#8b5cf6;--purple-dim:rgba(139,92,246,0.12);
+  --green:#10b981;--green-dim:rgba(16,185,129,0.12);
+  --amber:#f59e0b;--amber-dim:rgba(245,158,11,0.12);
+  --red:#ef4444;--red-dim:rgba(239,68,68,0.12);
+  --text:#dde1ed;--text2:#8892a4;--text3:#3d4657;
+  --fh:'Syne',sans-serif;--fb:'Plus Jakarta Sans',sans-serif;--fm:'JetBrains Mono',monospace;
+  --r6:6px;--r8:8px;--r10:10px;--r12:12px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{height:100%;overflow:hidden;}
+body{background:var(--bg);color:var(--text);font-family:var(--fb);display:flex;flex-direction:column;font-size:14px;}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 70% 50% at 20% 0%,rgba(0,212,255,0.04) 0%,transparent 60%),radial-gradient(ellipse 50% 40% at 80% 100%,rgba(139,92,246,0.04) 0%,transparent 60%);pointer-events:none;z-index:0;}
+
+/* ── HEADER ── */
+header{position:relative;z-index:100;background:rgba(7,9,15,0.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--border2);padding:0 24px;height:56px;display:flex;align-items:center;gap:18px;flex-shrink:0;}
+.logo{font-family:var(--fh);font-size:16px;font-weight:800;letter-spacing:-0.5px;display:flex;align-items:center;gap:8px;white-space:nowrap;color:#fff;}
+.logo em{background:var(--cyan);color:#07090f;font-style:normal;font-size:9.5px;font-weight:700;padding:2px 6px;border-radius:3px;font-family:var(--fm);letter-spacing:1px;}
+.hpbar{flex:1;display:flex;align-items:center;gap:10px;max-width:380px;}
+.hpbar-track{flex:1;height:4px;background:var(--bg3);border-radius:2px;overflow:hidden;}
+.hpbar-fill{height:100%;background:linear-gradient(90deg,var(--cyan),var(--purple));border-radius:2px;transition:width .6s ease;}
+.hpct{font-family:var(--fm);font-size:11px;color:var(--cyan);min-width:30px;}
+.hstats{margin-left:auto;display:flex;gap:14px;}
+.hstat{display:flex;align-items:center;gap:4px;font-size:10.5px;color:var(--text2);font-family:var(--fm);}
+.hdot{width:6px;height:6px;border-radius:50%;}
+
+/* ── LAYOUT ── */
+.layout{display:flex;flex:1;position:relative;z-index:1;overflow:hidden;}
+
+/* ── SIDEBAR ── */
+aside{width:240px;flex-shrink:0;border-right:1px solid var(--border);padding:10px 0;overflow-y:auto;height:100%;}
+aside::-webkit-scrollbar{width:2px;}
+aside::-webkit-scrollbar-thumb{background:var(--border2);}
+.sc{padding:9px 14px 3px;font-size:8.5px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--text3);font-family:var(--fm);}
+.si{display:flex;align-items:center;gap:8px;padding:7px 14px;cursor:pointer;transition:all .14s;border-left:2px solid transparent;font-size:12.5px;color:var(--text2);}
+.si:hover{background:var(--bg2);color:var(--text);}
+.si.active{background:var(--cyan-dim);border-left-color:var(--cyan);color:#fff;}
+.si-ico{font-size:12px;width:15px;text-align:center;flex-shrink:0;}
+.si-name{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.si-ct{font-size:9.5px;font-family:var(--fm);color:var(--text3);}
+.si.active .si-ct{color:var(--cyan);}
+.sdiv{height:1px;background:var(--border);margin:7px 0;}
+
+/* ── MAIN ── */
+main{flex:1;overflow-y:auto;padding:22px 26px;height:100%;}
+main::-webkit-scrollbar{width:3px;}
+main::-webkit-scrollbar-thumb{background:var(--border2);}
+
+/* ── HERO ── */
+.hero{padding:26px 0 22px;border-bottom:1px solid var(--border);margin-bottom:22px;}
+.hero-eye{font-family:var(--fm);font-size:10px;color:var(--cyan);letter-spacing:2.5px;text-transform:uppercase;margin-bottom:8px;}
+.hero-h{font-family:var(--fh);font-size:36px;font-weight:800;letter-spacing:-1.5px;line-height:1.08;margin-bottom:10px;}
+.hero-h span{color:var(--cyan);}
+.hero-p{font-size:13.5px;color:var(--text2);max-width:480px;line-height:1.7;}
+
+/* ── DASH CARDS ── */
+.dash{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px;}
+.dc{background:var(--card);border:1px solid var(--border);border-radius:var(--r10);padding:16px;position:relative;overflow:hidden;}
+.dc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;}
+.dc.cc::before{background:var(--cyan);}
+.dc.cg::before{background:var(--green);}
+.dc.cp::before{background:var(--purple);}
+.dc.ca::before{background:var(--amber);}
+.dc-lbl{font-size:9.5px;color:var(--text3);text-transform:uppercase;letter-spacing:1.2px;font-family:var(--fm);margin-bottom:5px;}
+.dc-num{font-family:var(--fh);font-size:32px;font-weight:800;line-height:1;margin-bottom:2px;}
+.dc.cc .dc-num{color:var(--cyan);}
+.dc.cg .dc-num{color:var(--green);}
+.dc.cp .dc-num{color:var(--purple);}
+.dc.ca .dc-num{color:var(--amber);}
+.dc-sub{font-size:11px;color:var(--text2);}
+
+/* ── LAYER SECTION (HOME) ── */
+.ls{margin-bottom:24px;}
+.ls-head{font-size:9px;text-transform:uppercase;letter-spacing:2px;font-family:var(--fm);margin-bottom:10px;padding-bottom:7px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;}
+.ls-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
+.sc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:9px;}
+.scard{background:var(--card);border:1px solid var(--border);border-radius:var(--r10);padding:14px;cursor:pointer;transition:all .18s;}
+.scard:hover{border-color:var(--border2);transform:translateY(-2px);}
+.scard-top{display:flex;align-items:center;gap:7px;margin-bottom:11px;}
+.scard-ico{font-size:15px;}
+.scard-name{font-family:var(--fh);font-size:13.5px;font-weight:700;}
+.scard-bar{height:3px;background:var(--bg3);border-radius:2px;overflow:hidden;margin-bottom:5px;}
+.scard-fill{height:100%;border-radius:2px;transition:width .4s;}
+.scard-meta{display:flex;justify-content:space-between;font-size:10.5px;color:var(--text2);}
+
+/* ── SUBJECT VIEW ── */
+.sv-header{margin-bottom:18px;}
+.layer-badge{display:inline-flex;align-items:center;gap:4px;font-size:9.5px;font-family:var(--fm);text-transform:uppercase;letter-spacing:1px;padding:3px 8px;border-radius:3px;margin-bottom:7px;}
+.l1{background:var(--cyan-dim);color:var(--cyan);}
+.l2{background:var(--purple-dim);color:#a78bfa;}
+.l3{background:var(--amber-dim);color:var(--amber);}
+.l4{background:var(--green-dim);color:var(--green);}
+.sv-title{font-family:var(--fh);font-size:24px;font-weight:800;letter-spacing:-0.5px;margin-bottom:5px;}
+.sv-desc{color:var(--text2);font-size:13px;line-height:1.65;max-width:580px;margin-bottom:12px;}
+.sv-meta{display:flex;gap:14px;flex-wrap:wrap;}
+.sv-chip{font-size:10.5px;color:var(--text2);font-family:var(--fm);}
+
+/* ── FILTER ── */
+.fbar{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap;}
+.fb{padding:4px 12px;border-radius:5px;border:1px solid var(--border2);background:transparent;color:var(--text2);font-size:11px;cursor:pointer;transition:all .14s;font-family:var(--fb);}
+.fb:hover,.fb.on{background:var(--cyan-dim);border-color:var(--cyan);color:var(--text);}
+
+/* ── TOPIC CARDS ── */
+.tgrid{display:flex;flex-direction:column;gap:7px;}
+.tc{background:var(--card);border:1px solid var(--border);border-radius:var(--r8);display:flex;align-items:center;gap:12px;border-left:3px solid transparent;transition:all .16s;overflow:hidden;}
+.tc:hover{border-color:var(--border2);background:var(--card2);}
+.tc.done{border-left-color:var(--green);}
+.tc.in_progress{border-left-color:var(--amber);}
+.tc-status{width:28px;height:28px;border-radius:50%;border:1.5px solid var(--border2);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:11px;background:transparent;cursor:pointer;transition:all .16s;margin-left:12px;}
+.tc.done .tc-status{background:var(--green);border-color:var(--green);color:#fff;}
+.tc.in_progress .tc-status{background:rgba(245,158,11,0.15);border-color:var(--amber);color:var(--amber);}
+.tc-info{flex:1;min-width:0;padding:11px 0;}
+.tc-name{font-size:13px;font-weight:500;margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.tc.done .tc-name{color:var(--text3);text-decoration:line-through;}
+.tc-tags{display:flex;gap:5px;flex-wrap:wrap;}
+.tc-tag{font-size:9.5px;background:var(--bg3);border:1px solid var(--border);color:var(--text3);padding:1px 5px;border-radius:3px;font-family:var(--fm);}
+.tc-right{display:flex;align-items:center;gap:8px;flex-shrink:0;padding-right:12px;}
+.db{font-size:9px;font-family:var(--fm);padding:2px 6px;border-radius:3px;font-weight:500;text-transform:uppercase;letter-spacing:.5px;}
+.de{background:var(--green-dim);color:var(--green);}
+.dm{background:var(--amber-dim);color:var(--amber);}
+.dh{background:var(--red-dim);color:var(--red);}
+.hrs{font-size:10px;font-family:var(--fm);color:var(--text3);}
+.open-btn{padding:5px 10px;border:1px solid var(--border2);border-radius:5px;background:transparent;color:var(--text2);font-size:10px;cursor:pointer;transition:all .14s;white-space:nowrap;font-family:var(--fb);}
+.open-btn:hover{background:var(--cyan-dim);border-color:var(--cyan);color:var(--cyan);}
+
+/* ── DETAIL PANEL ── */
+.dp{position:fixed;top:56px;right:0;bottom:0;width:460px;background:var(--bg2);border-left:1px solid var(--border2);z-index:300;overflow-y:auto;transform:translateX(100%);transition:transform .3s cubic-bezier(.4,0,.2,1);}
+.dp.open{transform:translateX(0);}
+.dp::-webkit-scrollbar{width:3px;}
+.dp::-webkit-scrollbar-thumb{background:var(--border2);}
+.dp-head{padding:18px 20px 14px;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--bg2);z-index:2;}
+.dp-close{position:absolute;top:14px;right:14px;width:26px;height:26px;border-radius:5px;border:1px solid var(--border2);background:transparent;color:var(--text2);cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;transition:all .14s;}
+.dp-close:hover{background:var(--card);color:var(--text);}
+.dp-diff{display:inline-flex;align-items:center;font-size:9px;font-family:var(--fm);padding:2px 6px;border-radius:3px;font-weight:500;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px;}
+.dp-title{font-family:var(--fh);font-size:17px;font-weight:800;margin-bottom:3px;padding-right:32px;line-height:1.2;}
+.dp-meta{font-size:10.5px;color:var(--text3);font-family:var(--fm);}
+.dp-body{padding:16px 20px;}
+.dps{margin-bottom:18px;}
+.dps-lbl{font-size:9px;text-transform:uppercase;letter-spacing:2px;font-family:var(--fm);color:var(--text3);margin-bottom:8px;padding-bottom:5px;border-bottom:1px solid var(--border);}
+.dp-desc{font-size:13px;color:var(--text2);line-height:1.75;}
+.concept-wrap{display:flex;flex-direction:column;gap:5px;}
+.cv{display:flex;align-items:flex-start;gap:8px;font-size:12.5px;color:var(--text);line-height:1.55;padding:8px 10px;background:var(--card);border-radius:6px;border:1px solid var(--border);}
+.cv-dot{color:var(--cyan);font-family:var(--fm);font-size:11px;flex-shrink:0;margin-top:1px;}
+.qwrap{display:flex;flex-direction:column;gap:5px;}
+.qv{display:flex;align-items:flex-start;gap:8px;font-size:12.5px;color:var(--text);line-height:1.55;padding:8px 10px;background:var(--card);border-radius:6px;border:1px solid var(--border);}
+.qv-n{color:var(--amber);font-family:var(--fm);font-size:10px;font-weight:700;flex-shrink:0;min-width:18px;margin-top:2px;}
+.rwrap{display:flex;flex-direction:column;gap:6px;}
+.rl{display:flex;align-items:center;gap:10px;padding:9px 11px;background:var(--card);border:1px solid var(--border);border-radius:7px;text-decoration:none;transition:all .14s;color:var(--text);}
+.rl:hover{border-color:var(--cyan);background:var(--cyan-dim);}
+.rl-ico{font-size:14px;flex-shrink:0;}
+.rl-info{flex:1;min-width:0;}
+.rl-name{font-size:12.5px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.rl-type{font-size:10px;color:var(--text3);font-family:var(--fm);}
+.rl-arr{font-size:12px;color:var(--text3);flex-shrink:0;}
+.rl:hover .rl-arr{color:var(--cyan);}
+.dp-status-bar{display:flex;gap:8px;padding:14px 20px;border-top:1px solid var(--border);position:sticky;bottom:0;background:var(--bg2);}
+.dsb{flex:1;padding:8px;border-radius:6px;border:1px solid var(--border2);background:transparent;color:var(--text2);font-size:12px;cursor:pointer;transition:all .14s;font-family:var(--fb);}
+.dsb:hover{border-color:var(--border2);background:var(--card);}
+.dsb.ds-prog{border-color:var(--amber);color:var(--amber);background:var(--amber-dim);}
+.dsb.ds-done{border-color:var(--green);color:var(--green);background:var(--green-dim);}
+
+.sdiv2{display:flex;align-items:center;gap:10px;margin:16px 0 10px;}
+.sdiv2-lbl{font-size:9.5px;text-transform:uppercase;letter-spacing:1.5px;font-family:var(--fm);color:var(--text3);white-space:nowrap;}
+.sdiv2-line{flex:1;height:1px;background:var(--border);}
+.empty{text-align:center;padding:40px 0;color:var(--text3);font-size:13px;}
+.overlay{position:fixed;inset:0;background:rgba(7,9,15,0.5);z-index:299;opacity:0;pointer-events:none;transition:opacity .3s;}
+.overlay.show{opacity:1;pointer-events:all;}
+@keyframes fi{from{opacity:0;transform:translateY(5px);}to{opacity:1;transform:translateY(0);}}
+.anim{animation:fi .2s ease;}
+
+/* ── SEARCH BAR ── */
+.sidebar-search{padding:6px 14px 12px;position:relative;}
+.search-input{width:100%;padding:8px 30px 8px 10px;background:var(--bg2);border:1px solid var(--border2);border-radius:var(--r6);color:var(--text);font-family:var(--fb);font-size:12px;outline:none;transition:border-color .15s, background-color .15s;}
+.search-input:focus{border-color:var(--cyan);background:var(--bg3);}
+.search-clear{position:absolute;right:22px;top:45%;transform:translateY(-50%);background:transparent;border:none;color:var(--text3);cursor:pointer;font-size:12px;padding:4px;}
+.search-clear:hover{color:var(--text);}
+
+/* ── NEON GLOW HOVERS ── */
+.tc{border-left-width:3px;transition:border-color .15s, box-shadow .15s, background-color .15s;}
+.tc:hover{border-color:var(--cyan);box-shadow:0 0 10px var(--cyan-glow);background:var(--card2);}
+.tc.done:hover{border-color:var(--green);box-shadow:0 0 10px rgba(16,185,129,0.08);}
+.tc.in_progress:hover{border-color:var(--amber);box-shadow:0 0 10px rgba(245,158,11,0.08);}
+
+/* ── BOOKMARKS & NOTES INDICATORS ── */
+.tc-star{font-size:14px;cursor:pointer;color:var(--text3);transition:color .15s, transform .15s;display:inline-flex;align-items:center;justify-content:center;user-select:none;margin-right:2px;}
+.tc-star:hover{transform:scale(1.25);color:var(--amber);}
+.tc-star.active{color:var(--amber);}
+.tc-notes-indicator{font-size:10px;color:var(--cyan);opacity:0.85;margin-left:6px;user-select:none;}
+
+/* ── TABBED DETAIL PANEL ── */
+.dp-star-btn{background:transparent;border:1px solid var(--border2);border-radius:var(--r6);width:26px;height:26px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--text3);font-size:14px;transition:all .15s;padding:0;line-height:1;}
+.dp-star-btn:hover,.dp-star-btn.active{border-color:var(--amber);color:var(--amber);background:rgba(245,158,11,0.08);}
+.dp-tabs{display:flex;gap:4px;margin-top:12px;border-bottom:1px solid var(--border);padding-bottom:1px;}
+.dp-tab{background:transparent;border:none;border-bottom:2px solid transparent;color:var(--text2);font-family:var(--fb);font-size:12px;font-weight:600;padding:6px 12px;cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:4px;}
+.dp-tab:hover{color:var(--text);}
+.dp-tab.active{color:var(--cyan);border-bottom-color:var(--cyan);}
+
+/* ── NOTES TAB ── */
+.notes-container{display:flex;flex-direction:column;gap:10px;height:100%;animation:fi .15s ease;}
+.notes-textarea{width:100%;height:220px;background:var(--card);border:1px solid var(--border);border-radius:var(--r8);color:var(--text);font-family:var(--fb);font-size:13px;line-height:1.6;padding:12px;resize:vertical;outline:none;transition:border-color .15s;}
+.notes-textarea:focus{border-color:var(--cyan);}
+.notes-meta{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--text2);font-family:var(--fm);}
+.notes-save-status{color:var(--green);font-size:11px;opacity:0;transition:opacity .3s;font-weight:500;}
+.notes-save-status.show{opacity:1;}
+.notes-tips{font-size:11.5px;color:var(--text3);line-height:1.5;background:rgba(255,255,255,0.01);padding:10px;border-radius:var(--r6);border:1px dashed var(--border);margin-top:4px;}
+.notes-tips p{margin-top:2px;}
+
+/* ── THEMES ── */
+body.theme-cyan {
+  --cyan:#00d4ff;--cyan-dim:rgba(0,212,255,0.1);--cyan-glow:rgba(0,212,255,0.2);
+}
+body.theme-matrix {
+  --cyan:#10b981;--cyan-dim:rgba(16,185,129,0.12);--cyan-glow:rgba(16,185,129,0.2);
+}
+body.theme-solar {
+  --cyan:#f59e0b;--cyan-dim:rgba(245,158,11,0.12);--cyan-glow:rgba(245,158,11,0.2);
+}
+body.theme-royal {
+  --cyan:#8b5cf6;--cyan-dim:rgba(139,92,246,0.12);--cyan-glow:rgba(139,92,246,0.2);
+}
+
+/* ── POMODORO TIMER ── */
+.pomo-widget {
+  padding: 12px 14px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--r8);
+  margin: 10px 14px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+}
+.pomo-header {
+  font-family: var(--fm);
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text2);
+  align-self: flex-start;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.pomo-timer-display {
+  font-family: var(--fm);
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--cyan);
+  letter-spacing: 1.5px;
+  margin: 4px 0;
+  text-shadow: 0 0 10px var(--cyan-glow);
+}
+.pomo-controls {
+  display: flex;
+  gap: 6px;
+  width: 100%;
+}
+.pomo-btn {
+  flex: 1;
+  padding: 6px 4px;
+  border-radius: var(--r6);
+  border: 1px solid var(--border2);
+  background: transparent;
+  color: var(--text);
+  font-size: 10px;
+  cursor: pointer;
+  font-family: var(--fb);
+  transition: all 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+.pomo-btn:hover {
+  background: var(--cyan-dim);
+  border-color: var(--cyan);
+  color: var(--cyan);
+}
+.pomo-btn.active {
+  background: var(--cyan);
+  color: var(--bg);
+  border-color: var(--cyan);
+  font-weight: 600;
+}
+.pomo-presets {
+  display: flex;
+  gap: 4px;
+  width: 100%;
+}
+.pomo-preset {
+  flex: 1;
+  padding: 4px 0;
+  font-size: 9.5px;
+  font-family: var(--fm);
+  border-radius: 4px;
+  border: 1px solid transparent;
+  background: var(--bg3);
+  color: var(--text2);
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.15s;
+}
+.pomo-preset:hover {
+  color: var(--text);
+  background: var(--card2);
+}
+.pomo-preset.active {
+  border-color: var(--cyan);
+  color: var(--cyan);
+  background: var(--cyan-dim);
+}
+.pomo-topic-title {
+  font-size: 10.5px;
+  color: var(--text2);
+  text-align: center;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border-top: 1px solid var(--border);
+  padding-top: 6px;
+  margin-top: 2px;
+}
+
+/* ── PRACTICE ACCORDION ── */
+.qp-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r8);
+  margin-bottom: 8px;
+  overflow: hidden;
+  transition: all 0.15s ease;
+}
+.qp-header {
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+}
+.qp-header:hover {
+  background: var(--card2);
+}
+.qp-checkbox {
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid var(--border2);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 11px;
+  color: var(--green);
+  transition: all 0.15s;
+  flex-shrink: 0;
+}
+.qp-checkbox:hover {
+  border-color: var(--green);
+  background: var(--green-dim);
+}
+.qp-checkbox.checked {
+  background: var(--green);
+  border-color: var(--green);
+  color: #fff;
+}
+.qp-text {
+  font-size: 13px;
+  color: var(--text);
+  line-height: 1.5;
+  flex: 1;
+}
+.qp-checkbox.checked + .qp-text {
+  color: var(--text3);
+  text-decoration: line-through;
+}
+.qp-arrow {
+  font-size: 10px;
+  color: var(--text3);
+  transition: transform 0.2s;
+  font-family: var(--fm);
+}
+.qp-card.open .qp-arrow {
+  transform: rotate(90deg);
+}
+.qp-content {
+  padding: 0 14px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s cubic-bezier(0.4, 0, 0.2, 1), padding 0.2s ease;
+}
+.qp-card.open .qp-content {
+  padding: 12px 14px 14px;
+  max-height: 400px;
+  border-top: 1px solid var(--border);
+}
+.qp-guide-lbl {
+  font-size: 9.5px;
+  font-family: var(--fm);
+  text-transform: uppercase;
+  color: var(--cyan);
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+.qp-guide-desc {
+  font-size: 12px;
+  color: var(--text2);
+  line-height: 1.6;
+}
+
+/* ── ANALYTICS ── */
+.analytics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.ac-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r10);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
+}
+.ac-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--cyan);
+  opacity: 0.7;
+}
+.ac-title {
+  font-family: var(--fm);
+  font-size: 9.5px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--text2);
+}
+.ac-chart-container {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex: 1;
+}
+.ac-chart-pie {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--bg3);
+  flex-shrink: 0;
+  transition: background 0.3s;
+}
+.ac-chart-donut {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--bg3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.ac-chart-donut::after {
+  content: '';
+  position: absolute;
+  width: 46px;
+  height: 46px;
+  background: var(--card);
+  border-radius: 50%;
+}
+.ac-chart-donut-text {
+  position: relative;
+  z-index: 2;
+  font-family: var(--fm);
+  font-size: 11px;
+  font-weight: bold;
+  color: var(--text);
+}
+.ac-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--text2);
+  flex: 1;
+}
+.ac-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.ac-legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+.ac-val {
+  font-family: var(--fh);
+  font-size: 26px;
+  font-weight: bold;
+  color: var(--text);
+  line-height: 1;
+}
+.ac-progress-bar {
+  height: 5px;
+  background: var(--bg3);
+  border-radius: 3px;
+  overflow: hidden;
+  width: 100%;
+  margin-top: 4px;
+}
+.ac-progress-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.4s;
+  background: var(--cyan);
+}
+
+/* ── SORT & FILTER BAR ── */
+.sort-select {
+  padding: 4px 10px;
+  border-radius: 5px;
+  border: 1px solid var(--border2);
+  background: transparent;
+  color: var(--text2);
+  font-size: 11px;
+  cursor: pointer;
+  font-family: var(--fb);
+  outline: none;
+  transition: all 0.14s;
+}
+.sort-select:hover {
+  background: var(--cyan-dim);
+  border-color: var(--cyan);
+  color: var(--text);
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">20LPA<em>CRACK IT</em></div>
+  <div class="hpbar">
+    <div class="hpbar-track"><div class="hpbar-fill" id="hBar" style="width:0%"></div></div>
+    <span class="hpct" id="hPct">0%</span>
+  </div>
+  <div class="theme-select-container" style="display:flex;align-items:center;margin-left:14px;z-index:100;">
+    <select id="theme-selector" onchange="changeTheme(this.value)" class="sort-select" style="padding: 4px 8px; border-radius: var(--r6); background: var(--bg2); border: 1px solid var(--border2); color: var(--text2); cursor: pointer; outline: none; font-size: 11px; font-family: var(--fb);">
+      <option value="cyan">🗲 Cyber Cyan</option>
+      <option value="matrix">🟢 Matrix Green</option>
+      <option value="solar">🟠 Solar Amber</option>
+      <option value="royal">🟣 Royal Violet</option>
+    </select>
+  </div>
+  <div class="hstats">
+    <div class="hstat"><div class="hdot" style="background:var(--green)"></div><span id="sDone">0 done</span></div>
+    <div class="hstat"><div class="hdot" style="background:var(--amber)"></div><span id="sProg">0 in progress</span></div>
+    <div class="hstat"><div class="hdot" style="background:var(--text3)"></div><span id="sLeft">0 left</span></div>
+  </div>
+</header>
+<div class="layout">
+  <aside>
+    <div class="sidebar-search">
+      <input type="text" id="search-input" class="search-input" placeholder="Search topics, tags, concepts..." oninput="handleSearch(this.value)">
+      <button class="search-clear" id="search-clear-btn" onclick="clearSearch()" style="display:none">✕</button>
+    </div>
+    <div class="sdiv"></div>
+    
+    <!-- Pomodoro Widget -->
+    <div class="pomo-widget" id="pomo-widget">
+      <div class="pomo-header">
+        <span>⏱ Focus Timer</span>
+        <span id="pomo-status" style="font-weight:600;color:var(--text3)">Idle</span>
+      </div>
+      <div class="pomo-timer-display" id="pomo-time">25:00</div>
+      <div class="pomo-presets">
+        <button class="pomo-preset active" id="preset-25" onclick="setPomoPreset(25)">25m</button>
+        <button class="pomo-preset" id="preset-50" onclick="setPomoPreset(50)">50m</button>
+        <button class="pomo-preset" id="preset-15" onclick="setPomoPreset(15)">15m</button>
+      </div>
+      <div class="pomo-controls">
+        <button class="pomo-btn" id="pomo-start-btn" onclick="togglePomo()">▶ Start</button>
+        <button class="pomo-btn" id="pomo-reset-btn" onclick="resetPomo()">↺ Reset</button>
+      </div>
+      <div class="pomo-topic-title" id="pomo-active-topic">No active topic</div>
+    </div>
+    <div class="sdiv"></div>
+
+    <div id="sidebar-menu"></div>
+  </aside>
+  <main id="main"></main>
+</div>
+<div class="overlay" id="overlay" onclick="closePanel()"></div>
+<div class="dp" id="dp">
+  <div class="dp-head" id="dpHead"></div>
+  <div class="dp-body" id="dpBody"></div>
+  <div class="dp-status-bar" id="dpBar"></div>
+</div>
+
+<script>
+// ============================
+// CURRICULUM DATA
+// ============================
+const DATA = [
+  {cat:'LAYER 1 — FOUNDATION',color:'var(--cyan)',lc:'l1',subjects:[
+    {id:'dsa',ico:'◈',lbl:'DSA',title:'Data Structures & Algorithms',
+     desc:'The #1 gatekeeper for every 20 LPA company — Google, Amazon, Microsoft, Flipkart, Razorpay. You cannot skip this. Master patterns, not just syntax.',
+     hrs:120,
+     topics:[
+       {id:'t_arr',name:'Arrays & Strings',diff:'easy',hrs:8,
+        tags:['Two Pointer','Sliding Window','Prefix Sum'],
+        about:'Arrays are the most fundamental structure tested in every interview. Master traversal patterns, in-place manipulation, subarray techniques, and string parsing. Most problems reduce to one of 5-6 patterns.',
+        concepts:['Two-pointer technique — left/right inward collapse','Sliding window — fixed & variable length','Prefix sum array for range queries in O(1)','Kadane\'s algorithm for maximum subarray','Dutch National Flag — 3-way partition','Boyer-Moore Voting — majority element O(1) space','Anagram detection via character frequency maps'],
+        questions:['Two Sum — find pair with target sum (HashSet O(n))','Best Time to Buy Stock — single pass Kadane variant','Longest Substring Without Repeating Characters — sliding window','Container With Most Water — two pointer greedy','Trapping Rain Water — prefix max + suffix max','Product of Array Except Self — no division trick','Rotate Array in-place — 3 reversal trick','Minimum Window Substring — sliding window with map'],
+        resources:[
+          {name:'NeetCode Arrays Playlist',type:'YouTube',url:'https://neetcode.io/roadmap',ico:'▶'},
+          {name:'Striver\'s Array Series',type:'YouTube',url:'https://takeuforward.org/arrays/array-series/',ico:'▶'},
+          {name:'LeetCode Array Problems',type:'Practice',url:'https://leetcode.com/tag/array/',ico:'◈'},
+          {name:'Blind 75 — Arrays section',type:'Article',url:'https://leetcode.com/discuss/general-discussion/460599/blind-75-leetcode-questions',ico:'📄'},
+        ]},
+       {id:'t_ll',name:'Linked Lists',diff:'easy',hrs:6,
+        tags:['Fast/Slow Pointer','Reversal','Cycle Detection'],
+        about:'Linked lists test pointer manipulation and recursion depth. Master Floyd\'s cycle detection, reversal in-place, and merge techniques — these appear in interviews constantly.',
+        concepts:['Floyd\'s Cycle Detection — fast & slow pointer','Reverse a linked list iteratively & recursively','Find middle node — slow/fast pointer trick','Merge two sorted linked lists','Detect and remove cycle (entry point formula)','LRU Cache = HashMap + Doubly Linked List','Deep copy with random pointers using HashMap'],
+        questions:['Reverse Linked List — iterative & recursive','Linked List Cycle II — entry point of cycle','Merge Two Sorted Lists — iterative merge','Remove Nth Node From End — two pass vs one pass','Reorder List — find mid, reverse, merge','Copy List with Random Pointer — two passes','Sort List — merge sort on linked list','Flatten Multilevel Doubly Linked List'],
+        resources:[
+          {name:'NeetCode Linked List',type:'YouTube',url:'https://www.youtube.com/playlist?list=PLot-Xpze53lcvx_tjrr_m2lgD2NqGHiNS',ico:'▶'},
+          {name:'Striver LL Series',type:'YouTube',url:'https://takeuforward.org/linked-list/',ico:'▶'},
+          {name:'Visualgo Linked List',type:'Visualizer',url:'https://visualgo.net/en/list',ico:'◎'},
+          {name:'LeetCode Linked List tag',type:'Practice',url:'https://leetcode.com/tag/linked-list/',ico:'◈'},
+        ]},
+       {id:'t_sq',name:'Stacks & Queues',diff:'easy',hrs:5,
+        tags:['Monotonic Stack','Bracket Matching','BFS'],
+        about:'Stacks shine in parsing problems. The monotonic stack is a key pattern for next-greater-element problems. Queues power BFS — essential for graphs and trees.',
+        concepts:['Monotonic stack — next greater/smaller element','Balanced parentheses validation with stack','Implement queue using two stacks (amortized O(1))','Implement stack using two queues','Circular queue with modular arithmetic','Min Stack — O(1) min retrieval with auxiliary stack','Expression evaluation — infix to postfix conversion'],
+        questions:['Valid Parentheses — stack matching','Daily Temperatures — monotonic stack','Next Greater Element — monotonic stack with hash','Largest Rectangle in Histogram — monotonic stack','Min Stack — design with O(1) getMin','Sliding Window Maximum — deque approach','Decode String — nested bracket with stack','Asteroid Collision — simulation with stack'],
+        resources:[
+          {name:'NeetCode Stack Playlist',type:'YouTube',url:'https://www.youtube.com/playlist?list=PLot-Xpze53lcvx_tjrr_m2lgD2NqGHiNS',ico:'▶'},
+          {name:'Visualgo Stack & Queue',type:'Visualizer',url:'https://visualgo.net/en/list',ico:'◎'},
+          {name:'LeetCode Stack Problems',type:'Practice',url:'https://leetcode.com/tag/stack/',ico:'◈'},
+        ]},
+       {id:'t_tree',name:'Binary Trees & BST',diff:'medium',hrs:12,
+        tags:['DFS','BFS','Recursion','LCA'],
+        about:'Trees are the most tested structure after arrays. Recursion IS the algorithm for most tree problems. Master all traversals, LCA, serialization, and BST properties.',
+        concepts:['Inorder/Preorder/Postorder — recursive & iterative (stack)','Level-order BFS traversal with deque','Height, diameter, and balance check in one DFS pass','Lowest Common Ancestor — recursive O(n)','BST — search O(h), insert, delete with successor','Serialize/Deserialize binary tree — preorder with null markers','Morris Traversal — O(1) space inorder','Construct tree from preorder + inorder arrays'],
+        questions:['Maximum Depth of Binary Tree — recursion base case','Invert Binary Tree — recursive swap','Binary Tree Level Order Traversal — BFS queue','Lowest Common Ancestor of BST — direction-based','Validate Binary Search Tree — in-order sorted check','Binary Tree Maximum Path Sum — global max DFS','Serialize and Deserialize Binary Tree — preorder','Diameter of Binary Tree — left depth + right depth'],
+        resources:[
+          {name:'Striver Binary Tree Series (free)',type:'YouTube',url:'https://takeuforward.org/binary-tree/',ico:'▶'},
+          {name:'NeetCode Tree Playlist',type:'YouTube',url:'https://www.youtube.com/playlist?list=PLot-Xpze53lcvx_tjrr_m2lgD2NqGHiNS',ico:'▶'},
+          {name:'Visualgo BST',type:'Visualizer',url:'https://visualgo.net/en/bst',ico:'◎'},
+          {name:'LeetCode Tree Problems',type:'Practice',url:'https://leetcode.com/tag/tree/',ico:'◈'},
+        ]},
+       {id:'t_graph',name:'Graphs — BFS, DFS, Dijkstra',diff:'medium',hrs:15,
+        tags:['BFS','DFS','Dijkstra','Union-Find','Topo Sort'],
+        about:'Graphs are the most versatile data structure. Master representation, traversal, shortest path, and topological sort. Union-Find is a must for connectivity problems.',
+        concepts:['Adjacency list vs matrix — when to use which','BFS — shortest path in unweighted graph','DFS — cycle detection (white-grey-black coloring)','Dijkstra\'s algorithm — priority queue O((V+E)logV)','Bellman-Ford — handles negative edges','Union-Find (DSU) with path compression + union by rank','Topological Sort — Kahn\'s (BFS) and DFS approach','Bipartite check — 2-color with BFS'],
+        questions:['Number of Islands — DFS/BFS connected components','Clone Graph — BFS with HashMap','Course Schedule — topological sort cycle detection','Word Ladder — BFS shortest transformation path','Network Delay Time — Dijkstra single source','Number of Connected Components — Union-Find','Pacific Atlantic Water Flow — reverse DFS from borders','Alien Dictionary — topological sort on chars'],
+        resources:[
+          {name:'Striver Graph Series (free)',type:'YouTube',url:'https://takeuforward.org/graph/graphs-in-data-structures-and-algorithms/',ico:'▶'},
+          {name:'William Fiset Graph Theory',type:'YouTube',url:'https://www.youtube.com/playlist?list=PLDV1Zeh2NRsDGO4--qE8yH72HFL1Km93P',ico:'▶'},
+          {name:'Visualgo Graph',type:'Visualizer',url:'https://visualgo.net/en/graphds',ico:'◎'},
+          {name:'CP Algorithms Graph',type:'Article',url:'https://cp-algorithms.com/graph/bfs.html',ico:'📄'},
+        ]},
+       {id:'t_dp',name:'Dynamic Programming — All Patterns',diff:'hard',hrs:20,
+        tags:['Memoization','Tabulation','1D DP','2D DP','Knapsack'],
+        about:'DP is the most feared topic — but it\'s just smart recursion with memory. Learn 8 DP patterns and you can solve 90% of DP interview problems. Recognizing the pattern IS the skill.',
+        concepts:['Memoization = Top-Down DP (recursion + cache)','Tabulation = Bottom-Up DP (fill table iteratively)','Pattern 1: Linear DP (Fibonacci, climbing stairs)','Pattern 2: Grid DP (unique paths, minimum path sum)','Pattern 3: 0/1 Knapsack (subset sum, partition)','Pattern 4: Unbounded Knapsack (coin change, rod cutting)','Pattern 5: LCS/LIS (edit distance, longest common subsequence)','Pattern 6: Interval DP (matrix chain, burst balloons)','Pattern 7: DP on Trees (house robber III, diameter)','Pattern 8: Bitmask DP (traveling salesman)'],
+        questions:['Climbing Stairs — 1D DP (Fibonacci variant)','House Robber & House Robber II — linear DP with constraint','Longest Increasing Subsequence — O(n²) and O(nlogn)','Coin Change — unbounded knapsack','Longest Common Subsequence — 2D DP','Edit Distance (Levenshtein) — 2D DP','0/1 Knapsack — classic subset sum variant','Partition Equal Subset Sum — Boolean 2D DP','Burst Balloons — interval DP','Regular Expression Matching — 2D DP with wildcards'],
+        resources:[
+          {name:'Striver DP Series (50 problems, free)',type:'YouTube',url:'https://takeuforward.org/dynamic-programming/',ico:'▶'},
+          {name:'Aditya Verma DP Playlist',type:'YouTube',url:'https://www.youtube.com/playlist?list=PL_z_8CaSLPWekqhdCPmFohncHwz8TY2Go',ico:'▶'},
+          {name:'NeetCode DP Patterns',type:'YouTube',url:'https://www.youtube.com/playlist?list=PLot-Xpze53lcvx_tjrr_m2lgD2NqGHiNS',ico:'▶'},
+          {name:'LeetCode DP Top Interview',type:'Practice',url:'https://leetcode.com/tag/dynamic-programming/',ico:'◈'},
+        ]},
+       {id:'t_rec',name:'Recursion & Backtracking',diff:'medium',hrs:10,
+        tags:['State Space Tree','Pruning','Permutations'],
+        about:'Backtracking is structured brute-force. You explore all solutions via a decision tree and prune branches that can\'t lead to valid solutions. Master the template and you\'re done.',
+        concepts:['Recursion anatomy — base case + recursive case + return','Backtracking template: choose, explore, unchoose','Pruning — skip invalid branches early','Permutations vs Combinations — when to reset start index','Generating all subsets (power set) with bitmask','N-Queens — constraint propagation with backtracking','Sudoku Solver — row/col/box validation','Word Search — DFS with visited set on grid'],
+        questions:['Subsets — all subsets via include/exclude','Permutations — swap-based recursion','Combination Sum — unbounded choices backtrack','Word Search — DFS on grid with backtrack','N-Queens — constraint-based placement','Palindrome Partitioning — DFS + isPalindrome check','Letter Combinations of Phone Number — product of sets','Generate Parentheses — open/close count tracking'],
+        resources:[
+          {name:'Striver Recursion Series',type:'YouTube',url:'https://takeuforward.org/recursion/',ico:'▶'},
+          {name:'Aditya Verma Backtracking',type:'YouTube',url:'https://www.youtube.com/playlist?list=PL_z_8CaSLPWegIkMRzNc-RDMzMQeqN-po',ico:'▶'},
+          {name:'LeetCode Backtracking',type:'Practice',url:'https://leetcode.com/tag/backtracking/',ico:'◈'},
+        ]},
+       {id:'t_heap',name:'Heaps & Priority Queue',diff:'medium',hrs:8,
+        tags:['Min/Max Heap','Top-K','Merge K Lists'],
+        about:'Heaps are the go-to for Top-K, scheduling, and stream problems. Python has heapq (min-heap), Java has PriorityQueue. Understand the internal complete binary tree structure.',
+        concepts:['Min-Heap vs Max-Heap — parent ≤ or ≥ children','Heap insert O(logN), extract O(logN), peek O(1)','Heapify — build heap from array in O(N) not O(NlogN)','Top-K elements — maintain heap of size K','Kth largest element — min-heap of size K trick','Merge K sorted lists — use heap with (val, list_index)','Median of data stream — two heaps (max + min)','Task scheduler — frequency-based heap simulation'],
+        questions:['Kth Largest Element in Array — QuickSelect or min-heap','Find Median from Data Stream — two heaps','Top K Frequent Elements — bucket sort or heap','Merge K Sorted Lists — min-heap O(NlogK)','K Closest Points to Origin — max-heap of size K','Task Scheduler — greedy with counting','Ugly Number II — three pointers or heap','Reorganize String — max-heap by frequency'],
+        resources:[
+          {name:'NeetCode Heap Playlist',type:'YouTube',url:'https://www.youtube.com/playlist?list=PLot-Xpze53lcvx_tjrr_m2lgD2NqGHiNS',ico:'▶'},
+          {name:'Striver Heap Series',type:'YouTube',url:'https://takeuforward.org/heap/',ico:'▶'},
+          {name:'Visualgo Heap',type:'Visualizer',url:'https://visualgo.net/en/heap',ico:'◎'},
+          {name:'LeetCode Heap Problems',type:'Practice',url:'https://leetcode.com/tag/heap-priority-queue/',ico:'◈'},
+        ]},
+       {id:'t_bs',name:'Binary Search — Advanced',diff:'medium',hrs:8,
+        tags:['Search Space','Rotated Array','Answer Binary Search'],
+        about:'Binary search is not just for sorted arrays. The real skill is applying it to a monotonic answer space — "binary search on the answer". This unlocks problems that look non-trivial.',
+        concepts:['Classic: lo=0, hi=n-1, mid=(lo+hi)>>1, prevent overflow','Lower bound: first position where arr[mid] >= target','Upper bound: last position where arr[mid] <= target','Rotated sorted array: identify which half is sorted','Binary search on answer: minimize/maximize a value','2D Binary Search: row-by-row or treat as 1D array','Floating point binary search with epsilon precision'],
+        questions:['Binary Search — classic lo/hi template','Search in Rotated Sorted Array — identify sorted half','Find Minimum in Rotated Sorted Array — variant','Search a 2D Matrix — treat as 1D','Koko Eating Bananas — binary search on answer','Split Array Largest Sum — binary search on max','Median of Two Sorted Arrays — hard, binary search halves','Find Peak Element — binary search on slope'],
+        resources:[
+          {name:'Striver Binary Search Series',type:'YouTube',url:'https://takeuforward.org/binary-search/',ico:'▶'},
+          {name:'NeetCode Binary Search',type:'YouTube',url:'https://www.youtube.com/playlist?list=PLot-Xpze53lcvx_tjrr_m2lgD2NqGHiNS',ico:'▶'},
+          {name:'LeetCode Binary Search',type:'Practice',url:'https://leetcode.com/tag/binary-search/',ico:'◈'},
+        ]},
+       {id:'t_sort',name:'Sorting Algorithms',diff:'easy',hrs:5,
+        tags:['Merge Sort','Quick Sort','Counting Sort'],
+        about:'Know the internals of at least merge sort and quicksort — interviewers ask about stability, in-place, and time complexity. Merge sort is used in external sorting and linked list sorting.',
+        concepts:['Bubble/Selection/Insertion — O(n²) basics','Merge Sort — divide & conquer, stable, O(n log n)','Quick Sort — partition, pivot choice, O(n log n) avg, O(n²) worst','Heap Sort — in-place, not stable, O(n log n)','Counting Sort — O(n+k) when range is small','Radix Sort — digit by digit stable sort','Dutch National Flag — 3-way partition (sort 0s, 1s, 2s)'],
+        questions:['Sort Colors (Dutch National Flag) — O(n) one pass','Merge Intervals — sort + greedy merge','Largest Number from Array — custom comparator','Count Inversions — merge sort variant','Kth Smallest in Sorted Matrix — binary search or heap','Meeting Rooms — sort by start time','Non-overlapping Intervals — greedy after sort'],
+        resources:[
+          {name:'Visualgo Sorting',type:'Visualizer',url:'https://visualgo.net/en/sorting',ico:'◎'},
+          {name:'GFG Sorting Algorithms',type:'Article',url:'https://www.geeksforgeeks.org/sorting-algorithms/',ico:'📄'},
+          {name:'Striver Sorting Sheet',type:'Article',url:'https://takeuforward.org/sorting/',ico:'📄'},
+        ]},
+       {id:'t_trie',name:'Tries & Advanced Trees',diff:'hard',hrs:8,
+        tags:['Prefix Search','Word Dictionary','XOR Trie'],
+        about:'Tries solve prefix search problems in O(L) where L is word length — impossible to beat with any other structure. Also used in autocomplete, spell check, and IP routing.',
+        concepts:['Trie node: children[26] + isEnd flag','Insert word — O(L) create nodes along path','Search word — O(L) follow and check isEnd','Prefix search — startsWith pattern','Wildcard search — DFS with \'.\' matching','XOR Trie — maximize XOR of two numbers','Compressed Trie (Radix Tree) — merge single-child chains'],
+        questions:['Implement Trie (Insert, Search, StartsWith)','Word Search II — Trie + DFS on grid (replace dictionary search)','Design Add and Search Words — wildcard . matching','Replace Words — find shortest root prefix in Trie','Maximum XOR of Two Numbers — XOR Trie','Longest Word in Dictionary — Trie BFS','Palindrome Pairs — Trie + reversal trick'],
+        resources:[
+          {name:'NeetCode Trie Playlist',type:'YouTube',url:'https://www.youtube.com/playlist?list=PLot-Xpze53lcvx_tjrr_m2lgD2NqGHiNS',ico:'▶'},
+          {name:'Striver Trie Series',type:'YouTube',url:'https://takeuforward.org/trie/',ico:'▶'},
+          {name:'CP Algorithms Trie',type:'Article',url:'https://cp-algorithms.com/string/aho_corasick.html',ico:'📄'},
+        ]},
+     ]},
+    {id:'os',ico:'⚙',lbl:'OS',title:'Operating Systems',
+     desc:'Core OS concepts tested in every product company interview. Asked heavily in Google, Microsoft, Amazon. Know processes, memory, synchronization inside-out.',
+     hrs:40,
+     topics:[
+       {id:'t_proc',name:'Processes & Threads',diff:'easy',hrs:5,
+        tags:['PCB','Context Switch','User vs Kernel Thread'],
+        about:'Every program that runs is a process. Threads are lightweight processes sharing the same memory space. This distinction and the lifecycle transitions are heavily tested.',
+        concepts:['Process vs Thread — own address space vs shared','Process Control Block (PCB) — what OS stores per process','Process states: New → Ready → Running → Waiting → Terminated','Context switch — save/restore registers, PC, stack pointer','User-level threads vs Kernel-level threads — pros/cons','Concurrency vs Parallelism — single core vs multi-core','fork() and exec() system calls in Unix — copy-on-write'],
+        questions:['What is the difference between process and thread?','What happens during a context switch?','What is a PCB and what does it contain?','Can two threads of same process run on different cores?','Explain fork() — does child get same memory?','What is a zombie process? What is an orphan process?','How does copy-on-write optimization work in fork()?','What is the difference between concurrency and parallelism?'],
+        resources:[
+          {name:'OS Three Easy Pieces (free book)',type:'Book',url:'https://pages.cs.wisc.edu/~remzi/OSTEP/',ico:'📘'},
+          {name:'Neso Academy OS (YouTube)',type:'YouTube',url:'https://www.youtube.com/playlist?list=PLBlnK6fEyqRiVhbXDGLXDk_OQAeuVcp2O',ico:'▶'},
+          {name:'Gate Smashers OS',type:'YouTube',url:'https://www.youtube.com/playlist?list=PLxCzCOWd7aiGz9donHRrE9I3Mwn6XdP8p',ico:'▶'},
+        ]},
+       {id:'t_sched',name:'CPU Scheduling',diff:'medium',hrs:5,
+        tags:['FCFS','Round Robin','SJF','Priority'],
+        about:'The OS decides which ready process runs next. Different algorithms optimize for different metrics — throughput, waiting time, response time. All are interview staples.',
+        concepts:['FCFS — simple but convoy effect, non-preemptive','SJF (Shortest Job First) — optimal avg waiting, needs future knowledge','SRTF — preemptive SJF, starvation issue','Round Robin — time quantum, best for time-sharing systems','Priority Scheduling — starvation problem, solved by aging','Multilevel Feedback Queue — dynamically adjust priority','Gantt Chart — draw execution timeline, calculate waiting & turnaround time'],
+        questions:['Calculate average waiting time for FCFS given burst times','Why does Round Robin have good response time?','What is starvation and how does aging solve it?','Compare SJF and SRTF — which is preemptive?','What is throughput, turnaround time, waiting time, response time?','Which scheduler does Linux use (CFS)?','What is a time quantum? Effect of small vs large quantum in RR?'],
+        resources:[
+          {name:'Neso Academy CPU Scheduling',type:'YouTube',url:'https://www.youtube.com/playlist?list=PLBlnK6fEyqRiVhbXDGLXDk_OQAeuVcp2O',ico:'▶'},
+          {name:'Gate Smashers Scheduling',type:'YouTube',url:'https://www.youtube.com/playlist?list=PLxCzCOWd7aiGz9donHRrE9I3Mwn6XdP8p',ico:'▶'},
+          {name:'GFG CPU Scheduling',type:'Article',url:'https://www.geeksforgeeks.org/cpu-scheduling-in-operating-systems-using-priority-queue-set-1/',ico:'📄'},
+        ]},
+       {id:'t_sync',name:'Synchronization — Mutex, Semaphores',diff:'hard',hrs:8,
+        tags:['Race Condition','Deadlock','Producer-Consumer'],
+        about:'Critical section problems arise when multiple threads access shared data. The solutions (mutex, semaphore, monitor) are tested deeply in system design and OS interviews.',
+        concepts:['Race condition — non-deterministic outcome from shared access','Critical section — code that must run atomically','Mutex (Binary Semaphore) — mutual exclusion lock','Counting Semaphore — control access to N resources','Producer-Consumer problem — bounded buffer with semaphores','Readers-Writers problem — read concurrently, write exclusive','Dining Philosophers — classic deadlock avoidance problem','Monitors — high-level synchronization with condition variables'],
+        questions:['What is a race condition? Give an example.','Difference between mutex and semaphore.','How do you solve the Producer-Consumer problem?','What are the four conditions for deadlock (Coffman conditions)?','How does spinlock differ from a mutex?','What is a monitor? How is it different from a mutex?','Explain the Readers-Writers problem and a solution.','What is priority inversion? How to solve it (priority inheritance)?'],
+        resources:[
+          {name:'Little Book of Semaphores (free)',type:'Book',url:'https://greenteapress.com/wp/semaphores/',ico:'📘'},
+          {name:'OSTEP Concurrency Chapters',type:'Book',url:'https://pages.cs.wisc.edu/~remzi/OSTEP/threads-intro.pdf',ico:'📘'},
+          {name:'Neso Academy Synchronization',type:'YouTube',url:'https://www.youtube.com/playlist?list=PLBlnK6fEyqRiVhbXDGLXDk_OQAeuVcp2O',ico:'▶'},
+        ]},
+       {id:'t_mem',name:'Memory Management & Virtual Memory',diff:'medium',hrs:6,
+        tags:['Paging','Segmentation','TLB','Page Fault'],
+        about:'Modern OSes abstract physical memory using virtual memory. Every process sees its own isolated address space. Understanding paging, TLB, and page replacement is essential.',
+        concepts:['Logical vs Physical address — MMU translates','Paging — fixed-size pages, page table, no external fragmentation','Segmentation — variable-size, supports logical structure','TLB (Translation Lookaside Buffer) — cache for page table entries','Page fault — page not in RAM, OS loads from disk (swap)','Page replacement algorithms — FIFO, LRU, Optimal (Belady\'s)','Thrashing — too many page faults, reduce multiprogramming','Demand paging — load pages lazily when accessed'],
+        questions:['What is the difference between paging and segmentation?','How does virtual memory allow programs bigger than RAM?','What is a TLB miss? What happens then?','Explain the page replacement algorithms and their trade-offs.','What is thrashing? How does the OS detect and handle it?','What is the difference between internal and external fragmentation?','What is Belady\'s anomaly in FIFO page replacement?'],
+        resources:[
+          {name:'Neso Academy Memory Management',type:'YouTube',url:'https://www.youtube.com/playlist?list=PLBlnK6fEyqRiVhbXDGLXDk_OQAeuVcp2O',ico:'▶'},
+          {name:'OSTEP Memory Chapters',type:'Book',url:'https://pages.cs.wisc.edu/~remzi/OSTEP/',ico:'📘'},
+          {name:'GFG Virtual Memory',type:'Article',url:'https://www.geeksforgeeks.org/virtual-memory-in-operating-system/',ico:'📄'},
+        ]},
+       {id:'t_dead',name:'Deadlocks',diff:'medium',hrs:5,
+        tags:['Coffman Conditions','Banker\'s Algorithm','Detection'],
+        about:'Deadlock is a state where processes wait on each other forever. The four Coffman conditions must all hold simultaneously. Prevention, avoidance, detection, recovery — know all four strategies.',
+        concepts:['4 Coffman Conditions: Mutual Exclusion, Hold & Wait, No Preemption, Circular Wait','Resource Allocation Graph — detect cycle for single instance','Banker\'s Algorithm — safe state check for avoidance','Deadlock Prevention — negate one Coffman condition','Deadlock Detection — run Banker\'s for multi-instance resources','Deadlock Recovery — process termination or resource preemption','Livelock vs Deadlock — processes active but making no progress'],
+        questions:['State and explain the four Coffman conditions for deadlock.','What is a Resource Allocation Graph? How to detect deadlock?','Explain Banker\'s Algorithm with example.','What is the difference between deadlock prevention and avoidance?','How is livelock different from deadlock?','Give a real-world example of deadlock in a database.','How does the OS recover from a detected deadlock?'],
+        resources:[
+          {name:'Neso Academy Deadlocks',type:'YouTube',url:'https://www.youtube.com/playlist?list=PLBlnK6fEyqRiVhbXDGLXDk_OQAeuVcp2O',ico:'▶'},
+          {name:'GFG Deadlock',type:'Article',url:'https://www.geeksforgeeks.org/introduction-of-deadlock-in-operating-system/',ico:'📄'},
+          {name:'Gate Smashers Deadlock',type:'YouTube',url:'https://www.youtube.com/playlist?list=PLxCzCOWd7aiGz9donHRrE9I3Mwn6XdP8p',ico:'▶'},
+        ]},
+       {id:'t_fs',name:'File Systems',diff:'medium',hrs:5,
+        tags:['Inode','Block','Journaling'],
+        about:'File systems organize data on disk. The inode structure, directory traversal, and journaling for crash recovery are all tested in system design and OS interviews.',
+        concepts:['Inode — metadata block (size, permissions, block pointers, NOT name)','Hard link vs Soft link — same inode vs new inode pointing to path','Directory — special file mapping names to inodes','Block allocation — contiguous, linked, indexed (inode)','Journaling — write-ahead log for crash consistency','File system hierarchy — VFS layer in Linux abstracts FS types','Disk scheduling — FCFS, SSTF, SCAN, C-SCAN algorithms'],
+        questions:['What is an inode? What information does it store?','Difference between hard link and soft (symbolic) link.','What is journaling in a file system and why is it needed?','How does the OS locate a file given its path?','What happens when you delete a file — is data immediately gone?','What is the difference between FAT, ext4, and NTFS?','Explain disk scheduling algorithms — which does Linux use?'],
+        resources:[
+          {name:'OSTEP File System Chapters',type:'Book',url:'https://pages.cs.wisc.edu/~remzi/OSTEP/file-intro.pdf',ico:'📘'},
+          {name:'GFG File Systems',type:'Article',url:'https://www.geeksforgeeks.org/file-systems-in-operating-system/',ico:'📄'},
+          {name:'Neso Academy File System',type:'YouTube',url:'https://www.youtube.com/playlist?list=PLBlnK6fEyqRiVhbXDGLXDk_OQAeuVcp2O',ico:'▶'},
+        ]},
+     ]},
+    {id:'dbms',ico:'◫',lbl:'DBMS',title:'Database Management Systems',
+     desc:'SQL is tested in nearly every interview. Deep DBMS concepts (ACID, indexing, transactions) are asked at all top product companies.',
+     hrs:35,
+     topics:[
+       {id:'t_sql',name:'SQL — Joins, Window Functions, CTEs',diff:'easy',hrs:8,
+        tags:['INNER JOIN','Window Fn','CTE','GROUP BY'],
+        about:'SQL is non-negotiable. Every product company tests SQL in interviews or take-home assignments. Window functions and CTEs are the differentiators — most candidates skip them.',
+        concepts:['INNER, LEFT, RIGHT, FULL OUTER, CROSS, SELF JOIN with Venn logic','GROUP BY + HAVING vs WHERE — filter before vs after grouping','Subqueries — correlated vs non-correlated','CTE (WITH clause) — named temporary result set, readable recursive queries','Window functions: ROW_NUMBER(), RANK(), DENSE_RANK(), NTILE()','Aggregate windows: SUM() OVER(), AVG() OVER(), LAG(), LEAD()','PARTITION BY vs GROUP BY — windows don\'t collapse rows'],
+        questions:['Write SQL to find the 2nd highest salary.','Find departments with average salary > overall average.','Get top 3 salaries per department using window functions.','Find duplicate records in a table.','Write a query to find customers who placed orders in all months.','Calculate running total using window function.','Find employees who earn more than their manager.','Write a recursive CTE to traverse an employee hierarchy.'],
+        resources:[
+          {name:'SQLZoo — Interactive SQL (free)',type:'Practice',url:'https://sqlzoo.net/',ico:'◈'},
+          {name:'Mode Analytics SQL Tutorial',type:'Tutorial',url:'https://mode.com/sql-tutorial/',ico:'📄'},
+          {name:'LeetCode SQL Problems',type:'Practice',url:'https://leetcode.com/problemset/database/',ico:'◈'},
+          {name:'StrataScratch SQL Problems',type:'Practice',url:'https://www.stratascratch.com/',ico:'◈'},
+        ]},
+       {id:'t_norm',name:'Normalization — 1NF to BCNF',diff:'medium',hrs:5,
+        tags:['1NF','2NF','3NF','BCNF'],
+        about:'Normalization eliminates data redundancy and anomalies. Know how to identify functional dependencies and normalize any schema up to BCNF — this is standard interview material.',
+        concepts:['1NF — atomic values, no repeating groups','2NF — 1NF + no partial dependencies (remove if key is composite)','3NF — 2NF + no transitive dependencies (A→B→C becomes two tables)','BCNF — every determinant must be a candidate key (stricter 3NF)','Denormalization — intentional redundancy for read performance','Functional Dependency: A → B means A uniquely determines B','Armstrong\'s Axioms — reflexivity, augmentation, transitivity'],
+        questions:['What is normalization and why is it needed?','What are update, insert, and delete anomalies?','Convert a given unnormalized table to 3NF step by step.','What is the difference between 3NF and BCNF?','When would you denormalize a table?','What is a functional dependency? Give examples.','Find all candidate keys for a given relation with FDs.'],
+        resources:[
+          {name:'GFG Normalization',type:'Article',url:'https://www.geeksforgeeks.org/introduction-of-database-normalization/',ico:'📄'},
+          {name:'Gate Smashers DBMS Normalization',type:'YouTube',url:'https://www.youtube.com/playlist?list=PLxCzCOWd7aiFAN6I8CuViBuCdJgiOkT2Y',ico:'▶'},
+          {name:'Neso Academy DBMS',type:'YouTube',url:'https://www.youtube.com/playlist?list=PLBlnK6fEyqRi_CUQ-FTxgZJ19gMsgyAx6',ico:'▶'},
+        ]},
+       {id:'t_txn',name:'Transactions, ACID & Isolation Levels',diff:'medium',hrs:5,
+        tags:['ACID','Isolation','Dirty Read','Phantom Read'],
+        about:'Transactions ensure data integrity. ACID properties and isolation levels are asked in every senior backend interview. Know the anomalies each isolation level prevents.',
+        concepts:['Atomicity — all or nothing (rollback on failure)','Consistency — DB moves from valid state to valid state','Isolation — concurrent transactions don\'t interfere','Durability — committed data survives crashes (WAL/journal)','Isolation Levels (weakest to strongest): Read Uncommitted → Read Committed → Repeatable Read → Serializable','Dirty Read — read uncommitted data from another transaction','Non-repeatable Read — same row, different value on re-read','Phantom Read — new rows appear between reads'],
+        questions:['Explain ACID properties with real examples.','What is a dirty read? Which isolation level prevents it?','What is the difference between Repeatable Read and Serializable?','How do databases implement serializable isolation (2PL, MVCC)?','What happens when two transactions deadlock in a database?','Explain optimistic vs pessimistic locking.','What is MVCC (Multi-Version Concurrency Control)?'],
+        resources:[
+          {name:'DDIA Chapter 7 — Transactions (must read)',type:'Book',url:'https://dataintensive.net/',ico:'📘'},
+          {name:'Gate Smashers DBMS Transactions',type:'YouTube',url:'https://www.youtube.com/playlist?list=PLxCzCOWd7aiFAN6I8CuViBuCdJgiOkT2Y',ico:'▶'},
+          {name:'Martin Kleppmann Blog',type:'Article',url:'https://martin.kleppmann.com/',ico:'📄'},
+        ]},
+       {id:'t_idx',name:'Indexing — B+ Trees, Query Optimization',diff:'medium',hrs:6,
+        tags:['B+ Tree','Clustered Index','Query Plan','EXPLAIN'],
+        about:'Indexing is the single biggest factor in database performance. Understanding B+ tree structure, clustered vs non-clustered, and EXPLAIN plans separates senior engineers from juniors.',
+        concepts:['B+ Tree — balanced, all data in leaf nodes, linked leaves for range scan','Clustered Index — data physically sorted by index key (one per table)','Non-clustered Index — separate structure pointing to data rows','Composite Index — column order matters (leftmost prefix rule)','Covering Index — query satisfied entirely from index, no table lookup','Index Selectivity — how many distinct values (high = better index)','EXPLAIN / Query Plan — seq scan vs index scan vs index-only scan','When NOT to index — small tables, write-heavy columns, low selectivity'],
+        questions:['Why is B+ tree preferred over B tree for database indexing?','What is the difference between clustered and non-clustered index?','How does a composite index (a, b, c) help queries on (a), (a,b), (a,b,c)?','What is a covering index and why is it fast?','When would adding an index slow down your database?','How do you read a PostgreSQL EXPLAIN ANALYZE output?','What is index selectivity? Why does it matter?'],
+        resources:[
+          {name:'Use The Index, Luke! (free, best resource)',type:'Tutorial',url:'https://use-the-index-luke.com/',ico:'📄'},
+          {name:'Gate Smashers Indexing',type:'YouTube',url:'https://www.youtube.com/playlist?list=PLxCzCOWd7aiFAN6I8CuViBuCdJgiOkT2Y',ico:'▶'},
+          {name:'Postgres EXPLAIN docs',type:'Docs',url:'https://www.postgresql.org/docs/current/using-explain.html',ico:'📄'},
+        ]},
+       {id:'t_nosql',name:'NoSQL — MongoDB, Redis, Cassandra',diff:'easy',hrs:5,
+        tags:['Document DB','Key-Value','Wide Column','CAP'],
+        about:'NoSQL databases solve specific scale problems that relational DBs struggle with. Know when to use which type — this is a system design interview staple.',
+        concepts:['NoSQL types: Document (MongoDB), Key-Value (Redis), Wide Column (Cassandra), Graph (Neo4j)','When NoSQL over SQL: unstructured data, horizontal scaling, flexible schema','MongoDB — BSON documents, collections, aggregation pipeline, replica sets','Redis — in-memory, persistence with RDB/AOF, data types (String/List/Set/Hash/ZSet)','Cassandra — masterless ring, consistent hashing, tunable consistency (quorum)','BASE vs ACID — Basically Available, Soft state, Eventually consistent','CAP Theorem — only 2 of 3: CP (Cassandra), AP (DynamoDB), CA (single node SQL)'],
+        questions:['When would you use MongoDB over PostgreSQL?','What data types does Redis support? Use case for each?','What is eventual consistency in Cassandra?','Explain CAP theorem with examples of each combination.','How does Cassandra achieve high write throughput?','When would you use Redis as a cache vs as a primary DB?','How does MongoDB handle transactions? (since v4.0)'],
+        resources:[
+          {name:'MongoDB University (free)',type:'Course',url:'https://learn.mongodb.com/',ico:'📘'},
+          {name:'Redis.io Documentation',type:'Docs',url:'https://redis.io/docs/',ico:'📄'},
+          {name:'Cassandra Data Modeling',type:'Tutorial',url:'https://www.datastax.com/learn/data-modeling-by-example',ico:'📄'},
+        ]},
+     ]},
+    {id:'cn',ico:'⬡',lbl:'Networks',title:'Computer Networks',
+     desc:'Fundamental for backend, DevOps, and system design interviews. HTTP, TCP/IP, DNS — you must know these cold.',
+     hrs:30,
+     topics:[
+       {id:'t_http',name:'HTTP/HTTPS & REST',diff:'easy',hrs:4,
+        tags:['REST','Status Codes','Headers','HTTPS/TLS'],
+        about:'HTTP is the language of the web. Every API you build uses it. Know status codes, methods, headers, and TLS handshake for interviews. REST principles are asked in system design.',
+        concepts:['HTTP Methods: GET (safe+idempotent), POST, PUT (idempotent), PATCH, DELETE','Status codes: 1xx informational, 2xx success, 3xx redirect, 4xx client error, 5xx server error','Important headers: Content-Type, Authorization, Cache-Control, CORS headers','HTTPS = HTTP + TLS — symmetric key exchange using asymmetric crypto (handshake)','TLS 1.3 handshake — client hello, server hello, key exchange, finished','HTTP/2 — multiplexing (no head-of-line), header compression (HPACK), server push','HTTP/3 — QUIC over UDP, 0-RTT connection, better mobile performance','REST constraints: stateless, uniform interface, client-server, cacheable, layered'],
+        questions:['What is the difference between GET and POST?','What does 401 mean vs 403? When to use each?','Explain the HTTPS TLS handshake step by step.','What is CORS? How does it work? What is a preflight request?','Difference between HTTP/1.1, HTTP/2, and HTTP/3.','What makes an API truly RESTful?','How does session management work? Cookie vs JWT?','What is idempotency? Why does it matter for retries?'],
+        resources:[
+          {name:'MDN HTTP Documentation',type:'Docs',url:'https://developer.mozilla.org/en-US/docs/Web/HTTP',ico:'📄'},
+          {name:'Cloudflare Learning Center',type:'Tutorial',url:'https://www.cloudflare.com/learning/',ico:'📄'},
+          {name:'Fireship HTTP in 100s',type:'YouTube',url:'https://www.youtube.com/watch?v=iYM2zFP3Zn0',ico:'▶'},
+        ]},
+       {id:'t_tcp',name:'TCP vs UDP & Networking',diff:'medium',hrs:5,
+        tags:['3-Way Handshake','Flow Control','Congestion Control'],
+        about:'TCP and UDP are the transport layer protocols. Understanding when to use each and how TCP guarantees delivery is fundamental to system design and backend engineering interviews.',
+        concepts:['TCP — connection-oriented, reliable, ordered, flow/congestion control','UDP — connectionless, best-effort, faster (DNS, video streaming, gaming)','TCP 3-way handshake: SYN → SYN-ACK → ACK','TCP 4-way termination: FIN → ACK → FIN → ACK','Sliding window — flow control, window size = receiver buffer','Congestion control — slow start, AIMD, fast retransmit, fast recovery','Sequence numbers — detect loss, reorder, de-duplicate','TIME_WAIT state — ensures last ACK delivered, prevents old packets'],
+        questions:['Explain TCP 3-way handshake. What if SYN is lost?','What is the difference between TCP flow control and congestion control?','Why use UDP for video streaming instead of TCP?','What is TCP slow start?','What happens in TCP TIME_WAIT state?','How does TCP detect packet loss and retransmit?','What is head-of-line blocking in HTTP/1.1?','Explain the difference between connection-oriented and connectionless protocols.'],
+        resources:[
+          {name:'Beej\'s Guide to Networking (free)',type:'Book',url:'https://beej.us/guide/bgnet/',ico:'📘'},
+          {name:'Neso Academy Computer Networks',type:'YouTube',url:'https://www.youtube.com/playlist?list=PLBlnK6fEyqRgMCUAG0XRw78UA8qnv6jEx',ico:'▶'},
+          {name:'Julia Evans Networking Zine',type:'Article',url:'https://jvns.ca/networking-zine.pdf',ico:'📄'},
+        ]},
+       {id:'t_dns',name:'DNS, CDN & How Internet Works',diff:'easy',hrs:3,
+        tags:['Recursive Resolver','CDN','Anycast','TTL'],
+        about:'Understanding DNS is crucial for system design. Every engineer should know what happens when you type google.com — this question is asked verbatim in interviews.',
+        concepts:['DNS hierarchy: Root NS → TLD NS (.com) → Authoritative NS → Record','DNS record types: A (IPv4), AAAA (IPv6), CNAME (alias), MX (mail), TXT (verification)','Recursive resolver vs Iterative resolver','TTL — Time to Live, how long to cache a DNS record','CDN — cache static assets close to users, reduce latency by 60-80%','Anycast — same IP, different servers, route to nearest geographically','DNS over HTTPS (DoH) and DNS over TLS (DoT) for privacy'],
+        questions:['What happens step by step when you type www.google.com?','What is the difference between a recursive and iterative DNS query?','What is a CDN and how does it reduce latency?','What is Anycast routing and how is it used?','What DNS record would you use for an alias?','What is TTL and what happens if you set it too low/high?','How does a browser use DNS caching?'],
+        resources:[
+          {name:'Cloudflare What is DNS?',type:'Article',url:'https://www.cloudflare.com/learning/dns/what-is-dns/',ico:'📄'},
+          {name:'How DNS Works (comic)',type:'Article',url:'https://howdns.works/',ico:'📄'},
+          {name:'ByteByteGo DNS Deep Dive',type:'YouTube',url:'https://www.youtube.com/watch?v=27r4Bzuj5NQ',ico:'▶'},
+        ]},
+       {id:'t_ip',name:'IP, Subnetting & Routing',diff:'medium',hrs:5,
+        tags:['CIDR','Subnet Mask','ARP','BGP'],
+        about:'Every cloud engineer and backend engineer working with VPCs, load balancers, and security groups must understand IP addressing and subnetting cold.',
+        concepts:['IPv4 — 32-bit, classes A/B/C/D/E, private ranges (10.x, 172.16.x, 192.168.x)','IPv6 — 128-bit, solves exhaustion, no NAT needed','CIDR notation — 192.168.1.0/24 means 24-bit network, 8-bit host (256 addresses)','Subnet mask — network bits 1s, host bits 0s','ARP — maps IP to MAC address within LAN','Routing — routers use routing tables, longest prefix match wins','BGP — exterior gateway protocol between ISPs/ASes','NAT — Network Address Translation, maps private to public IP (MASQUERADE)'],
+        questions:['How many hosts can /24 subnet support?','What is the difference between a router and a switch?','What is ARP and when is it used?','What is NAT and why was it introduced?','How does BGP prevent routing loops?','Calculate the broadcast address for 192.168.10.0/27.','What is the difference between static and dynamic routing?'],
+        resources:[
+          {name:'Practical Networking YouTube',type:'YouTube',url:'https://www.youtube.com/@PracticalNetworking',ico:'▶'},
+          {name:'GFG Computer Networks',type:'Article',url:'https://www.geeksforgeeks.org/computer-network-tutorials/',ico:'📄'},
+          {name:'Cisco Subnetting Practice',type:'Practice',url:'https://subnettingpractice.com/',ico:'◈'},
+        ]},
+     ]},
+    {id:'sysdes',ico:'◳',lbl:'System Design',title:'System Design',
+     desc:'The highest-weighted round at 20 LPA companies. A bad system design round can kill an otherwise great interview. Start preparing early.',
+     hrs:55,
+     topics:[
+       {id:'t_sd_found',name:'System Design Fundamentals',diff:'medium',hrs:8,
+        tags:['Scalability','Availability','Load Balancer','CAP'],
+        about:'You must master the building blocks before designing any system. These are the vocabulary and concepts you will use in every design interview.',
+        concepts:['Vertical scaling (bigger machine) vs Horizontal scaling (more machines)','Load Balancer — L4 (TCP) vs L7 (HTTP), Round Robin, Least Connections, IP Hash','Availability = Uptime/(Uptime+Downtime), 99.99% = 52 min/year downtime','Latency vs Throughput — response time vs requests per second','Caching — cache-aside, write-through, write-back, write-around patterns','CDN — static assets, edge caching, Anycast routing','Rate Limiting — token bucket vs leaky bucket algorithms','SQL vs NoSQL — structure vs scale, ACID vs BASE'],
+        questions:['How would you handle 10x traffic spike suddenly?','Design a rate limiter for an API — what algorithm and where to store state?','Explain cache-aside vs write-through caching. When to use each?','What is the difference between latency and throughput?','How does a load balancer decide where to send a request?','What is a CDN and when would you NOT use one?','Explain the difference between 99.9% and 99.99% availability.'],
+        resources:[
+          {name:'System Design Primer (GitHub)',type:'Article',url:'https://github.com/donnemartin/system-design-primer',ico:'📄'},
+          {name:'ByteByteGo YouTube (free)',type:'YouTube',url:'https://www.youtube.com/@ByteByteGo',ico:'▶'},
+          {name:'Gaurav Sen System Design',type:'YouTube',url:'https://www.youtube.com/@GauravSensei',ico:'▶'},
+          {name:'Designing Data-Intensive Applications (DDIA)',type:'Book',url:'https://dataintensive.net/',ico:'📘'},
+        ]},
+       {id:'t_sd_cache',name:'Caching & Message Queues',diff:'medium',hrs:8,
+        tags:['Redis','Kafka','Cache Eviction','Pub/Sub'],
+        about:'Caching and async messaging are the two most common scalability tools. Redis and Kafka appear in almost every system design interview.',
+        concepts:['Redis data structures: String, List, Set, Sorted Set, Hash — use cases for each','Cache eviction: LRU, LFU, FIFO, TTL-based expiry','Cache stampede — many requests miss cache simultaneously, use probabilistic early expiry','Message Queue benefits: decoupling, async processing, buffer spikes, retry','Kafka — distributed log, partitions, consumer groups, offset management','At-least-once vs At-most-once vs Exactly-once delivery semantics','Dead Letter Queue (DLQ) — handle messages that repeatedly fail processing'],
+        questions:['Design an LRU Cache — HashMap + Doubly Linked List O(1)','When would you use Redis Sorted Set? Give a use case.','What is cache stampede? How do you prevent it?','Explain Kafka partitions and consumer groups. What is ordering guarantee?','When would you use a message queue vs direct API calls?','How do you ensure exactly-once processing in Kafka?','What is the difference between Redis pub/sub and Kafka?'],
+        resources:[
+          {name:'Redis Official Documentation',type:'Docs',url:'https://redis.io/docs/',ico:'📄'},
+          {name:'Confluent Kafka Tutorial (free)',type:'Tutorial',url:'https://developer.confluent.io/learn-kafka/',ico:'📄'},
+          {name:'ByteByteGo Caching',type:'YouTube',url:'https://www.youtube.com/watch?v=dGAgxozNWFE',ico:'▶'},
+        ]},
+       {id:'t_sd1',name:'Design: URL Shortener (Starter)',diff:'medium',hrs:3,
+        tags:['Base62','Hashing','Redirection','Analytics'],
+        about:'The hello-world of system design. Always start here. Covers core concepts: ID generation, encoding, storage, redirection, and analytics. Perfect to practice the interview framework.',
+        concepts:['Requirements: shorten URL, redirect, analytics, custom alias, expiry','Scale: 100M URLs/day write, 10B reads/day, 100:1 read:write ratio','ID generation: Auto-increment vs MD5 vs Base62 encoding (6 chars = 62^6 = 56B unique)','Hash collision handling: check DB, regenerate','Storage: SQL (URL mapping) + Redis (hot URL cache), Cassandra for analytics','Redirection: 301 (permanent, cached) vs 302 (temporary, always hits server)','Analytics: Kafka event stream → Spark → analytics DB'],
+        questions:['How would you generate unique short codes at scale?','What is Base62 encoding? Why not MD5 directly?','Should the redirect be 301 or 302? Tradeoffs?','How would you store 100B URLs? What database?','How do you handle a custom alias that\'s already taken?','How would you count clicks accurately at scale?','How do you handle expiration of short URLs?'],
+        resources:[
+          {name:'ByteByteGo URL Shortener',type:'YouTube',url:'https://www.youtube.com/watch?v=fMZMm_0ZhK4',ico:'▶'},
+          {name:'System Design Primer URL Shortener',type:'Article',url:'https://github.com/donnemartin/system-design-primer/blob/master/solutions/system_design/pastebin/README.md',ico:'📄'},
+          {name:'Gaurav Sen URL Shortener',type:'YouTube',url:'https://www.youtube.com/@GauravSensei',ico:'▶'},
+        ]},
+       {id:'t_sd2',name:'Design: WhatsApp / Chat System',diff:'medium',hrs:4,
+        tags:['WebSocket','Presence','E2E Encryption','Message Storage'],
+        about:'Chat systems test real-time communication, message delivery guarantees, and offline handling. WebSockets, connection management, and message ordering are key focus areas.',
+        concepts:['WebSocket — full-duplex over single TCP connection, persistent','Chat service architecture: client → load balancer → chat servers (WebSocket)','Message delivery: at-least-once with de-duplication using client-generated UUID','Online presence: heartbeat every 5s, Redis TTL for presence state','Message ordering: sequence IDs per conversation, Snowflake-style IDs','Push notifications for offline users: APNs/FCM integration','End-to-end encryption: Signal protocol, key exchange (X3DH), no server decryption','Message storage: Cassandra (write-heavy, time-series, per-chat partition key)'],
+        questions:['How would you maintain persistent WebSocket connections at scale?','How do you ensure messages are delivered in order?','How do you handle messages sent when the recipient is offline?','How would you implement read receipts (single tick, double tick, blue tick)?','How does end-to-end encryption work in WhatsApp?','How would you store group chat messages with 1000 members?','How do you scale to 1 billion concurrent users?'],
+        resources:[
+          {name:'ByteByteGo WhatsApp Design',type:'YouTube',url:'https://www.youtube.com/watch?v=vvhC64hQZMk',ico:'▶'},
+          {name:'Gaurav Sen Chat System',type:'YouTube',url:'https://www.youtube.com/@GauravSensei',ico:'▶'},
+          {name:'High Scalability WhatsApp',type:'Article',url:'http://highscalability.com/blog/2014/2/26/the-whatsapp-architecture-facebook-bought-for-19-billion.html',ico:'📄'},
+        ]},
+       {id:'t_sd3',name:'Design: Twitter / News Feed',diff:'hard',hrs:5,
+        tags:['Fan-out','Timeline','Celebrity Problem','Ranking'],
+        about:'News feed design is one of the most common hard system design questions. The fan-out problem (should you push or pull?) and handling celebrity accounts are key differentiators.',
+        concepts:['Fan-out on write (push) — pre-compute feed on tweet, fast read, slow write','Fan-out on read (pull) — compute feed on load, slow read, fast write','Hybrid — push for regular users, pull for celebrities (follows-based threshold)','Feed ranking: engagement prediction model, recency, EdgeRank/graph signals','Timeline storage: Redis sorted set (score = timestamp) for hot feeds','Infinite scroll pagination: cursor-based not page number (avoid duplicates)','Media: object storage (S3), CDN for images/videos, transcoding pipeline'],
+        questions:['Explain fan-out on write vs fan-out on read. Which does Twitter use?','How do you handle a celebrity with 100M followers tweeting?','How would you rank tweets in a personalized feed?','How do you implement infinite scroll efficiently?','How does Twitter shard its database?','How would you implement trending hashtags in real-time?','How do you store and serve profile images at scale?'],
+        resources:[
+          {name:'ByteByteGo Twitter Design',type:'YouTube',url:'https://www.youtube.com/watch?v=wYk0xPP_P_8',ico:'▶'},
+          {name:'Twitter Engineering Blog',type:'Article',url:'https://blog.twitter.com/engineering/en_us',ico:'📄'},
+          {name:'Instagram Engineering — Feed Ranking',type:'Article',url:'https://instagram-engineering.com/',ico:'📄'},
+        ]},
+       {id:'t_sd4',name:'Design: Uber / Ride Sharing',diff:'hard',hrs:4,
+        tags:['Geospatial','Matching','Surge Pricing','Real-time Tracking'],
+        about:'Uber-style design tests geospatial indexing, real-time matching, and supply-demand balancing. QuadTree and Google S2 are key concepts.',
+        concepts:['Driver location updates: 4-5 updates/second per driver, write-heavy','Geospatial indexing: QuadTree or Google S2 cells for nearby search','Matching algorithm: find drivers within radius, sort by ETA, assign','Supply-demand balancing: surge pricing = Poisson process multiplier','Real-time tracking: WebSocket from driver → update location store → push to rider','Trip DB: PostgreSQL for ACID trips, Cassandra for location history','Consistent hashing to shard drivers by city/region'],
+        questions:['How do you efficiently find drivers near a user\'s location?','What is a QuadTree? How does it help with geospatial queries?','How would you implement surge pricing?','How do you push driver location to the rider in real-time?','How do you handle the matching when no drivers are nearby?','How would you prevent the same driver from being matched to multiple riders?','How do you partition the database by geography?'],
+        resources:[
+          {name:'ByteByteGo Uber Design',type:'YouTube',url:'https://www.youtube.com/watch?v=lsKU38RKQSo',ico:'▶'},
+          {name:'Uber Engineering Blog',type:'Article',url:'https://www.uber.com/en-IN/blog/engineering/',ico:'📄'},
+          {name:'Gaurav Sen Uber',type:'YouTube',url:'https://www.youtube.com/@GauravSensei',ico:'▶'},
+        ]},
+       {id:'t_sd5',name:'Design: Netflix / Video Streaming',diff:'hard',hrs:5,
+        tags:['CDN','Adaptive Bitrate','Encoding','Recommendation'],
+        about:'Video streaming design covers large file handling, adaptive quality, CDN strategy, and recommendation systems. Netflix engineering blog has the real answers.',
+        concepts:['Video ingestion: upload → transcode to multiple resolutions (240p to 4K) → H.264/H.265','Adaptive Bitrate Streaming (ABR): HLS/DASH — segment video, switch quality dynamically','CDN strategy: Netflix Open Connect (proprietary CDN), ISP-collocated servers','Chunked upload: multipart upload to S3, resume on failure','Content discovery: hybrid recommendation (collaborative + content-based filtering)','Search: Elasticsearch for title/metadata search, Kafka for real-time indexing','Database: MySQL for user data, Cassandra for viewing history, DynamoDB for session'],
+        questions:['How does Netflix handle 15% of global internet traffic?','What is adaptive bitrate streaming? How does the client decide quality?','How would you design the video transcoding pipeline?','How does Netflix\'s CDN (Open Connect) work?','How does Netflix recommend content to users?','How do you handle video playback resumption?','How would you design the upload pipeline for creators on YouTube?'],
+        resources:[
+          {name:'Netflix Tech Blog',type:'Article',url:'https://netflixtechblog.com/',ico:'📄'},
+          {name:'ByteByteGo Netflix Design',type:'YouTube',url:'https://www.youtube.com/watch?v=psQzyFfsUGU',ico:'▶'},
+          {name:'Hussein Nasser YouTube',type:'YouTube',url:'https://www.youtube.com/@hnasr',ico:'▶'},
+        ]},
+     ]},
+    {id:'oop',ico:'◎',lbl:'OOP & LLD',title:'OOP & Low Level Design',
+     desc:'Design patterns and OOP concepts are tested in dedicated LLD rounds at companies like Google, Amazon, Flipkart, Swiggy, and all top startups.',
+     hrs:40,
+     topics:[
+       {id:'t_solid',name:'SOLID Principles',diff:'medium',hrs:5,
+        tags:['SRP','OCP','LSP','ISP','DIP'],
+        about:'SOLID is the foundation of maintainable object-oriented code. Every senior interview includes at least one SOLID question. Know each principle, its violation, and the fix.',
+        concepts:['S — Single Responsibility: one class, one reason to change','O — Open/Closed: open for extension, closed for modification (use inheritance/interfaces)','L — Liskov Substitution: subclass should be usable where parent is expected','I — Interface Segregation: don\'t force clients to implement methods they don\'t use','D — Dependency Inversion: depend on abstractions, not concretions (inject dependencies)','God Class — violates SRP, too many responsibilities','SOLID violations lead to: rigid, fragile, immobile, viscous code'],
+        questions:['Explain SOLID with one real code example for each.','What happens if you violate Liskov Substitution Principle?','How does Dependency Injection relate to Dependency Inversion?','Refactor this God Class to follow SRP.','How does the Open/Closed Principle relate to design patterns like Strategy?','What is the difference between ISP and SRP?'],
+        resources:[
+          {name:'Refactoring Guru — SOLID',type:'Article',url:'https://refactoring.guru/solid',ico:'📄'},
+          {name:'Arjan Codes SOLID YouTube',type:'YouTube',url:'https://www.youtube.com/@ArjanCodes',ico:'▶'},
+          {name:'Baeldung SOLID Java',type:'Article',url:'https://www.baeldung.com/solid-principles',ico:'📄'},
+        ]},
+       {id:'t_patterns',name:'Design Patterns — Gang of Four',diff:'medium',hrs:12,
+        tags:['Singleton','Factory','Observer','Strategy'],
+        about:'Design patterns are reusable solutions to common design problems. The Gang of Four (GoF) 23 patterns split into Creational, Structural, and Behavioral. Know 10-12 core patterns deeply.',
+        concepts:['Creational — Singleton (one instance), Factory (decouple creation), Builder (step-by-step), Abstract Factory','Structural — Adapter (interface conversion), Decorator (add behavior), Facade (simplify complex system), Proxy (control access)','Behavioral — Observer (event subscription), Strategy (interchangeable algorithms), Command (encapsulate action), Iterator','Singleton thread-safety: double-checked locking with volatile keyword','Factory Method vs Abstract Factory — one product vs families of products','Observer = Publisher/Subscriber — Java EventListener, JS addEventListener'],
+        questions:['Implement thread-safe Singleton in Java/Python.','When would you use Factory Method vs Abstract Factory?','Implement Observer pattern — use case: event notification system.','What problem does the Strategy pattern solve? Give example.','How is Decorator different from Inheritance?','How does the Proxy pattern work? Give a real use case.','What design pattern does Java\'s InputStream use?','Implement Builder pattern for creating a User object.'],
+        resources:[
+          {name:'Refactoring Guru — Design Patterns (free)',type:'Tutorial',url:'https://refactoring.guru/design-patterns',ico:'📄'},
+          {name:'Christopher Okhravi YouTube',type:'YouTube',url:'https://www.youtube.com/@ChristopherOkhravi',ico:'▶'},
+          {name:'Head First Design Patterns (book)',type:'Book',url:'https://www.oreilly.com/library/view/head-first-design/0596007124/',ico:'📘'},
+        ]},
+       {id:'t_lld',name:'LLD Problems — Parking Lot, Chess, Bookmyshow',diff:'hard',hrs:15,
+        tags:['Class Diagram','UML','Extensibility','OOP'],
+        about:'LLD interviews ask you to design a small system using OOP principles. You\'ll draw classes, define interfaces, and write code. Framework: identify actors → define objects → apply SOLID → code.',
+        concepts:['LLD framework: Requirements → Entities → Class Diagram → Interfaces → Implementation','Parking Lot: Vehicle hierarchy, Spot types, ParkingFloor, Ticket, PricingStrategy (Strategy pattern)','BookMyShow: Show, Theater, Screen, Seat, Booking, Payment (State pattern for booking flow)','Chess: Board, Piece hierarchy (King/Queen/Pawn), Move validation, Game state','Library Management: Book, Member, LibraryCard, FineCalculator, Reservation queue','ATM: Card, Account, Transaction, ATMState (Vending/Processing/Dispensing)','Always ask: What changes? Program to that interface.'],
+        questions:['Design a parking lot system — classes, interfaces, and relationships.','Design BookMyShow seat booking with concurrency — how to prevent double booking?','Design a library management system.','Design an ATM system using state machine.','Design a chess game — focus on move validation.','How would you add a new vehicle type to parking lot without changing existing code?','Design an elevator system for a 10-floor building.'],
+        resources:[
+          {name:'Gaurav Sen LLD Playlist',type:'YouTube',url:'https://www.youtube.com/@GauravSensei',ico:'▶'},
+          {name:'Ashish Pratap Singh LLD',type:'YouTube',url:'https://www.youtube.com/@ashishps_1',ico:'▶'},
+          {name:'Udit Agarwal LLD',type:'YouTube',url:'https://www.youtube.com/@UditAgarwal21',ico:'▶'},
+        ]},
+     ]},
+  ]},
+  {cat:'LAYER 2 — CORE TRACK',color:'#a78bfa',lc:'l2',subjects:[
+    {id:'genai',ico:'✦',lbl:'GenAI/LLM',title:'GenAI & LLM Engineering',
+     desc:'The single hottest skill for 2026-28. Companies pay 22-45 LPA. Build real AI apps on top of LLMs — RAG pipelines, agents, and production deployments.',
+     hrs:60,
+     topics:[
+       {id:'t_prompt',name:'Prompt Engineering',diff:'easy',hrs:5,
+        tags:['Few-shot','Chain of Thought','System Prompt','Structured Output'],
+        about:'Prompt engineering is the fastest way to get value from LLMs. Master these techniques and you can dramatically improve model output quality for any task.',
+        concepts:['Zero-shot — no examples, direct instruction','Few-shot — 2-5 examples in prompt to guide output format','Chain-of-Thought (CoT) — add "think step by step" for reasoning tasks','System prompt vs User message — global instructions vs per-request','Temperature — 0 for deterministic facts, 0.7-1.0 for creative tasks','Structured output — JSON mode, function calling, pydantic schemas','Prompt injection — malicious input overrides system prompt (security risk)','Constitutional AI — self-critique and revision pattern'],
+        questions:['What is the difference between few-shot and zero-shot prompting?','How does Chain-of-Thought improve reasoning tasks?','When would you set temperature to 0 vs 1?','How do you prevent prompt injection attacks?','How do you get an LLM to always output valid JSON?','What is the role of the system prompt?','How would you test if your prompt is robust?'],
+        resources:[
+          {name:'Anthropic Prompt Engineering Docs',type:'Docs',url:'https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview',ico:'📄'},
+          {name:'DeepLearning.AI Prompting Course (free)',type:'Course',url:'https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/',ico:'📘'},
+          {name:'OpenAI Prompt Engineering Guide',type:'Docs',url:'https://platform.openai.com/docs/guides/prompt-engineering',ico:'📄'},
+        ]},
+       {id:'t_rag',name:'RAG — Retrieval Augmented Generation',diff:'medium',hrs:10,
+        tags:['Chunking','Embedding','Vector DB','Reranking'],
+        about:'RAG lets LLMs answer questions from your own documents. It\'s the most deployed GenAI pattern in production. Every AI engineering role tests RAG deeply.',
+        concepts:['RAG pipeline: Document → Chunk → Embed → Store → Query → Retrieve → Augment → Generate','Chunking strategies: fixed-size, sentence, semantic, recursive character','Embedding models: text-embedding-3-small (OpenAI), all-MiniLM (local), BGE','Similarity search: cosine similarity, dot product, euclidean distance','Reranking: cross-encoder (Cohere Rerank) reorders retrieval results for accuracy','Hybrid search: dense (vector) + sparse (BM25 keyword) retrieval combined','Chunking overlap: prevent context loss at boundaries (e.g. 100 token overlap)','Evaluation: RAGAS metrics — faithfulness, answer relevancy, context precision'],
+        questions:['Explain the full RAG pipeline from document to answer.','What chunk size would you choose and why?','How does hybrid search improve over pure vector search?','What is a cross-encoder reranker? When would you use it?','How do you evaluate the quality of a RAG system?','What is the difference between RAG and fine-tuning?','How would you handle PDFs with tables and images in RAG?'],
+        resources:[
+          {name:'LangChain RAG Tutorial',type:'Tutorial',url:'https://python.langchain.com/docs/tutorials/rag/',ico:'📄'},
+          {name:'DeepLearning.AI RAG Course (free)',type:'Course',url:'https://www.deeplearning.ai/short-courses/building-and-evaluating-advanced-rag/',ico:'📘'},
+          {name:'Pinecone Learn RAG',type:'Tutorial',url:'https://www.pinecone.io/learn/retrieval-augmented-generation/',ico:'📄'},
+        ]},
+       {id:'t_agents',name:'AI Agents & Agentic Systems',diff:'medium',hrs:10,
+        tags:['ReAct','Tool Use','LangGraph','Multi-Agent'],
+        about:'Agents are LLMs that use tools, plan multi-step, and act autonomously. The fastest-growing AI engineering skill. LangGraph and AutoGen are the leading frameworks.',
+        concepts:['ReAct pattern — Reason + Act cycles: Think → Tool → Observe → Think...','Tool use/Function calling — LLM outputs structured JSON to call external APIs','Agent memory: in-context (messages), external (vector store), episodic','LangGraph — stateful workflows with nodes, edges, conditional branching, human-in-loop','Multi-agent — specialized agents collaborate (planner, executor, critic, coder)','Agent evaluation — trajectory correctness, final answer, tool usage accuracy','Guardrails — input/output validation, toxicity, PII detection'],
+        questions:['What is the ReAct framework for LLM agents?','How does function calling work in the OpenAI/Anthropic API?','When would you use LangGraph vs a simple chain?','What types of memory can an AI agent have?','How do you prevent an agent from going into an infinite loop?','How would you build a coding agent that writes and runs code?','What is the difference between a sequential and a parallel agent workflow?'],
+        resources:[
+          {name:'LangChain Academy — LangGraph (free)',type:'Course',url:'https://academy.langchain.com/',ico:'📘'},
+          {name:'DeepLearning.AI Agents Course',type:'Course',url:'https://www.deeplearning.ai/short-courses/ai-agents-in-langgraph/',ico:'📘'},
+          {name:'Anthropic Tool Use Docs',type:'Docs',url:'https://docs.anthropic.com/en/docs/build-with-claude/tool-use',ico:'📄'},
+        ]},
+       {id:'t_ft',name:'Fine-Tuning LLMs — LoRA, QLoRA',diff:'hard',hrs:10,
+        tags:['LoRA','QLoRA','PEFT','Instruction Tuning'],
+        about:'Fine-tuning customizes a pretrained model for your specific task. LoRA makes this affordable on consumer GPUs. This skill differentiates ML engineers from LLM app developers.',
+        concepts:['Full fine-tuning — update all weights, requires massive GPU, usually unnecessary','Parameter Efficient Fine-Tuning (PEFT) — update small subset of weights','LoRA — Low-Rank Adaptation, inject low-rank matrices (r=8 to 64) into attention layers','QLoRA — quantize base model to 4-bit, then apply LoRA — runs on 16GB GPU','Instruction tuning — finetune on (instruction, response) pairs to follow instructions','DPO (Direct Preference Optimization) — align model using human preference pairs','Dataset format: Alpaca format (instruction, input, output) or ChatML format','Evaluation: perplexity, task-specific metrics, LLM-as-judge'],
+        questions:['When would you fine-tune vs use RAG vs prompt engineer?','What is LoRA? Why does low-rank work?','How does QLoRA reduce GPU memory requirements?','What is instruction tuning? How does it differ from pretraining?','What data format do you need for fine-tuning?','How do you evaluate if fine-tuning improved the model?','What is catastrophic forgetting and how do you avoid it?'],
+        resources:[
+          {name:'Hugging Face PEFT Docs',type:'Docs',url:'https://huggingface.co/docs/peft/index',ico:'📄'},
+          {name:'Axolotl — Fine-tuning framework',type:'GitHub',url:'https://github.com/axolotl-ai-cloud/axolotl',ico:'📄'},
+          {name:'Sebastian Raschka LLM Blog',type:'Article',url:'https://sebastianraschka.com/blog/',ico:'📄'},
+        ]},
+     ]},
+    {id:'fullstack',ico:'▤',lbl:'Full Stack',title:'Full Stack Development',
+     desc:'Build complete web apps end-to-end. High demand at every product startup, SaaS company, and MNC. Best for SDE roles.',
+     hrs:95,
+     topics:[
+       {id:'t_js',name:'JavaScript — Deep Dive',diff:'medium',hrs:15,
+        tags:['Closures','Event Loop','Promises','Prototype'],
+        about:'JavaScript is the most important language for web engineering. Interviewers love asking about closures, the event loop, and async. These are not optional.',
+        concepts:['Execution Context & Call Stack — how JS runs code','Hoisting — var (undefined), let/const (TDZ), function declarations','Closure — inner function retains access to outer scope after outer function returns','Prototype chain — objects inherit from __proto__, basis of OOP in JS','Event Loop — call stack + callback queue + microtask queue (Promises > setTimeout)','Promises — resolve/reject, .then chaining, error propagation','async/await — syntactic sugar over Promises, still non-blocking','Event delegation — one listener on parent, check event.target (memory efficient)'],
+        questions:['What is a closure? Give a practical use case.','Explain the JavaScript event loop. What runs first — setTimeout or Promise?','What is the difference between var, let, and const?','What is prototype chain? How does inheritance work in JS?','How does async/await differ from Promises?','What is event delegation? Why use it?','Explain the difference between == and === in JS.','What is debounce vs throttle? Implement debounce.'],
+        resources:[
+          {name:'javascript.info — The Modern JS Tutorial (free, best)',type:'Tutorial',url:'https://javascript.info/',ico:'📄'},
+          {name:'Namaste JS by Akshay Saini',type:'YouTube',url:'https://www.youtube.com/playlist?list=PLlasXeu85E9cQ32gLCvAvr9vNaUccPVNP',ico:'▶'},
+          {name:'You Don\'t Know JS (free book)',type:'Book',url:'https://github.com/getify/You-Dont-Know-JS',ico:'📘'},
+        ]},
+       {id:'t_react',name:'React.js — Hooks & Patterns',diff:'medium',hrs:15,
+        tags:['Hooks','State Management','Performance','SSR'],
+        about:'React is the dominant frontend library. Interviewers test hook internals, rendering behavior, and performance optimization. Senior roles also ask about reconciliation and Fiber.',
+        concepts:['useState — local state, triggers re-render on state change','useEffect — side effects, dependency array, cleanup function','useCallback/useMemo — memoize function/value, prevent unnecessary recalculation','useRef — mutable ref, persist across renders without re-render','Custom hooks — extract stateful logic into reusable functions','React reconciliation — virtual DOM diffing, key prop for lists','Context API — prop drilling solution, avoid for frequent updates (performance)','Code splitting — React.lazy + Suspense for dynamic imports'],
+        questions:['What is the difference between useEffect and useLayoutEffect?','How does useCallback prevent re-renders in child components?','When would you use useRef instead of useState?','What is the React reconciliation algorithm?','What is prop drilling? How do you solve it?','How does React Suspense work?','Explain React.memo — when does it NOT help?','What is the difference between controlled and uncontrolled components?'],
+        resources:[
+          {name:'React Official Beta Docs',type:'Docs',url:'https://react.dev/',ico:'📄'},
+          {name:'Jack Herrington React YouTube',type:'YouTube',url:'https://www.youtube.com/@jherr',ico:'▶'},
+          {name:'Scrimba React Course (free)',type:'Course',url:'https://scrimba.com/learn/learnreact',ico:'📘'},
+        ]},
+       {id:'t_node',name:'Node.js & REST APIs',diff:'medium',hrs:10,
+        tags:['Express','Middleware','Event Loop','Async'],
+        about:'Node.js powers most backend APIs in product companies. Understand the non-blocking I/O model, middleware pattern, and how to build production-ready REST APIs.',
+        concepts:['Node.js event loop — libuv, I/O non-blocking, single-threaded','Streams — readable, writable, transform (memory efficient for large files)','Express middleware chain — request → middleware 1 → middleware 2 → route handler → response','JWT authentication middleware — verify token, attach user to req','Error handling middleware — (err, req, res, next) signature','Rate limiting — express-rate-limit middleware, Redis store for distributed','Clustering — Node cluster module, one process per CPU core','Environment config — dotenv, 12-factor app, never commit secrets'],
+        questions:['How is Node.js single-threaded yet handles concurrent requests?','Explain the Node.js event loop phases.','What is a middleware in Express? Write one for logging.','How do you handle errors in async Express routes?','What is the difference between process.nextTick() and setImmediate()?','How would you prevent a single slow request from blocking all users?','How do you implement authentication middleware with JWT?'],
+        resources:[
+          {name:'Node.js Official Docs',type:'Docs',url:'https://nodejs.org/en/docs',ico:'📄'},
+          {name:'Traversy Media Node.js Crash Course',type:'YouTube',url:'https://www.youtube.com/watch?v=fBNz5xF-Kx4',ico:'▶'},
+          {name:'Boot.dev Backend Course',type:'Course',url:'https://www.boot.dev/',ico:'📘'},
+        ]},
+     ]},
+    {id:'cloud',ico:'◐',lbl:'Cloud/DevOps',title:'Cloud & DevOps Engineering',
+     desc:'Every company needs cloud engineers. AWS is most in-demand. DevOps roles pay 15-28 LPA with strong career growth.',
+     hrs:80,
+     topics:[
+       {id:'t_docker',name:'Docker — Containers & Compose',diff:'medium',hrs:10,
+        tags:['Dockerfile','Layers','Multi-stage','Networking'],
+        about:'Docker is mandatory for any cloud or backend role. You must be able to containerize an app, write good Dockerfiles, and compose multi-service applications.',
+        concepts:['Container = process + filesystem snapshot, lightweight vs VM','Dockerfile: FROM, RUN, COPY, ENV, EXPOSE, ENTRYPOINT vs CMD','Layer caching — order instructions from least to most changed (COPY package.json first)','Multi-stage build — build in one stage, copy artifact to lean runtime image','Docker networks: bridge (default), host (no isolation), overlay (swarm)','Docker volumes — named volumes for data persistence across container restarts','.dockerignore — exclude node_modules, .git from build context','docker-compose — define multi-service apps, service discovery by service name'],
+        questions:['What is the difference between ENTRYPOINT and CMD in a Dockerfile?','How does layer caching work? How do you optimize for it?','What is a multi-stage build and why use it?','How do containers in the same docker-compose network discover each other?','What is the difference between a Docker volume and bind mount?','How do you pass environment variables to a container securely?','How would you debug a container that exits immediately?'],
+        resources:[
+          {name:'Docker Official Docs',type:'Docs',url:'https://docs.docker.com/',ico:'📄'},
+          {name:'TechWorld with Nana Docker',type:'YouTube',url:'https://www.youtube.com/@TechWorldwithNana',ico:'▶'},
+          {name:'Play With Docker (free sandbox)',type:'Practice',url:'https://labs.play-with-docker.com/',ico:'◈'},
+        ]},
+       {id:'t_k8s',name:'Kubernetes — Production Deployments',diff:'hard',hrs:15,
+        tags:['Pod','Service','Deployment','HPA','Ingress'],
+        about:'Kubernetes is the operating system of the cloud. Every DevOps/SRE/cloud engineering role requires K8s. Learn the core objects and how they relate to each other.',
+        concepts:['Pod — one or more containers sharing network/storage, ephemeral, smallest deployable unit','Deployment — manages ReplicaSet, rolling updates, rollback','Service — stable network endpoint for pods (ClusterIP, NodePort, LoadBalancer)','Ingress — L7 HTTP routing, TLS termination, path/host-based routing','ConfigMap and Secret — externalize config and sensitive data','HPA — Horizontal Pod Autoscaler, scale on CPU/memory or custom metrics','PersistentVolume and PVC — storage lifecycle, dynamic provisioning','Liveness vs Readiness probe — health check vs ready to serve traffic'],
+        questions:['What is the difference between a Pod and a Deployment?','How does Kubernetes rolling update work? How do you roll back?','What is the difference between ClusterIP, NodePort, and LoadBalancer services?','How does an HPA decide when to scale?','What is the difference between liveness and readiness probes?','How do you expose a Kubernetes app to the internet?','What is a sidecar container? Give a use case.','How does Kubernetes handle a node failure?'],
+        resources:[
+          {name:'KodeKloud Kubernetes Course (free tier)',type:'Course',url:'https://kodekloud.com/courses/kubernetes-for-the-absolute-beginners-hands-on/',ico:'📘'},
+          {name:'TechWorld with Nana K8s Series',type:'YouTube',url:'https://www.youtube.com/@TechWorldwithNana',ico:'▶'},
+          {name:'Kubernetes Official Docs',type:'Docs',url:'https://kubernetes.io/docs/home/',ico:'📄'},
+        ]},
+       {id:'t_aws',name:'AWS Core Services',diff:'medium',hrs:15,
+        tags:['EC2','S3','RDS','Lambda','VPC','IAM'],
+        about:'AWS is the most in-demand cloud platform. For certifications and interviews, you need to know the core services cold — EC2, S3, RDS, Lambda, VPC, and IAM are the foundation.',
+        concepts:['EC2 — virtual machines, instance types (compute/memory/storage optimized), AMIs, Security Groups','S3 — object storage, unlimited scale, storage classes (Standard/IA/Glacier), lifecycle policies, presigned URLs','RDS — managed relational DB (Multi-AZ for HA, Read Replicas for scale)','Lambda — serverless functions, event-driven, pay per invocation, cold start issue','VPC — isolated network, subnets (public/private), route tables, NAT Gateway, VPC Peering','IAM — users, groups, roles, policies (least privilege principle), STS for temp credentials','CloudFront — CDN, integrated with S3/ALB, edge caching','SQS/SNS — managed queue and pub/sub, fanout pattern with SNS → SQS'],
+        questions:['What is the difference between EC2 and Lambda? When to use each?','How does S3 event notification work?','What is the difference between Multi-AZ and Read Replica in RDS?','Explain VPC — what is a private subnet vs public subnet?','What is IAM role vs IAM user? When to use each?','What is Lambda cold start? How do you mitigate it?','How would you store secrets in AWS securely?','What is the difference between ALB and NLB?'],
+        resources:[
+          {name:'AWS Skill Builder (free courses)',type:'Course',url:'https://skillbuilder.aws/',ico:'📘'},
+          {name:'freeCodeCamp AWS SAA Course',type:'YouTube',url:'https://www.youtube.com/watch?v=c3Cn4xYfxJY',ico:'▶'},
+          {name:'AWS Well-Architected Framework',type:'Docs',url:'https://aws.amazon.com/architecture/well-architected/',ico:'📄'},
+        ]},
+     ]},
+  ]},
+  {cat:'LAYER 3 — HOT 2027-28 SKILLS',color:'var(--amber)',lc:'l3',subjects:[
+    {id:'mlops',ico:'◐',lbl:'MLOps',title:'MLOps & AI Infrastructure',
+     desc:'Deploy, monitor, and maintain AI models in production. Bridges SDE and ML engineering — one of the rarest and best-paid hybrid skills.',
+     hrs:48,
+     topics:[
+       {id:'t_mlflow',name:'MLflow & Experiment Tracking',diff:'medium',hrs:6,
+        tags:['Experiments','Model Registry','Runs','Artifacts'],
+        about:'MLflow is the standard for ML experiment tracking. Every ML team uses it or a competitor (W&B). Knowing how to log experiments, compare runs, and register models is essential.',
+        concepts:['MLflow Tracking — log parameters, metrics, artifacts per run','MLflow Projects — package code in reproducible format','MLflow Models — standard model format (mlflow.sklearn.log_model)','Model Registry — manage model lifecycle (Staging → Production → Archived)','MLflow UI — compare runs visually, visualize metrics over time','Autolog — automatic logging for sklearn, pytorch, keras','Remote tracking server — centralized server for team collaboration'],
+        questions:['How do you track hyperparameters across 50 training runs?','What is the MLflow Model Registry and how do you promote a model to production?','How does MLflow autolog work with scikit-learn?','How would you compare two model versions before deploying?','What artifacts would you log during model training?'],
+        resources:[
+          {name:'MLflow Official Docs',type:'Docs',url:'https://mlflow.org/docs/latest/index.html',ico:'📄'},
+          {name:'Databricks MLflow Tutorial',type:'Tutorial',url:'https://docs.databricks.com/en/mlflow/index.html',ico:'📄'},
+          {name:'Made With ML MLOps Course (free)',type:'Course',url:'https://madewithml.com/',ico:'📘'},
+        ]},
+       {id:'t_serving',name:'Model Serving — FastAPI, Triton, Ray Serve',diff:'medium',hrs:8,
+        tags:['REST API','Batch Inference','GPU Serving','Latency'],
+        about:'Serving ML models in production efficiently is a specialized skill. Know the difference between online (real-time) and offline (batch) inference and the tools for each.',
+        concepts:['Online inference — real-time, low latency, FastAPI + uvicorn, synchronous','Batch inference — process large datasets, scheduled jobs, Spark or Ray','NVIDIA Triton Inference Server — GPU-optimized serving, model ensemble, dynamic batching','Ray Serve — distributed serving framework, autoscaling, Python-native','Quantization for serving — INT8/FP16 reduces memory and latency','Model warm-up — pre-load model on startup to avoid cold start latency','A/B testing models — shadow mode, canary deployment, gradual rollout'],
+        questions:['What is the difference between online and batch inference?','How does dynamic batching improve GPU utilization in Triton?','How would you reduce model serving latency from 500ms to 50ms?','How do you do A/B testing between two model versions in production?','What is model quantization and how does it affect accuracy?'],
+        resources:[
+          {name:'FastAPI Official Docs',type:'Docs',url:'https://fastapi.tiangolo.com/',ico:'📄'},
+          {name:'Ray Serve Docs',type:'Docs',url:'https://docs.ray.io/en/latest/serve/index.html',ico:'📄'},
+          {name:'NVIDIA Triton Tutorial',type:'Tutorial',url:'https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/index.html',ico:'📄'},
+        ]},
+     ]},
+  ]},
+  {cat:'LAYER 4 — PORTFOLIO & CAREER',color:'var(--green)',lc:'l4',subjects:[
+    {id:'portfolio',ico:'◫',lbl:'Portfolio',title:'Portfolio & Career Prep',
+     desc:'The layer that converts all your skills into an actual offer letter. The best engineer without a portfolio still loses to a decent engineer with one.',
+     hrs:45,
+     topics:[
+       {id:'t_resume',name:'Tech Resume — ATS, STAR Format',diff:'easy',hrs:4,
+        tags:['ATS','STAR','1-Page','Quantify Impact'],
+        about:'Your resume is your first filter. Most resumes get rejected by ATS before a human reads them. Follow the exact format that top engineers use at FAANG companies.',
+        concepts:['1 page for 0-5 years experience, max 2 pages for 10+ years','STAR bullets: "Reduced page load time by 40% by implementing Redis caching for 50K+ daily users"','Quantify everything — % improvement, users affected, scale, latency numbers','ATS keywords — match job description keywords exactly (Python, not "python")','Sections: Header → Summary (optional) → Experience → Projects → Education → Skills','Skills section — list technologies in order of proficiency, no skill bars','LaTeX (Jake\'s Template) or Resumake for clean formatting','DO NOT include: photo, DOB, marital status, objective statement, references'],
+        questions:['How do you write a bullet point using the STAR format?','What is ATS and how do you optimize your resume for it?','How do you quantify impact if you don\'t have production data yet (student)?','What should go in the Projects section?','How long should your resume be as a fresher?'],
+        resources:[
+          {name:'Jake\'s Resume LaTeX Template',type:'Template',url:'https://www.overleaf.com/latex/templates/jakes-resume/syzfjbzwjncs',ico:'📄'},
+          {name:'Google Resume Guide',type:'Article',url:'https://careers.google.com/how-we-hire/apply/',ico:'📄'},
+          {name:'Levels.fyi Resume Tips',type:'Article',url:'https://www.levels.fyi/',ico:'📄'},
+        ]},
+       {id:'t_mock',name:'Mock Interviews & Interview Strategy',diff:'medium',hrs:15,
+        tags:['Think Aloud','Clarify','Complexity Analysis','STAR Behavioral'],
+        about:'The interview is a performance. Being a good engineer is not enough — you must communicate your thinking clearly. Practice the interview as a skill, not just the content.',
+        concepts:['Always clarify: ask 2-3 clarifying questions before coding (inputs, edge cases, scale)','Think aloud — verbalize your approach, don\'t go silent','Brute force first — state the O(n²) solution, then optimize','Analyze complexity — always state time AND space complexity after coding','Test your code — walk through with 2-3 examples including edge cases','Behavioral STAR: Situation, Task, Action (what YOU did), Result (metric)','Common behavioral: leadership, conflict, failure, success, why this company','Practice 20+ DSA mocks and 5+ system design mocks minimum before interviews'],
+        questions:['Walk me through how you approach a coding problem you haven\'t seen.','Tell me about a time you disagreed with your manager.','Tell me about your most challenging technical project.','What is your biggest weakness?','Why do you want to join this company?','Tell me about a time you failed.','Describe a time you had to learn something quickly.'],
+        resources:[
+          {name:'Pramp — Free Mock Interviews',type:'Practice',url:'https://www.pramp.com/',ico:'◈'},
+          {name:'Interviewing.io — Real Mock Interviews',type:'Practice',url:'https://interviewing.io/',ico:'◈'},
+          {name:'Grokking Behavioral Interviews',type:'Course',url:'https://www.educative.io/courses/grokking-the-behavioral-interview',ico:'📘'},
+        ]},
+       {id:'t_neg',name:'Salary Negotiation — Get What You Deserve',diff:'easy',hrs:2,
+        tags:['BATNA','Counter Offer','Competing Offer','Compensation'],
+        about:'Salary negotiation is the highest ROI skill you\'ll ever learn. The first offer is never the best offer. Always negotiate — the worst they can say is no.',
+        concepts:['Never give a number first — "I\'m flexible and open to competitive offers"','Always negotiate — 80% of candidates never do, companies expect it','BATNA — Best Alternative To Negotiated Agreement (having another offer = power)','Competing offer tactic — leverage multiple offers for 20-40% higher salary','Components: Base salary + Bonus + Stock (ESOPs/RSUs) + Benefits','Research: Levels.fyi, Glassdoor, LinkedIn Salary for current market rates','Counter offer: always go 15-20% above their offer, give a range not exact number','Ask for time — "I need 2-3 days to discuss with my family" (never decide on the spot)'],
+        questions:['An offer came in at 18 LPA but you wanted 22 LPA. How do you negotiate?','How do you use a competing offer in negotiation?','What do you say when HR asks "What\'s your current salary"?','Is it okay to negotiate after accepting an offer? (Yes, sometimes)','How do you evaluate equity/ESOPs in an offer?'],
+        resources:[
+          {name:'Levels.fyi — India Salaries',type:'Tool',url:'https://www.levels.fyi/t/software-engineer/location/india',ico:'📄'},
+          {name:'Patrick McKenzie Negotiation Blog',type:'Article',url:'https://www.kalzumeus.com/2012/01/23/salary-negotiation/',ico:'📄'},
+          {name:'Ten Rules for Negotiating (free)',type:'Article',url:'https://haseebq.com/my-ten-rules-for-negotiating-a-job-offer/',ico:'📄'},
+        ]},
+     ]},
+  ]},
+];
+
+// ============================
+// STATE
+// ============================
+let progress={};
+let starred={};
+let notes={};
+let activeId='__home__';
+let filterState='all';
+let openTopicId=null;
+let activeTab='learn';
+let saveNotesTimeout=null;
+
+// Upgraded States
+let currentTheme='cyan';
+let masteredQs={}; // { topicId: [index1, index2...] }
+let pomoTimeRemaining = 25 * 60;
+let pomoDuration = 25 * 60;
+let pomoInterval = null;
+let pomoState = 'idle'; // 'idle', 'running', 'paused'
+let pomoTopicId = null;
+
+// ============================
+// HELPERS
+// ============================
+function allSubjects(){
+  const o=[];
+  DATA.forEach(g=>g.subjects&&g.subjects.forEach(s=>o.push({...s,lc:g.lc,gcolor:g.color})));
+  return o;
+}
+function allTopics(){
+  const o=[];
+  allSubjects().forEach(s=>(s.topics||[]).forEach(t=>o.push({...t,sid:s.id})));
+  return o;
+}
+function findSubj(id){return allSubjects().find(s=>s.id===id);}
+function findTopic(id){return allTopics().find(t=>t.id===id);}
+function sStats(s){
+  const tot=(s.topics||[]).length;
+  const done=(s.topics||[]).filter(t=>progress[t.id]==='done').length;
+  const inp=(s.topics||[]).filter(t=>progress[t.id]==='in_progress').length;
+  return{tot,done,inp,pct:tot?Math.round(done/tot*100):0};
+}
+function gStats(){
+  const all=allTopics();
+  const done=all.filter(t=>progress[t.id]==='done').length;
+  const inp=all.filter(t=>progress[t.id]==='in_progress').length;
+  return{total:all.length,done,inp,left:all.length-done-inp,pct:all.length?Math.round(done/all.length*100):0};
+}
+function escapeHtml(str) {
+  return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+}
+
+// ============================
+// STORAGE
+// ============================
+const storage = window.storage || {
+  get: async (key) => {
+    const val = localStorage.getItem(key);
+    return val ? { value: val } : null;
+  },
+  set: async (key, val) => {
+    localStorage.setItem(key, val);
+  }
+};
+
+async function loadProg(){
+  try{
+    const r=await storage.get('20lpa_v2');
+    if(r)progress=JSON.parse(r.value);
+  }catch(e){}
+  try{
+    const s=await storage.get('20lpa_starred');
+    if(s)starred=JSON.parse(s.value);
+  }catch(e){}
+  try{
+    const n=await storage.get('20lpa_notes');
+    if(n)notes=JSON.parse(n.value);
+  }catch(e){}
+  try{
+    const mq=await storage.get('20lpa_mastered_qs');
+    if(mq)masteredQs=JSON.parse(mq.value);
+  }catch(e){}
+  try{
+    const th=await storage.get('20lpa_theme');
+    if(th && th.value) {
+      currentTheme=th.value;
+      const themeSelector = document.getElementById('theme-selector');
+      if (themeSelector) themeSelector.value = currentTheme;
+    }
+  }catch(e){}
+  applyTheme(currentTheme);
+}
+async function saveProg(){try{await storage.set('20lpa_v2',JSON.stringify(progress));}catch(e){}}
+async function saveStarred(){try{await storage.set('20lpa_starred',JSON.stringify(starred));}catch(e){}}
+async function saveNotes(){try{await storage.set('20lpa_notes',JSON.stringify(notes));}catch(e){}}
+async function saveMasteredQs(){try{await storage.set('20lpa_mastered_qs',JSON.stringify(masteredQs));}catch(e){}}
+async function saveTheme(){try{await storage.set('20lpa_theme',JSON.stringify({value: currentTheme}));}catch(e){}}
+
+// ============================
+// THEME ACTIONS
+// ============================
+function applyTheme(theme) {
+  document.body.className = '';
+  document.body.classList.add('theme-' + theme);
+}
+function changeTheme(theme) {
+  currentTheme = theme;
+  applyTheme(theme);
+  saveTheme();
+}
+
+// ============================
+// POMODORO TIMER LOGIC
+// ============================
+function updatePomoDisplay() {
+  const mins = Math.floor(pomoTimeRemaining / 60);
+  const secs = pomoTimeRemaining % 60;
+  const timeDisplay = document.getElementById('pomo-time');
+  if (timeDisplay) {
+    timeDisplay.textContent = (mins < 10 ? '0' : '') + mins + ':' + (secs < 10 ? '0' : '') + secs;
+  }
+  
+  const statusEl = document.getElementById('pomo-status');
+  if (statusEl) {
+    if (pomoState === 'running') {
+      statusEl.textContent = 'Focusing';
+      statusEl.style.color = 'var(--cyan)';
+    } else if (pomoState === 'paused') {
+      statusEl.textContent = 'Paused';
+      statusEl.style.color = 'var(--amber)';
+    } else {
+      statusEl.textContent = 'Idle';
+      statusEl.style.color = 'var(--text3)';
+    }
+  }
+
+  // Active topic title
+  const activeTopicEl = document.getElementById('pomo-active-topic');
+  if (activeTopicEl) {
+    if (openTopicId) {
+      const t = findTopic(openTopicId);
+      if (t) {
+        pomoTopicId = openTopicId;
+        activeTopicEl.textContent = 'Studying: ' + t.name;
+      }
+    } else if (pomoTopicId) {
+      const t = findTopic(pomoTopicId);
+      if (t) activeTopicEl.textContent = 'Studying: ' + t.name;
+    } else {
+      activeTopicEl.textContent = 'No active topic';
+    }
+  }
+}
+
+function setPomoPreset(mins) {
+  clearInterval(pomoInterval);
+  pomoState = 'idle';
+  pomoDuration = mins * 60;
+  pomoTimeRemaining = pomoDuration;
+  
+  document.querySelectorAll('.pomo-preset').forEach(btn => btn.classList.remove('active'));
+  const activePresetBtn = document.getElementById('preset-' + mins);
+  if (activePresetBtn) activePresetBtn.classList.add('active');
+  
+  const startBtn = document.getElementById('pomo-start-btn');
+  if (startBtn) {
+    startBtn.textContent = '▶ Start';
+    startBtn.classList.remove('active');
+  }
+
+  updatePomoDisplay();
+}
+
+function togglePomo() {
+  const startBtn = document.getElementById('pomo-start-btn');
+  if (!startBtn) return;
+  
+  if (pomoState === 'running') {
+    // Pause
+    clearInterval(pomoInterval);
+    pomoState = 'paused';
+    startBtn.textContent = '▶ Resume';
+    startBtn.classList.remove('active');
+  } else {
+    // Start or Resume
+    pomoState = 'running';
+    startBtn.textContent = '⏸ Pause';
+    startBtn.classList.add('active');
+    
+    // Set active topic if available
+    if (openTopicId) pomoTopicId = openTopicId;
+    
+    pomoInterval = setInterval(() => {
+      pomoTimeRemaining--;
+      if (pomoTimeRemaining <= 0) {
+        clearInterval(pomoInterval);
+        pomoState = 'idle';
+        pomoTimeRemaining = pomoDuration;
+        startBtn.textContent = '▶ Start';
+        startBtn.classList.remove('active');
+        playPomoAlarm();
+        alert('🎉 Focus session completed! Take a break.');
+      }
+      updatePomoDisplay();
+    }, 1000);
+  }
+  updatePomoDisplay();
+}
+
+function resetPomo() {
+  clearInterval(pomoInterval);
+  pomoState = 'idle';
+  pomoTimeRemaining = pomoDuration;
+  const startBtn = document.getElementById('pomo-start-btn');
+  if (startBtn) {
+    startBtn.textContent = '▶ Start';
+    startBtn.classList.remove('active');
+  }
+  updatePomoDisplay();
+}
+
+function playPomoAlarm() {
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    if (!ctx) return;
+    
+    // Play a dual chime: first note C5 (523.25Hz), second note E5 (659.25Hz)
+    const playNote = (freq, time, duration) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.value = freq;
+      gain.gain.setValueAtTime(0.15, time);
+      gain.gain.exponentialRampToValueAtTime(0.001, time + duration);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(time);
+      osc.stop(time + duration);
+    };
+
+    const now = ctx.currentTime;
+    playNote(523.25, now, 0.4);
+    playNote(659.25, now + 0.15, 0.5);
+  } catch (e) {
+    console.error('Failed to play audio alert:', e);
+  }
+}
+
+
+// ============================
+// HEADER
+// ============================
+function updateHeader(){
+  const s=gStats();
+  document.getElementById('hBar').style.width=s.pct+'%';
+  document.getElementById('hPct').textContent=s.pct+'%';
+  document.getElementById('sDone').textContent=s.done+' done';
+  document.getElementById('sProg').textContent=s.inp+' in progress';
+  document.getElementById('sLeft').textContent=s.left+' left';
+}
+
+// ============================
+// SIDEBAR
+// ============================
+function renderSidebar(){
+  const starCount = Object.keys(starred).filter(k => starred[k]).length;
+  let h=`<div class="si ${activeId==='__home__'?'active':''}" onclick="go('__home__')"><span class="si-ico">⌂</span><span class="si-name">Overview</span></div>
+  <div class="si ${activeId==='__starred__'?'active':''}" onclick="go('__starred__')"><span class="si-ico">★</span><span class="si-name">Starred Topics</span><span class="si-ct">${starCount}</span></div>
+  <div class="sdiv"></div>`;
+  DATA.forEach(g=>{
+    if(!g.subjects)return;
+    h+=`<div class="sc">${g.cat}</div>`;
+    g.subjects.forEach(s=>{
+      const ss=sStats(s);
+      h+=`<div class="si ${activeId===s.id?'active':''}" onclick="go('${s.id}')"><span class="si-ico">${s.ico}</span><span class="si-name">${s.lbl}</span><span class="si-ct">${ss.done}/${ss.tot}</span></div>`;
+    });
+  });
+  document.getElementById('sidebar-menu').innerHTML=h;
+}
+
+// ============================
+// SEARCH LOGIC
+// ============================
+function handleSearch(q){
+  const cleanQ = q.trim().toLowerCase();
+  const clearBtn = document.getElementById('search-clear-btn');
+  
+  if(!cleanQ){
+    clearBtn.style.display = 'none';
+    if(activeId === '__search__'){
+      go('__home__');
+    }
+    return;
+  }
+  
+  clearBtn.style.display = 'block';
+  activeId = '__search__';
+  
+  // Highlight active menu items: remove "active" class from others
+  const activeItems = document.querySelectorAll('#sidebar-menu .si.active');
+  activeItems.forEach(el => el.classList.remove('active'));
+  
+  renderSearch(cleanQ);
+}
+
+function clearSearch(){
+  const searchInput = document.getElementById('search-input');
+  searchInput.value = '';
+  document.getElementById('search-clear-btn').style.display = 'none';
+  go('__home__');
+}
+
+function renderSearch(q){
+  const allT = allTopics();
+  const results = allT.filter(t => {
+    const matchName = t.name.toLowerCase().includes(q);
+    const matchTags = (t.tags || []).some(tg => tg.toLowerCase().includes(q));
+    const matchAbout = (t.about || '').toLowerCase().includes(q);
+    const matchConcepts = (t.concepts || []).some(c => c.toLowerCase().includes(q));
+    return matchName || matchTags || matchAbout || matchConcepts;
+  });
+  
+  let h = `<div class="hero anim">
+    <div class="hero-eye">Search Results</div>
+    <div class="hero-h">Results for <span>"${escapeHtml(q)}"</span></div>
+    <div class="hero-p">Found ${results.length} topics matching your query.</div>
+  </div>
+  <div class="tgrid anim">`;
+  
+  if(!results.length){
+    h += `<div class="empty">No topics found matching "${escapeHtml(q)}". Try searching for "dijkstra", "react", "sql", "index", etc.</div>`;
+  } else {
+    results.forEach(t => {
+      const s = findSubj(t.sid);
+      const st=progress[t.id]||'not_started';
+      const sico=st==='done'?'✓':st==='in_progress'?'◐':'';
+      const dc=t.diff==='easy'?'de':t.diff==='medium'?'dm':'dh';
+      const tagHtml=(t.tags||[]).map(tg=>`<span class="tc-tag">${tg}</span>`).join('');
+      const isStarred = starred[t.id] ? 'active' : '';
+      const hasNotes = notes[t.id] && notes[t.id].trim();
+      h+=`<div class="tc ${st}" id="tc_${t.id}">
+        <div class="tc-status" onclick="cycleStatus('${t.id}','__search__',event)" title="Click to mark progress">${sico}</div>
+        <div class="tc-info" onclick="openPanel('${t.id}')" style="cursor:pointer">
+          <div class="tc-name" style="display:flex;align-items:center;gap:6px">
+            <span class="tc-star ${isStarred}" onclick="toggleStar('${t.id}',event)">★</span>
+            <span>${t.name}</span>
+            <span style="font-size:10px;color:var(--text3);margin-left:4.5px;font-family:var(--fb);">(${s ? s.lbl : ''})</span>
+            ${hasNotes ? `<span class="tc-notes-indicator" title="Has study notes">📝</span>` : ''}
+          </div>
+          <div class="tc-tags">${tagHtml}</div>
+        </div>
+        <div class="tc-right">
+          <span class="db ${dc}">${t.diff}</span>
+          <span class="hrs">~${t.hrs}h</span>
+          <button class="open-btn" onclick="openPanel('${t.id}')">Study →</button>
+        </div>
+      </div>`;
+    });
+  }
+  h += `</div>`;
+  document.getElementById('main').innerHTML = h;
+}
+
+// ============================
+// STARRED VIEW
+// ============================
+function renderStarred(){
+  const allT = allTopics();
+  const starT = allT.filter(t => starred[t.id]);
+  
+  let h = `<div class="hero anim">
+    <div class="hero-eye">Your Favorites</div>
+    <div class="hero-h">Starred <span>Topics</span> ★</div>
+    <div class="hero-p">Quick access to the topics you marked as important or need to review. Keep mastering them to crack your dream offer.</div>
+  </div>
+  <div class="tgrid anim">`;
+  
+  if(!starT.length) {
+    h += `<div class="empty">No starred topics yet. Click the star icon ★ on any topic to add it here!</div>`;
+  } else {
+    starT.forEach(t => {
+      const s = findSubj(t.sid);
+      const st=progress[t.id]||'not_started';
+      const sico=st==='done'?'✓':st==='in_progress'?'◐':'';
+      const dc=t.diff==='easy'?'de':t.diff==='medium'?'dm':'dh';
+      const tagHtml=(t.tags||[]).map(tg=>`<span class="tc-tag">${tg}</span>`).join('');
+      const hasNotes = notes[t.id] && notes[t.id].trim();
+      h+=`<div class="tc ${st}" id="tc_${t.id}">
+        <div class="tc-status" onclick="cycleStatus('${t.id}','__starred__',event)" title="Click to mark progress">${sico}</div>
+        <div class="tc-info" onclick="openPanel('${t.id}')" style="cursor:pointer">
+          <div class="tc-name" style="display:flex;align-items:center;gap:6px">
+            <span class="tc-star active" onclick="toggleStar('${t.id}',event)">★</span>
+            <span>${t.name}</span>
+            <span style="font-size:10px;color:var(--text3);margin-left:4.5px;font-family:var(--fb);">(${s ? s.lbl : ''})</span>
+            ${hasNotes ? `<span class="tc-notes-indicator" title="Has study notes">📝</span>` : ''}
+          </div>
+          <div class="tc-tags">${tagHtml}</div>
+        </div>
+        <div class="tc-right">
+          <span class="db ${dc}">${t.diff}</span>
+          <span class="hrs">~${t.hrs}h</span>
+          <button class="open-btn" onclick="openPanel('${t.id}')">Study →</button>
+        </div>
+      </div>`;
+    });
+  }
+  h += `</div>`;
+  document.getElementById('main').innerHTML = h;
+}
+
+function toggleStar(tid, e){
+  if(e) e.stopPropagation();
+  starred[tid] = !starred[tid];
+  saveStarred();
+  
+  updateHeader();
+  renderSidebar();
+  if(activeId==='__home__') renderHome();
+  else if(activeId==='__starred__') renderStarred();
+  else if(activeId==='__search__') renderSearch(document.getElementById('search-input').value);
+  else renderSubject(activeId);
+  
+  const starBtn = document.querySelector('.dp-star-btn');
+  if(starBtn && openTopicId===tid) {
+    if(starred[tid]) {
+      starBtn.classList.add('active');
+    } else {
+      starBtn.classList.remove('active');
+    }
+  }
+}
+
+// ============================
+// HOME
+// ============================
+function renderHome(){
+  const s=gStats();
+  
+  // Calculate analytics
+  const allT = allTopics();
+  const easyT = allT.filter(t => t.diff === 'easy');
+  const medT = allT.filter(t => t.diff === 'medium');
+  const hardT = allT.filter(t => t.diff === 'hard');
+
+  const easyDone = easyT.filter(t => progress[t.id] === 'done').length;
+  const medDone = medT.filter(t => progress[t.id] === 'done').length;
+  const hardDone = hardT.filter(t => progress[t.id] === 'done').length;
+
+  const easyPct = easyT.length ? Math.round(easyDone / easyT.length * 100) : 0;
+  const medPct = medT.length ? Math.round(medDone / medT.length * 100) : 0;
+  const hardPct = hardT.length ? Math.round(hardDone / hardT.length * 100) : 0;
+
+  let totalHours = 0;
+  let completedHours = 0;
+  allT.forEach(t => {
+    totalHours += t.hrs || 0;
+    if (progress[t.id] === 'done') {
+      completedHours += t.hrs || 0;
+    } else if (progress[t.id] === 'in_progress') {
+      completedHours += Math.round((t.hrs || 0) * 0.3); // 30% weight for in_progress
+    }
+  });
+  const remainingHours = Math.max(0, totalHours - completedHours);
+  const timePct = totalHours ? Math.round(completedHours / totalHours * 100) : 0;
+
+  let totalQs = 0;
+  let masteredCount = 0;
+  allT.forEach(t => {
+    totalQs += (t.questions || []).length;
+    if (masteredQs[t.id]) {
+      masteredCount += masteredQs[t.id].length;
+    }
+  });
+  const qPct = totalQs ? Math.round(masteredCount / totalQs * 100) : 0;
+
+  // Render home HTML
+  let h=`<div class="hero anim"><div class="hero-eye">Private — Only Accessible to You</div><div class="hero-h">Crack the <span>20 LPA</span> Job 🎯</div><div class="hero-p">Every subject. Every topic. Full notes, key concepts, interview questions & clickable resources. Track your progress — saves automatically.</div></div>
+  
+  <!-- Upgraded Analytics Section -->
+  <div class="analytics-grid anim">
+    <!-- Progress Pie Chart Card -->
+    <div class="ac-card">
+      <div class="ac-title">Difficulty Breakdown</div>
+      <div class="ac-chart-container" style="margin-top:6px;">
+        <div class="ac-chart-pie" id="diff-pie-chart" style="background: conic-gradient(var(--green) 0% ${easyPct}%, var(--amber) ${easyPct}% ${easyPct + medPct}%, var(--red) ${easyPct + medPct}% ${easyPct + medPct + hardPct}%, var(--bg3) 0 100%);"></div>
+        <div class="ac-legend">
+          <div class="ac-legend-item">
+            <span class="ac-legend-dot" style="background:var(--green)"></span>
+            <span>Easy: ${easyDone}/${easyT.length} (${easyPct}%)</span>
+          </div>
+          <div class="ac-legend-item">
+            <span class="ac-legend-dot" style="background:var(--amber)"></span>
+            <span>Med: ${medDone}/${medT.length} (${medPct}%)</span>
+          </div>
+          <div class="ac-legend-item">
+            <span class="ac-legend-dot" style="background:var(--red)"></span>
+            <span>Hard: ${hardDone}/${hardT.length} (${hardPct}%)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Study Time Card -->
+    <div class="ac-card" style="justify-content: space-between;">
+      <div class="ac-title">Study Time Allocation</div>
+      <div style="display:flex; flex-direction:column; gap:4px; margin-top:4px;">
+        <div class="ac-val">${completedHours}h <span style="font-size:12px; font-weight:normal; color:var(--text2)">completed</span></div>
+        <div style="font-size:12px; color:var(--text2);">${remainingHours}h remaining of ~${totalHours}h total</div>
+        <div class="ac-progress-bar">
+          <div class="ac-progress-fill" style="width:${timePct}%; background:linear-gradient(90deg, var(--cyan), var(--purple))"></div>
+        </div>
+        <div style="font-size:10px; font-family:var(--fm); color:var(--cyan); margin-top:2px;">${timePct}% Time Velocity</div>
+      </div>
+    </div>
+
+    <!-- Question Mastery Card -->
+    <div class="ac-card">
+      <div class="ac-title">Question Mastery</div>
+      <div class="ac-chart-container" style="margin-top:6px;">
+        <div class="ac-chart-donut" style="background: conic-gradient(var(--green) 0% ${qPct}%, var(--bg3) ${qPct}% 100%);">
+          <div class="ac-chart-donut-text">${qPct}%</div>
+        </div>
+        <div class="ac-legend">
+          <div class="ac-val" style="color:var(--green); font-size:24px;">${masteredCount}/${totalQs}</div>
+          <div style="font-size:11px; color:var(--text2);">questions mastered</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ls-head" style="margin-top:32px; font-size:10px; border-bottom: 1px solid var(--border2); padding-bottom: 6px; margin-bottom:14px;"><div class="ls-dot" style="background:var(--cyan)"></div>Curriculum Layers</div>
+  
+  <div class="dash anim"><div class="dc cc"><div class="dc-lbl">Total Topics</div><div class="dc-num">${s.total}</div><div class="dc-sub">across 4 layers</div></div><div class="dc cg"><div class="dc-lbl">Completed</div><div class="dc-num">${s.done}</div><div class="dc-sub">${s.pct}% done</div></div><div class="dc ca"><div class="dc-lbl">In Progress</div><div class="dc-num">${s.inp}</div><div class="dc-sub">currently active</div></div><div class="dc cp"><div class="dc-lbl">Remaining</div><div class="dc-num">${s.left}</div><div class="dc-sub">topics left</div></div></div>`;
+  
+  DATA.forEach(g=>{
+    if(!g.subjects)return;
+    h+=`<div class="ls"><div class="ls-head"><div class="ls-dot" style="background:${g.color}"></div>${g.cat}</div><div class="sc-grid">`;
+    g.subjects.forEach(s=>{
+      const ss=sStats(s);
+      h+=`<div class="scard" onclick="go('${s.id}')"><div class="scard-top"><span class="scard-ico">${s.ico}</span><span class="scard-name">${s.lbl}</span></div><div class="scard-bar"><div class="scard-fill" style="width:${ss.pct}%;background:${g.color}"></div></div><div class="scard-meta"><span>${ss.done}/${ss.tot} done</span><span style="color:${g.color};font-family:var(--fm);font-size:10.5px">${ss.pct}%</span></div></div>`;
+    });
+    h+=`</div></div>`;
+  });
+  
+  h += `
+  <div class="sdiv2"><div class="sdiv2-lbl">Dashboard Settings & Backup</div><div class="sdiv2-line"></div></div>
+  <div class="dash anim" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px; margin-bottom: 24px;">
+    <div class="dc" style="display:flex; justify-content:space-between; align-items:center; padding: 18px 24px;">
+      <div>
+        <div class="dc-lbl" style="margin-bottom: 2px;">Backup & Restore Data</div>
+        <div class="dc-sub" style="margin-top: 4px;">Export study progress, stars, and notes, or import a saved backup file.</div>
+        <div style="margin-top:12px; display:flex; gap:8px;">
+          <button class="open-btn" onclick="exportData()" style="padding: 6px 12px; font-weight: 600;">📥 Export JSON</button>
+          <button class="open-btn" onclick="document.getElementById('import-file-input').click()" style="padding: 6px 12px; font-weight: 600;">📤 Import JSON</button>
+          <input type="file" id="import-file-input" onchange="importData(event)" style="display:none;" accept=".json">
+        </div>
+      </div>
+    </div>
+    
+    <div class="dc" style="display:flex; justify-content:space-between; align-items:center; padding: 18px 24px;">
+      <div>
+        <div class="dc-lbl" style="margin-bottom: 2px; color:var(--red);">Reset Data</div>
+        <div class="dc-sub">Permanently delete all study progress checkmarks, bookmarks, and personal notes.</div>
+      </div>
+      <button class="open-btn" onclick="resetAllData()" style="padding: 8px 16px; border-color: var(--red); color: var(--red); font-weight: 600; border-radius: var(--r6);">Reset All Data</button>
+    </div>
+  </div>
+  `;
+  
+  document.getElementById('main').innerHTML=h;
+}
+
+// ============================
+// SUBJECT VIEW
+// ============================
+function renderSubject(id){
+  const s=findSubj(id);
+  if(!s)return;
+  const g=DATA.find(g=>g.subjects&&g.subjects.find(x=>x.id===id));
+  const ss=sStats(s);
+  const lmap={l1:'Layer 1 — Foundation',l2:'Layer 2 — Core Track',l3:'Layer 3 — Hot 2027-28',l4:'Layer 4 — Career'};
+  
+  let topics=s.topics||[];
+  
+  // 1. Completion filter
+  if(filterState==='done')topics=topics.filter(t=>progress[t.id]==='done');
+  else if(filterState==='in_progress')topics=topics.filter(t=>progress[t.id]==='in_progress');
+  else if(filterState==='remaining')topics=topics.filter(t=>!progress[t.id]||progress[t.id]==='not_started');
+
+  // 2. Difficulty filter
+  if(difficultyFilter!=='all') {
+    topics=topics.filter(t=>t.diff===difficultyFilter);
+  }
+
+  // 3. Sorting
+  const diffWeight = { easy: 1, medium: 2, hard: 3 };
+  if(sortState==='alphabetical') {
+    topics=[...topics].sort((a,b)=>a.name.localeCompare(b.name));
+  } else if(sortState==='duration_asc') {
+    topics=[...topics].sort((a,b)=>(a.hrs||0)-(b.hrs||0));
+  } else if(sortState==='duration_desc') {
+    topics=[...topics].sort((a,b)=>(b.hrs||0)-(a.hrs||0));
+  } else if(sortState==='difficulty_asc') {
+    topics=[...topics].sort((a,b)=>diffWeight[a.diff]-diffWeight[b.diff]);
+  } else if(sortState==='difficulty_desc') {
+    topics=[...topics].sort((a,b)=>diffWeight[b.diff]-diffWeight[a.diff]);
+  }
+
+  let h=`<div class="sv-header anim">
+    <div class="layer-badge ${s.lc}">${lmap[s.lc]}</div>
+    <div class="sv-title">${s.title}</div>
+    <div class="sv-desc">${s.desc}</div>
+    <div class="sv-meta">
+      <span class="sv-chip">📚 ${(s.topics||[]).length} topics</span>
+      <span class="sv-chip">⏱ ~${s.hrs}h total</span>
+      <span class="sv-chip" style="color:var(--green)">✓ ${ss.done} done</span>
+      <span class="sv-chip" style="color:var(--amber)">◐ ${ss.inp} in progress</span>
+    </div>
+  </div>
+  <div class="fbar" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+    <div style="display:flex; gap:6px; flex-wrap:wrap;">
+      <button class="fb ${filterState==='all'?'on':''}" onclick="setFilter('all')">All (${(s.topics||[]).length})</button>
+      <button class="fb ${filterState==='remaining'?'on':''}" onclick="setFilter('remaining')">Remaining (${(s.topics||[]).filter(t=>!progress[t.id]||progress[t.id]==='not_started').length})</button>
+      <button class="fb ${filterState==='in_progress'?'on':''}" onclick="setFilter('in_progress')">In Progress (${(s.topics||[]).filter(t=>progress[t.id]==='in_progress').length})</button>
+      <button class="fb ${filterState==='done'?'on':''}" onclick="setFilter('done')">Done (${ss.done})</button>
+    </div>
+    <div style="display:flex; gap:8px; align-items:center;">
+      <span style="font-size:11px; color:var(--text2); font-family:var(--fm);">Diff:</span>
+      <select onchange="setDiffFilter(this.value)" class="sort-select">
+        <option value="all" ${difficultyFilter==='all'?'selected':''}>All</option>
+        <option value="easy" ${difficultyFilter==='easy'?'selected':''}>🟢 Easy</option>
+        <option value="medium" ${difficultyFilter==='medium'?'selected':''}>🟡 Medium</option>
+        <option value="hard" ${difficultyFilter==='hard'?'selected':''}>🔴 Hard</option>
+      </select>
+      <span style="font-size:11px; color:var(--text2); font-family:var(--fm); margin-left:6px;">Sort:</span>
+      <select onchange="setSort(this.value)" class="sort-select">
+        <option value="default" ${sortState==='default'?'selected':''}>Recommended</option>
+        <option value="alphabetical" ${sortState==='alphabetical'?'selected':''}>A-Z</option>
+        <option value="duration_asc" ${sortState==='duration_asc'?'selected':''}>Duration (Low-High)</option>
+        <option value="duration_desc" ${sortState==='duration_desc'?'selected':''}>Duration (High-Low)</option>
+        <option value="difficulty_asc" ${sortState==='difficulty_asc'?'selected':''}>Difficulty (Easy-Hard)</option>
+        <option value="difficulty_desc" ${sortState==='difficulty_desc'?'selected':''}>Difficulty (Hard-Easy)</option>
+      </select>
+    </div>
+  </div>
+  <div class="tgrid anim">`;
+
+  if(!topics.length){h+=`<div class="empty">No topics match this filter/sorting combo.</div>`;}
+  topics.forEach(t=>{
+    const st=progress[t.id]||'not_started';
+    const sico=st==='done'?'✓':st==='in_progress'?'◐':'';
+    const dc=t.diff==='easy'?'de':t.diff==='medium'?'dm':'dh';
+    const tagHtml=(t.tags||[]).map(tg=>`<span class="tc-tag">${tg}</span>`).join('');
+    const isStarred = starred[t.id] ? 'active' : '';
+    const hasNotes = notes[t.id] && notes[t.id].trim();
+    h+=`<div class="tc ${st}" id="tc_${t.id}">
+      <div class="tc-status" onclick="cycleStatus('${t.id}','${id}',event)" title="Click to mark progress">${sico}</div>
+      <div class="tc-info" onclick="openPanel('${t.id}')" style="cursor:pointer">
+        <div class="tc-name" style="display:flex;align-items:center;gap:6px">
+          <span class="tc-star ${isStarred}" onclick="toggleStar('${t.id}',event)">★</span>
+          <span>${t.name}</span>
+          ${hasNotes ? `<span class="tc-notes-indicator" title="Has study notes">📝</span>` : ''}
+        </div>
+        <div class="tc-tags">${tagHtml}</div>
+      </div>
+      <div class="tc-right">
+        <span class="db ${dc}">${t.diff}</span>
+        <span class="hrs">~${t.hrs}h</span>
+        <button class="open-btn" onclick="openPanel('${t.id}')">Study →</button>
+      </div>
+    </div>`;
+  });
+  h+=`</div>`;
+  document.getElementById('main').innerHTML=h;
+}
+
+// ============================
+// DETAIL PANEL
+// ============================
+function openPanel(tid){
+  const t=findTopic(tid);
+  if(!t)return;
+  openTopicId=tid;
+  const dc=t.diff==='easy'?'de':t.diff==='medium'?'dm':'dh';
+  const st=progress[tid]||'not_started';
+
+  document.getElementById('dpHead').innerHTML=`
+    <button class="dp-close" onclick="closePanel()">✕</button>
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+      <span class="dp-diff ${dc}">${t.diff}</span>
+      <button class="dp-star-btn ${starred[tid]?'active':''}" onclick="toggleStar('${t.id}',event)" title="Star this topic">★</button>
+    </div>
+    <div class="dp-title">${t.name}</div>
+    <div class="dp-meta">~${t.hrs} hours to master · Click Status below to track</div>
+    <div class="dp-tabs">
+      <button class="dp-tab ${activeTab==='learn'?'active':''}" id="tab-btn-learn" onclick="switchTab('learn')">📖 Learn</button>
+      <button class="dp-tab ${activeTab==='practice'?'active':''}" id="tab-btn-practice" onclick="switchTab('practice')">❓ Practice</button>
+      <button class="dp-tab ${activeTab==='notes'?'active':''}" id="tab-btn-notes" onclick="switchTab('notes')">📝 My Notes</button>
+    </div>`;
+
+  const conc=(t.concepts||[]).map(c=>`<div class="cv"><span class="cv-dot">›</span><span>${c}</span></div>`).join('');
+  
+  // Custom checklist/accordion render for practice questions
+  const masteredList = masteredQs[tid] || [];
+  const qs=(t.questions||[]).map((q,i)=>{
+    const isMastered = masteredList.includes(i) ? 'checked' : '';
+    const hint = getQuestionHint(tid, q);
+    return `
+      <div class="qp-card" id="qp_${tid}_${i}">
+        <div class="qp-header" onclick="toggleQuestionAccordion('${tid}', ${i})">
+          <div class="qp-checkbox ${isMastered}" onclick="toggleQuestionMastery('${tid}', ${i}, event)">${isMastered ? '✓' : ''}</div>
+          <div class="qp-text">${escapeHtml(q)}</div>
+          <div class="qp-arrow">▶</div>
+        </div>
+        <div class="qp-content" id="qpc_${tid}_${i}">
+          <div class="qp-guide-lbl">Key Guide & Hint</div>
+          <div class="qp-guide-desc">${escapeHtml(hint)}</div>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  const res=(t.resources||[]).map(r=>`<a class="rl" href="${r.url}" target="_blank" rel="noopener"><span class="rl-ico">${r.ico}</span><div class="rl-info"><div class="rl-name">${r.name}</div><div class="rl-type">${r.type}</div></div><span class="rl-arr">↗</span></a>`).join('');
+
+  document.getElementById('dpBody').innerHTML=`
+    <div id="tab-content-learn" class="tab-content" style="${activeTab==='learn'?'':'display:none'}">
+      <div class="dps"><div class="dps-lbl">About this topic</div><div class="dp-desc">${t.about||'No description.'}</div></div>
+      ${conc?`<div class="dps"><div class="dps-lbl">Key Concepts to Master</div><div class="concept-wrap">${conc}</div></div>`:''}
+      ${res?`<div class="dps"><div class="dps-lbl">Resources & Links</div><div class="rwrap">${res}</div></div>`:''}
+    </div>
+    <div id="tab-content-practice" class="tab-content" style="${activeTab==='practice'?'':'display:none'}">
+      ${qs?`<div class="dps"><div class="dps-lbl">Interview Questions (Practice These)</div><div class="qwrap">${qs}</div></div>`:`<div class="empty">No practice questions available.</div>`}
+    </div>
+    <div id="tab-content-notes" class="tab-content" style="${activeTab==='notes'?'':'display:none'}">
+      ${renderNotesTab(tid)}
+    </div>
+  `;
+
+  const pBtn=`<button class="dsb ${st==='in_progress'?'ds-prog':''}" onclick="setStatus('${tid}','in_progress')">◐ In Progress</button>`;
+  const dBtn=`<button class="dsb ${st==='done'?'ds-done':''}" onclick="setStatus('${tid}','done')">✓ Mark Done</button>`;
+  document.getElementById('dpBar').innerHTML=pBtn+dBtn;
+
+  document.getElementById('dp').classList.add('open');
+  document.getElementById('overlay').classList.add('show');
+  
+  updatePomoDisplay();
+}
+
+function closePanel(){
+  document.getElementById('dp').classList.remove('open');
+  document.getElementById('overlay').classList.remove('show');
+  openTopicId=null;
+  updatePomoDisplay();
+}
+
+// ============================
+// INTERACTIVE QUESTIONS HINTS & ACCORDIONS
+// ============================
+function toggleQuestionAccordion(tid, index) {
+  const card = document.getElementById(`qp_${tid}_${index}`);
+  if (card) {
+    card.classList.toggle('open');
+  }
+}
+
+function toggleQuestionMastery(tid, index, event) {
+  if (event) event.stopPropagation();
+  
+  if (!masteredQs[tid]) masteredQs[tid] = [];
+  
+  const idx = masteredQs[tid].indexOf(index);
+  if (idx > -1) {
+    masteredQs[tid].splice(idx, 1);
+  } else {
+    masteredQs[tid].push(index);
+  }
+  
+  saveMasteredQs();
+  
+  const checkbox = document.querySelector(`#qp_${tid}_${index} .qp-checkbox`);
+  if (checkbox) {
+    if (masteredQs[tid].includes(index)) {
+      checkbox.classList.add('checked');
+      checkbox.textContent = '✓';
+    } else {
+      checkbox.classList.remove('checked');
+      checkbox.textContent = '';
+    }
+  }
+  
+  updateHeader();
+  if (activeId === '__home__') renderHome();
+}
+
+function getQuestionHint(topicId, qText) {
+  const q = qText.toLowerCase();
+  if (q.includes('two sum')) return 'Use a HashMap/HashSet to store the complement (target - current_val). This achieves O(n) time complexity and O(n) space complexity. Alternatively, if sorted, use two pointers converging from both ends.';
+  if (q.includes('stock')) return 'Keep track of the minimum price seen so far and calculate maximum profit at each step (Single pass O(n) time, O(1) space).';
+  if (q.includes('longest substring without repeating')) return 'Sliding Window pattern: maintain a left and right pointer, and a map of character indices. Shrink the window when a duplicate character is found.';
+  if (q.includes('container with most water')) return 'Two-pointer technique: initialize left pointer at 0 and right pointer at array length - 1. Calculate area, and shift the pointer that has the smaller height.';
+  if (q.includes('trapping rain water')) return 'Compute prefix max and suffix max arrays for each position. Alternatively, use a two-pointer approach (left and right) with leftMax and rightMax variables for O(1) space.';
+  if (q.includes('reverse linked list')) return 'Iterative: maintain prev, curr, and next pointers. Change curr.next to prev, then move prev and curr forward. Recursive: reverse the rest, then point the original second node back to head.';
+  if (q.includes('cycle')) return 'Floyd\'s Cycle Detection (Tortoise and Hare): fast pointer moves 2 steps, slow moves 1. If they meet, a cycle exists. To find cycle entry point, reset slow to head, move both 1 step at a time until they meet.';
+  if (q.includes('valid parentheses')) return 'Use a Stack. Push opening brackets. When a closing bracket appears, pop from the stack and verify it matches. Stack must be empty at the end.';
+  if (q.includes('lru cache')) return 'Design using a HashMap mapped to nodes of a Doubly Linked List. HashMap provides O(1) lookups, while Doubly Linked List allows O(1) updates and eviction of least recently used items.';
+  if (q.includes('histogram')) return 'Use a Monotonic Stack to find the next smaller element on both left and right for each bar. The maximum area for each bar is its height times the distance between the two boundary indexes.';
+  if (q.includes('islands')) return 'BFS or DFS on the grid. Iterate through each cell; when a \'1\' (land) is found, trigger a traversal to mark all connected land cells as visited (or turn them to \'0\') and increment the counter.';
+  if (q.includes('course schedule')) return 'Topological Sort (Kahn\'s algorithm or DFS cycle detection). A cycle indicates that it\'s impossible to complete all courses (directed cyclic graph).';
+  if (q.includes('dijkstra')) return 'Single-Source Shortest Path. Use a Priority Queue (Min-Heap) storing pairs of (distance, node). Relax edges and insert adjacent nodes with updated distances. Time: O((V+E)log V).';
+  if (q.includes('knapsack')) return '0/1 Knapsack: decision is to include or exclude item. Table dp[i][w] represents max value with first i items and weight limit w. Space optimization reduces 2D table to 1D.';
+  if (q.includes('climbing stairs')) return 'Recognize this as a Fibonacci sequence. dp[i] = dp[i-1] + dp[i-2]. Can be optimized to O(1) space using variables.';
+  if (q.includes('coin change')) return 'Unbounded Knapsack: dp[i] represents minimum coins to make change for amount i. Recurrence: dp[i] = min(dp[i], dp[i - coin] + 1) for each coin.';
+  if (q.includes('lcs') || q.includes('longest common subsequence')) return '2D DP. If string1[i] == string2[j], dp[i][j] = 1 + dp[i-1][j-1]. Otherwise, dp[i][j] = max(dp[i-1][j], dp[i][j-1]).';
+  if (q.includes('n-queens')) return 'Backtracking. Place a queen row-by-row, validating columns and diagonals. If a placement fails down the line, backtrack by removing the queen (unchoose) and try the next position.';
+  if (q.includes('trie')) return 'Implement children array (size 26) or hash map for characters, and a boolean isEndOfWord flag. Insert and search are O(L) where L is the length of the string.';
+  if (q.includes('binary search')) return 'Maintain lo and hi bounds. Check mid = lo + (hi - lo)/2. Adjust lo = mid + 1 or hi = mid - 1 based on comparison. Answer binary search uses mono-property to find bounds.';
+  
+  if (topicId.startsWith('t_sd')) return 'System Design Framework: 1. Clarify requirements (Functional/Non-functional). 2. Establish scale (QPS, Storage, Bandwidth). 3. Define APIs. 4. High-level diagram (LB, App, DB, Cache). 5. Deep dive details (Sharding, Queue, Sync).';
+  if (topicId.startsWith('t_lld')) return 'LLD Strategy: 1. Define entities and actors. 2. Establish relationships (UML). 3. Create interfaces. 4. Apply Design Patterns (Strategy, State, Factory, Singleton). 5. Write clean code.';
+  
+  return 'Study Tip: Write out a visual representation of this problem. Trace edge cases (null inputs, empty values, single elements) and state the time and space complexity before writing the optimal code.';
+}
+
+function setStatus(tid,st){
+  progress[tid]=st;
+  saveProg();
+  updateHeader();
+  renderSidebar();
+  if(activeId==='__home__') renderHome();
+  else if(activeId==='__starred__') renderStarred();
+  else if(activeId==='__search__') renderSearch(document.getElementById('search-input').value);
+  else renderSubject(activeId);
+  if(openTopicId===tid)openPanel(tid);
+}
+
+function cycleStatus(tid,sid,e){
+  e.stopPropagation();
+  const cur=progress[tid]||'not_started';
+  progress[tid]=cur==='not_started'?'in_progress':cur==='in_progress'?'done':'not_started';
+  saveProg();
+  updateHeader();
+  renderSidebar();
+  if(sid==='__starred__') renderStarred();
+  else if(sid==='__search__') renderSearch(document.getElementById('search-input').value);
+  else renderSubject(sid);
+  if(openTopicId===tid)openPanel(tid);
+}
+
+function switchTab(tabName){
+  activeTab = tabName;
+  const contents = document.querySelectorAll('.tab-content');
+  contents.forEach(el => el.style.display = 'none');
+  
+  const activeContent = document.getElementById(`tab-content-${tabName}`);
+  if(activeContent) activeContent.style.display = 'block';
+  
+  const tabs = document.querySelectorAll('.dp-tab');
+  tabs.forEach(el => el.classList.remove('active'));
+  
+  const activeTabBtn = document.getElementById(`tab-btn-${tabName}`);
+  if(activeTabBtn) activeTabBtn.classList.add('active');
+}
+
+function renderNotesTab(tid) {
+  const noteText = notes[tid] || '';
+  return `
+    <div class="notes-container">
+      <div class="notes-meta">
+        <span>Write your notes below (auto-saves)</span>
+        <span class="notes-save-status" id="notes-save-status">Saved</span>
+      </div>
+      <textarea class="notes-textarea" id="notes-area" placeholder="Write summaries, cheat-sheet code snippets, questions, or reminders here..." oninput="handleNotesInput('${tid}', this.value)">${noteText}</textarea>
+      <div class="notes-meta">
+        <span id="notes-char-count">${noteText.length} characters</span>
+        <button class="open-btn" onclick="clearNotes('${tid}')" style="padding: 3px 8px; border-color: var(--red); color: var(--red);">Delete Notes</button>
+      </div>
+      <div class="notes-tips">
+        <strong>💡 Study Tips:</strong>
+        <p>• Summarize key concepts in your own words to improve retention.</p>
+        <p>• Paste tricky SQL queries or code patterns that frequently appear in interviews.</p>
+        <p>• Write answers to the practice questions listed in the "Practice" tab.</p>
+      </div>
+    </div>
+  `;
+}
+
+function handleNotesInput(tid, val) {
+  document.getElementById('notes-char-count').textContent = val.length + ' characters';
+  
+  const status = document.getElementById('notes-save-status');
+  status.textContent = 'Saving...';
+  status.classList.add('show');
+  
+  if(saveNotesTimeout) clearTimeout(saveNotesTimeout);
+  
+  saveNotesTimeout = setTimeout(() => {
+    notes[tid] = val;
+    saveNotes();
+    status.textContent = 'Saved';
+    
+    // Dynamically update notes indicator on topic cards if visible
+    const topicCard = document.getElementById(`tc_${tid}`);
+    if (topicCard) {
+      const tcName = topicCard.querySelector('.tc-name');
+      if (tcName) {
+        let indicator = tcName.querySelector('.tc-notes-indicator');
+        if (val.trim()) {
+          if (!indicator) {
+            const span = document.createElement('span');
+            span.className = 'tc-notes-indicator';
+            span.title = 'Has study notes';
+            span.textContent = '📝';
+            tcName.appendChild(span);
+          }
+        } else {
+          if (indicator) {
+            indicator.remove();
+          }
+        }
+      }
+    }
+    
+    setTimeout(() => {
+      if(status.textContent === 'Saved') status.classList.remove('show');
+    }, 1500);
+  }, 600);
+}
+
+function clearNotes(tid) {
+  if (confirm('Are you sure you want to delete all notes for this topic?')) {
+    notes[tid] = '';
+    saveNotes();
+    const notesArea = document.getElementById('notes-area');
+    if (notesArea) notesArea.value = '';
+    document.getElementById('notes-char-count').textContent = '0 characters';
+    
+    const status = document.getElementById('notes-save-status');
+    if (status) {
+      status.textContent = 'Deleted';
+      status.classList.add('show');
+      setTimeout(() => {
+        status.classList.remove('show');
+      }, 1500);
+    }
+    
+    const topicCard = document.getElementById(`tc_${tid}`);
+    if (topicCard) {
+      const indicator = topicCard.querySelector('.tc-notes-indicator');
+      if (indicator) indicator.remove();
+    }
+  }
+}
+
+async function resetAllData(){
+  if(confirm('🚨 WARNING: Are you sure you want to permanently delete all your progress, starred topics, and personal notes? This action cannot be undone.')){
+    progress = {};
+    starred = {};
+    notes = {};
+    masteredQs = {};
+    
+    try {
+      await storage.set('20lpa_v2', '{}');
+      await storage.set('20lpa_starred', '{}');
+      await storage.set('20lpa_notes', '{}');
+      await storage.set('20lpa_mastered_qs', '{}');
+    } catch(e) {}
+    
+    const searchInput = document.getElementById('search-input');
+    if(searchInput) searchInput.value = '';
+    const clearBtn = document.getElementById('search-clear-btn');
+    if(clearBtn) clearBtn.style.display = 'none';
+    
+    closePanel();
+    updateHeader();
+    renderSidebar();
+    renderHome();
+    
+    alert('All progress, bookmarks, and notes have been successfully reset.');
+  }
+}
+
+function exportData() {
+  const exportPayload = {
+    progress: progress,
+    starred: starred,
+    notes: notes,
+    masteredQs: masteredQs,
+    theme: currentTheme,
+    exportedAt: new Date().toISOString()
+  };
+  
+  const jsonString = JSON.stringify(exportPayload, null, 2);
+  const blob = new Blob([jsonString], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `20lpa_backup_${new Date().toISOString().slice(0,10)}.json`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+function importData(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  
+  const reader = new FileReader();
+  reader.onload = async function(e) {
+    try {
+      const data = JSON.parse(e.target.result);
+      if (!data || typeof data !== 'object') {
+        alert('Invalid backup file structure.');
+        return;
+      }
+      
+      if (confirm('Importing this file will overwrite all your current study progress, notes, and stars. Do you want to proceed?')) {
+        progress = data.progress || {};
+        starred = data.starred || {};
+        notes = data.notes || {};
+        masteredQs = data.masteredQs || {};
+        if (data.theme) {
+          currentTheme = data.theme;
+          const themeSelector = document.getElementById('theme-selector');
+          if (themeSelector) themeSelector.value = currentTheme;
+          applyTheme(currentTheme);
+        }
+        
+        // Save to storage
+        await saveProg();
+        await saveStarred();
+        await saveNotes();
+        await saveMasteredQs();
+        await saveTheme();
+        
+        // Refresh UI
+        updateHeader();
+        renderSidebar();
+        renderHome();
+        
+        alert('🎉 Study data imported successfully!');
+      }
+    } catch(err) {
+      alert('Error parsing JSON backup file: ' + err.message);
+    }
+  };
+  reader.readAsText(file);
+}
+
+// ============================
+// NAV
+// ============================
+function go(id){
+  activeId=id;
+  filterState='all';
+  sortState='default';
+  difficultyFilter='all';
+  closePanel();
+  if(id !== '__search__') {
+    const searchInput = document.getElementById('search-input');
+    if(searchInput) searchInput.value = '';
+    const clearBtn = document.getElementById('search-clear-btn');
+    if(clearBtn) clearBtn.style.display = 'none';
+  }
+  renderSidebar();
+  if(id==='__home__')renderHome();
+  else if(id==='__starred__')renderStarred();
+  else if(id==='__search__')renderSearch(document.getElementById('search-input').value);
+  else renderSubject(id);
+  document.getElementById('main').scrollTop=0;
+}
+function setFilter(f){
+  filterState=f;
+  renderSubject(activeId);
+}
+function setDiffFilter(diff) {
+  difficultyFilter = diff;
+  renderSubject(activeId);
+}
+function setSort(sort) {
+  sortState = sort;
+  renderSubject(activeId);
+}
+
+// ============================
+// INIT
+// ============================
+async function init(){
+  await loadProg();
+  updateHeader();
+  renderSidebar();
+  renderHome();
+  updatePomoDisplay();
+}
+init();
+</script>
+</body>
+</html>
