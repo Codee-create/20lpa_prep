@@ -1,0 +1,14 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "interview-learner",
+  "compatibility_date": "2026-07-28",
+  "observability": {
+    "enabled": true
+  },
+  "assets": {
+    "directory": "20lpa-interview"
+  },
+  "compatibility_flags": [
+    "nodejs_compat"
+  ]
+}
